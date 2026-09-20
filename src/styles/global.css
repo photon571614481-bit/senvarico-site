@@ -158,6 +158,19 @@ li {
   max-width: var(--measure);
 }
 
+/*
+ * `.container.prose` keeps the page grid (left edge aligned with page-head,
+ * definition and section-heads) while limiting text blocks to the measure.
+ * Wide blocks (grids, tables, plan cards) may use the full container.
+ */
+.container.prose {
+  max-width: var(--max);
+}
+
+.container.prose > :not(.grid):not(.table-wrap) {
+  max-width: var(--measure);
+}
+
 .prose h2 {
   margin-top: 2.4em;
   padding-top: 0.2em;
@@ -421,8 +434,13 @@ li {
   opacity: 0.7;
 }
 
+.hero-copy {
+  min-width: 0;
+}
+
 .hero-visual {
   position: relative;
+  min-width: 0;
 }
 
 .hero-visual svg {
@@ -440,6 +458,7 @@ li {
 
   .hero-visual {
     max-width: 520px;
+    margin: 0 auto;
   }
 }
 
@@ -456,6 +475,9 @@ li {
   border-radius: 999px;
   padding: 5px 12px;
   margin-bottom: 18px;
+  width: fit-content;
+  justify-self: start;
+  align-self: start;
 }
 
 /* Buttons */
@@ -741,11 +763,19 @@ td {
 th {
   background: var(--bg-muted);
   font-weight: 600;
-  white-space: nowrap;
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--fg-subtle);
+}
+
+thead th {
+  min-width: 8.5rem;
+  vertical-align: bottom;
+}
+
+thead th:first-child {
+  min-width: 7rem;
 }
 
 tbody th {
@@ -754,6 +784,7 @@ tbody th {
   font-size: 0.95rem;
   color: var(--fg);
   background: #fff;
+  white-space: nowrap;
 }
 
 tbody tr:last-child td,
@@ -1065,5 +1096,67 @@ tbody tr.row--self td {
   a.card,
   .btn {
     transition: none;
+  }
+}
+
+/* Chinese (zh-CN) typography
+ * CJK glyphs need a system CJK fallback after Inter, no negative tracking on
+ * headings, a slightly taller line-height and a shorter measure (66ch of Latin
+ * is ~33 CJK characters; 40em is ~40 characters, a comfortable line). */
+html[lang^='zh'] {
+  --font: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    'Noto Sans SC', 'Source Han Sans SC', 'Segoe UI', Roboto, sans-serif;
+  --measure: 40em;
+  line-height: 1.75;
+  font-feature-settings: normal;
+}
+
+html[lang^='zh'] h1,
+html[lang^='zh'] h2,
+html[lang^='zh'] h3,
+html[lang^='zh'] h4 {
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+html[lang^='zh'] .hero h1 {
+  max-width: 12em;
+}
+
+html[lang^='zh'] .eyebrow,
+html[lang^='zh'] thead th,
+html[lang^='zh'] .footer-grid h3 {
+  letter-spacing: 0.04em;
+}
+
+/* Tables on narrow screens: keep the row header visible while scrolling */
+@media (max-width: 720px) {
+  tbody th,
+  thead th:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    box-shadow: 1px 0 0 var(--border);
+  }
+
+  thead th:first-child {
+    background: var(--bg-muted);
+    min-width: 0;
+  }
+
+  thead th {
+    min-width: 7rem;
+  }
+
+  tbody th {
+    background: #fff;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    width: 7.25rem;
+    max-width: 7.25rem;
+  }
+
+  tbody tr.row--self th {
+    background: var(--bg-soft);
   }
 }
