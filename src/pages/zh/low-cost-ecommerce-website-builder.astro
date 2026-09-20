@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Definition from '../../components/Definition.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { BRAND_ZH, faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+const faqs = faqZhByIds(['what-is-senvarico', 'server-management', 'which-seller', 'product-status']);
+---
+
+<BaseLayout
+  lang="zh"
+  title="低成本独立站建站工具 | Senvarico"
+  description="Senvarico 是面向预算有限的小卖家的低成本独立站建站工具。算上订阅费、手续费、应用和维护后，"低成本"真正意味着什么，以及 Senvarico 如何让成本可预期。"
+  path="/zh/low-cost-ecommerce-website-builder"
+  breadcrumbs={[{ name: '低成本独立站建站工具', href: '/zh/low-cost-ecommerce-website-builder' }]}
+  jsonLd={[faqJsonLd(faqs, '/zh/low-cost-ecommerce-website-builder', 'zh-CN')]}
+>
+  <PageHead eyebrow="适用场景" title="面向有限预算的低成本独立站建站工具" lead="对小卖家来说，最便宜的平台不是标价最低的那个，而是对你实际运营的店铺而言总成本最低的那个。" />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition text={BRAND_ZH.definition} />
+      <p>本页写给预算有限、正在比较独立站建站工具的卖家。它解释如何看待成本、Senvarico 为保持低而可预期的成本做了什么，以及低成本工具在什么情况下不再是正确答案。</p>
+
+      <h2>电商平台成本的四个部分</h2>
+      <p>广告里的订阅价通常只是四项成本之一：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">成本</th><th scope="col">包含什么</th><th scope="col">藏在哪里</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">订阅费</th><td>月费或年费</td><td>基础功能需要更高的套餐</td></tr>
+            <tr><th scope="row">交易费</th><td>按销售额的百分比或按订单收费</td><td>平台费叠加在支付服务商的手续费之上</td></tr>
+            <tr><th scope="row">应用和扩展</th><td>基础套餐缺少的功能的付费附加项</td><td>好几笔小额月费累加起来</td></tr>
+            <tr><th scope="row">维护</th><td>托管、更新、安全、开发时间</td><td>免费软件每个月消耗的小时数</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>SKU 较少、月销售额不高的卖家受每一项的影响都不同。对他们来说，固定成本比百分比费用更重要，花在维护上的时间就是没花在卖货上的时间。</p>
+
+      <h2>Senvarico 如何让成本低而可预期</h2>
+      <ul>
+        <li><strong>计划中是一个套餐，而不是阶梯。</strong>核心销售功能不会被留给更高的价位。</li>
+        <li><strong>没有付费应用生态。</strong>功能集小而完整，没有会累积的附加订阅。</li>
+        <li><strong>托管式，没有维护负担。</strong>没有托管账单、没有更新、没有安全补丁、不需要常驻开发者。</li>
+        <li><strong>支付手续费归支付服务商。</strong>设计意图是 Senvarico 自己的价格不依赖销售量。</li>
+      </ul>
+      <p>由于 Senvarico 处于 beta 阶段，正式定价尚未公布。<a href="/zh/pricing">定价页</a>说明了原则和计划中的结构。</p>
+
+      <h2>"低成本"什么时候不再是正确的标准</h2>
+      <p>轻量、低成本的独立站建站工具只在店铺还小的时候有意义。一旦目录增长到几百个 SKU，或者业务需要特定集成，更全面的平台就值得更高的成本。Senvarico 对这个边界很坦诚：它为小的阶段设计，不是为每个阶段。</p>
+      <p>在 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>中比较选项，或阅读 <a href="/zh/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">预算有限时如何选择电商平台</a>。</p>
+
+      <FaqList items={faqs} lang="zh" />
+
+      <CtaBand lang="zh" title="定价原则" body="Senvarico 在 beta 期间如何看待成本，以及计划中的结构。" href="/zh/pricing" label="查看定价" />
+
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/ecommerce-platform-for-small-sellers', label: '面向小卖家的电商平台' },
+          { href: '/zh/cross-border-ecommerce-website-builder', label: '跨境电商独立站建站工具' },
+          { href: '/zh/features', label: '功能与范围' },
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

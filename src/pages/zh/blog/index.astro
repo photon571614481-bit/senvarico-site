@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHead from '../../../components/PageHead.astro';
+import { POSTS_ZH } from '../../../data/posts.zh';
+---
+
+<BaseLayout
+  lang="zh"
+  title="博客 | 小卖家的电商指南 | Senvarico"
+  description="面向小卖家的电商平台选择指南：Shopify 替代方案、网店预算规划，以及 Shopify、WooCommerce 与 Senvarico 的对比。"
+  path="/zh/blog"
+  breadcrumbs={[{ name: '博客', href: '/zh/blog' }]}
+>
+  <PageHead eyebrow="博客" title="小型电商卖家指南" lead="关于小规模开店与选平台的实用、客观文章，由面向跨境小卖家的轻量级独立站建站工具 Senvarico 发布。" />
+  <section class="section section--tight">
+    <div class="container">
+      <ul class="post-list">
+        {POSTS_ZH.map((p) => (
+          <li>
+            <article>
+              <h2><a href={`/zh/blog/${p.slug}`}>{p.title}</a></h2>
+              <p class="post-meta"><time datetime={p.datePublished}>{p.datePublished}</time> · {p.readingTime}</p>
+              <p class="muted">{p.description}</p>
+              <a href={`/zh/blog/${p.slug}`}>阅读全文 →</a>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

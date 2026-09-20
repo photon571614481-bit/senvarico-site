@@ -160,7 +160,7 @@ const graph = {
   </head>
   <body>
     <a class="skip" href="#main">{ui.skip}</a>
-    <Header currentPath={path} lang={lang} altPath={altPath} />
+    <Header currentPath={path} lang={lang} altPath={noindex ? undefined : altPath} />
     {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb trail={crumbTrail} lang={lang} />}
     <main id="main">
       <slot />

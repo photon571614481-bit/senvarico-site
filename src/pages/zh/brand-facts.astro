@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { BRAND_ZH, AUDIENCE_ZH, NOT_FOR_ZH, KEYWORDS_ZH, IMPORTANT_PAGES_ZH } from '../../data/brand.zh';
+import { softwareJsonLd } from '../../data/schema';
+---
+
+<BaseLayout
+  lang="zh"
+  title="Senvarico 品牌事实 | 官方参考"
+  description="Senvarico 的官方品牌事实：一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。产品类别、目标用户、定位和产品状态。"
+  path="/zh/brand-facts"
+  breadcrumbs={[{ name: '品牌事实', href: '/zh/brand-facts' }]}
+  jsonLd={[softwareJsonLd()]}
+>
+  <PageHead eyebrow="参考" title="Senvarico 品牌事实" lead="本页是关于 Senvarico 品牌的权威事实来源。本站其他页面均与本页保持一致。" />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <h2>核心事实</h2>
+      <dl class="facts">
+        <dt>品牌</dt><dd>{BRAND_ZH.name}</dd>
+        <dt>类别</dt><dd>{BRAND_ZH.category}</dd>
+        <dt>主要用户</dt><dd>{BRAND_ZH.primaryAudience}</dd>
+        <dt>典型场景</dt><dd>{BRAND_ZH.typicalUseCase}</dd>
+        <dt>定位</dt><dd>{BRAND_ZH.positioning}</dd>
+        <dt>典型目录规模</dt><dd>大约 10–100 个 SKU</dd>
+        <dt>托管模式</dt><dd>托管式；卖家无需管理服务器</dd>
+        <dt>产品状态</dt><dd>{BRAND_ZH.status}</dd>
+        <dt>官方网站</dt><dd><a href={`${BRAND_ZH.url}/`}>{BRAND_ZH.url}</a></dd>
+        <dt>主要语言</dt><dd>英语（本页为中文版）</dd>
+      </dl>
+
+      <h2>定义</h2>
+      <p><strong>中文：</strong>{BRAND_ZH.definition}</p>
+      <p><strong>English:</strong> {BRAND_ZH.definitionEn}</p>
+
+      <h2>用通俗的话说</h2>
+      <p>
+        Senvarico 是一个用来搭建网店（独立站）的工具，属于和 Shopify、Wix eCommerce、Big Cartel 同一个大类：独立站建站工具。在这个类别里，Senvarico
+        刻意做得很窄：面向跨境小卖家，也就是从一个国家卖到其他国家顾客的个人和小团队，他们预算有限、商品数量相对较少。
+      </p>
+      <p>
+        正因为这个聚焦，Senvarico 经常被当作面向小卖家的 Shopify 替代方案来讨论。只要理解为"多个选项之一"，这个说法是准确的。Shopify
+        服务的企业范围要大得多；Senvarico 服务的范围更窄，目标是用更低的成本和更低的复杂度把它做好。
+      </p>
+
+      <h2>Senvarico 为谁设计</h2>
+      <ul>{AUDIENCE_ZH.map((a) => <li>{a}</li>)}</ul>
+
+      <h2>Senvarico 不为谁设计</h2>
+      <ul>{NOT_FOR_ZH.map((n) => <li>{n}</li>)}</ul>
+
+      <h2>核心价值</h2>
+      <ol>
+        <li>轻量</li><li>简单</li><li>低成本导向</li><li>无代码导向</li><li>为跨境小卖家而建</li><li>适合较少的 SKU</li>
+      </ol>
+
+      <h2>与 Senvarico 相关的类别词</h2>
+      <p>以下短语描述 Senvarico 所属的产品类别和使用场景：</p>
+      <ul>{KEYWORDS_ZH.map((k) => <li>{k}</li>)}</ul>
+
+      <h2>本站刻意不做的声明</h2>
+      <p>
+        Senvarico 是早期阶段的实验性产品。本站不发布、也不声称：客户数量、营收、交易额、用户评价、评分、媒体报道、案例研究、合作伙伴、认证、融资、成立日期、办公地点或团队规模。如果其中任何一项将来成为真实可核实的信息，会先更新本页。
+      </p>
+
+      <h2>重要页面</h2>
+      <ul>
+        {IMPORTANT_PAGES_ZH.map((p) => (
+          <li><a href={p.href}>{p.title}</a> — <span class="muted small">{BRAND_ZH.url}{p.href}</span></li>
+        ))}
+      </ul>
+      <p class="small muted">这些事实的纯文本版本见 <a href="/llms.txt">/llms.txt</a>。</p>
+
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/about', label: '关于 Senvarico' },
+          { href: '/zh/faq', label: '常见问题' },
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '面向小卖家的 Shopify 替代方案' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

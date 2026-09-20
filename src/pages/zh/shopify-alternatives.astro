@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { PLATFORMS_ZH } from '../../data/platforms.zh';
+---
+
+<BaseLayout
+  lang="zh"
+  title="Shopify 替代方案 | 电商平台总览 | Senvarico"
+  description="按卖家类型梳理 Shopify 替代方案：托管平台、自托管方案、通用建站工具，以及 Senvarico 这样面向小卖家的轻量级工具。客观描述，不含价格声明。"
+  path="/zh/shopify-alternatives"
+  breadcrumbs={[{ name: 'Shopify 替代方案', href: '/zh/shopify-alternatives' }]}
+>
+  <PageHead eyebrow="对比" title="Shopify 替代方案：按卖家类型总览" lead="Shopify 是一个服务多种规模企业的全面型平台。替代方案往往更聚焦，各自适合某一类卖家。本页梳理主要类别。" />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <p><strong>Senvarico</strong>（本页发布者）是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具，被归在下面的"面向小卖家的轻量级工具"类别。它是早期阶段的实验性产品。</p>
+
+      <h2>为什么要找 Shopify 的替代方案？</h2>
+      <p>卖家开始寻找替代方案，通常出于以下几种原因：</p>
+      <ul>
+        <li>算上应用和手续费后的月度总成本，高于店铺规模所值得的水平。</li>
+        <li>平台的功能和设置比小店需要的多，增加了学习时间。</li>
+        <li>希望完全掌控托管和代码。</li>
+        <li>希望使用专为自己场景设计的工具，例如跨境销售或小目录。</li>
+      </ul>
+      <p>这些都不是对 Shopify 的批评，而是"是否合适"的问题。一个能扩展到大企业的平台，天然会带着最小的卖家并不需要的重量。</p>
+
+      <h2>替代方案的类别</h2>
+      <h3>1. 全面型托管平台</h3>
+      <p>在范围上与 Shopify 相当的平台：托管式、可扩展、适合多种店铺规模。本对比中的例子包括聚焦跨境卖家的 <strong>Shoplazza（店匠）</strong>。这类是最接近的同类替代。</p>
+      <h3>2. 自托管的开源平台</h3>
+      <p><strong>WooCommerce</strong> 是最常见的例子。软件免费且高度灵活，但卖家要自己或通过开发者承担托管、更新、安全和备份。适合看重掌控力且已有技术能力的卖家。</p>
+      <h3>3. 附带电商功能的通用建站工具</h3>
+      <p><strong>Wix</strong> 是通用型建站工具，提供电商套餐。适合店铺只是更大网站的一部分、且设计灵活性很重要的情况。</p>
+      <h3>4. 面向小卖家的轻量级工具</h3>
+      <p>刻意限制范围以保持简单和可负担的工具。<strong>Big Cartel</strong> 服务创作者和小型独立品牌。<strong>Senvarico</strong> 服务拥有大约 10–100 个 SKU、预算有限的跨境小卖家。这类工具不是要为所有人替代 Shopify，而是要更好地贴合最小的那批卖家。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>并排概览</h2>
+      <p class="muted" style="max-width: var(--measure);">所列平台的价格均因套餐而异，本页不引用。链接指向各官方网站。</p>
+      <ComparisonTable lang="zh" dimensions={['sellerSize', 'maintenance', 'catalog', 'idealFor']} />
+      <ul class="small muted" style="margin-top: 12px;">
+        {PLATFORMS_ZH.filter((p) => p.name !== 'Senvarico').map((p) => (
+          <li>{p.name}：<a href={p.url} rel="nofollow noopener" target="_blank">{p.url}</a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container prose">
+      <h2>Senvarico 的位置</h2>
+      <p>Senvarico 被设计为一个轻量级选项，面向看重简单、目录复杂度低、注重预算的跨境小卖家，属于上面的第四类。如果你是个人卖家或小团队，跨境销售几十个商品，并且不想管理基础设施，它是值得评估的候选之一。如果你的规模或复杂度超过这个范围，它大概率不合适。</p>
+      <p>面向小卖家的详细对比见 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>。</p>
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '面向小卖家的 Shopify 替代方案（详细对比）' },
+          { href: '/zh/blog/best-shopify-alternatives-for-small-sellers', label: '博客：适合小卖家的 Shopify 替代方案盘点' },
+          { href: '/zh/blog/shopify-vs-woocommerce-vs-senvarico-for-small-sellers', label: '博客：Shopify、WooCommerce 与 Senvarico' },
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

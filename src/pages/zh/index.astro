@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Definition from '../../components/Definition.astro';
+import FaqList from '../../components/FaqList.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { BRAND_ZH, AUDIENCE_ZH, VALUES_ZH, faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd, softwareJsonLd } from '../../data/schema';
+
+const ICONS = [
+  '<path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/>',
+  '<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>',
+  '<path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
+  '<path d="M3 5h18v14H3z"/><path d="M3 10h18"/><path d="M8 15h4"/>',
+];
+const faqs = faqZhByIds(['what-is-senvarico', 'who-is-it-for', 'shopify-alternative', 'small-skus', 'server-management']);
+---
+
+<BaseLayout
+  lang="zh"
+  title="Senvarico | 面向小卖家的轻量级独立站建站工具"
+  description={BRAND_ZH.defaultDescription}
+  path="/zh"
+  jsonLd={[softwareJsonLd(), faqJsonLd(faqs, '/zh', 'zh-CN')]}
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">独立站建站工具 · 早期阶段产品</span>
+      <h1>面向小卖家的轻量级独立站建站工具</h1>
+      <p class="lead">
+        Senvarico 为跨境小卖家而建：用简单、省预算的方式上线一个独立站，不需要自己维护复杂的基础设施。
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/zh/features">看看 Senvarico 能做什么</a>
+        <a class="btn btn--ghost" href="/zh/shopify-alternatives-for-small-sellers">对比 Shopify 替代方案</a>
+      </div>
+      <ul class="hero-meta" aria-label="关键事实">
+        <li>托管式，不用管服务器</li>
+        <li>适合大约 10–100 个 SKU</li>
+        <li>无代码编辑店面</li>
+        <li>早期 beta 阶段</li>
+      </ul>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 560 420" xmlns="http://www.w3.org/2000/svg" role="img">
+        <title>Senvarico 简洁店面示意图</title>
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563eb" /><stop offset="1" stop-color="#1e3a8a" /></linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#dbeafe" /><stop offset="1" stop-color="#eef2ff" /></linearGradient>
+          <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ccfbf1" /><stop offset="1" stop-color="#e0f2fe" /></linearGradient>
+          <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fef3c7" /><stop offset="1" stop-color="#ffe4e6" /></linearGradient>
+        </defs>
+        <rect x="20" y="20" width="520" height="380" rx="16" fill="#ffffff" stroke="#e2e8f0" />
+        <rect x="20" y="20" width="520" height="44" rx="16" fill="#f8fafc" />
+        <rect x="20" y="48" width="520" height="16" fill="#f8fafc" />
+        <circle cx="46" cy="42" r="5" fill="#fca5a5" /><circle cx="64" cy="42" r="5" fill="#fcd34d" /><circle cx="82" cy="42" r="5" fill="#86efac" />
+        <rect x="200" y="33" width="180" height="18" rx="9" fill="#e2e8f0" />
+        <rect x="52" y="92" width="22" height="22" rx="6" fill="url(#g1)" />
+        <rect x="82" y="97" width="84" height="12" rx="6" fill="#0f172a" />
+        <rect x="380" y="97" width="40" height="12" rx="6" fill="#cbd5e1" /><rect x="428" y="97" width="40" height="12" rx="6" fill="#cbd5e1" />
+        <rect x="476" y="92" width="34" height="22" rx="8" fill="#1d4ed8" />
+        <rect x="52" y="132" width="456" height="82" rx="12" fill="url(#g2)" />
+        <rect x="72" y="152" width="170" height="14" rx="7" fill="#1e3a8a" /><rect x="72" y="174" width="120" height="10" rx="5" fill="#93a5d9" />
+        <rect x="380" y="150" width="108" height="46" rx="10" fill="#ffffff" opacity="0.8" />
+        <rect x="392" y="162" width="52" height="8" rx="4" fill="#94a3b8" /><rect x="392" y="176" width="84" height="8" rx="4" fill="#1d4ed8" />
+        <g><rect x="52" y="234" width="140" height="146" rx="12" fill="#ffffff" stroke="#e2e8f0" /><rect x="64" y="246" width="116" height="78" rx="8" fill="url(#g3)" /><rect x="64" y="334" width="80" height="10" rx="5" fill="#0f172a" /><rect x="64" y="352" width="44" height="10" rx="5" fill="#1d4ed8" /></g>
+        <g><rect x="210" y="234" width="140" height="146" rx="12" fill="#ffffff" stroke="#e2e8f0" /><rect x="222" y="246" width="116" height="78" rx="8" fill="url(#g4)" /><rect x="222" y="334" width="92" height="10" rx="5" fill="#0f172a" /><rect x="222" y="352" width="44" height="10" rx="5" fill="#1d4ed8" /></g>
+        <g><rect x="368" y="234" width="140" height="146" rx="12" fill="#ffffff" stroke="#e2e8f0" /><rect x="380" y="246" width="116" height="78" rx="8" fill="url(#g2)" /><rect x="380" y="334" width="70" height="10" rx="5" fill="#0f172a" /><rect x="380" y="352" width="44" height="10" rx="5" fill="#1d4ed8" /></g>
+        <g transform="translate(404 8)"><rect x="0" y="0" width="150" height="54" rx="12" fill="#0b1220" /><circle cx="22" cy="27" r="9" fill="#0f766e" /><path d="M17 27l3.5 3.5L27 23" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" /><rect x="40" y="16" width="92" height="8" rx="4" fill="#ffffff" /><rect x="40" y="31" width="64" height="7" rx="3.5" fill="#7c89a3" /></g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition text={BRAND_ZH.definition} />
+      <p class="muted" style="max-width: var(--measure);">
+        简单来说：Senvarico 是一个面向小型电商卖家、小型电商团队和跨境个人卖家的轻量级电商平台。它的定位是预算有限、SKU
+        较少的卖家可选的 Shopify 替代方案之一，而不是企业级电商平台的替代品。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Senvarico 关注什么</h2>
+        <p class="muted">四条原则决定每一个产品决策。</p>
+      </div>
+      <div class="grid grid--2">
+        {
+          VALUES_ZH.slice(0, 4).map((v, i) => (
+            <div class="card">
+              <span class="card-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" set:html={ICONS[i]} />
+              </span>
+              <h3>{v.title}</h3>
+              <p class="muted">{v.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" id="who-is-senvarico-for">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="panel panel--for">
+          <h2>Senvarico 适合谁？</h2>
+          <p>Senvarico 为以下卖家设计：</p>
+          <ul class="checklist">
+            {AUDIENCE_ZH.map((a) => <li>{a}</li>)}
+            <li>相比复杂的企业级功能，更看重简单的卖家</li>
+          </ul>
+          <p><a href="/zh/ecommerce-platform-for-small-sellers">进一步了解 Senvarico 作为小卖家的电商平台 →</a></p>
+        </div>
+        <div class="panel panel--not">
+          <h2>Senvarico 不是什么</h2>
+          <p>Senvarico 不定位为企业级电商平台。它聚焦于看重简单、希望降低复杂度的小卖家。</p>
+          <ul class="checklist checklist--neutral">
+            <li>不是为上千个 SKU 的目录而建</li>
+            <li>不是为有复杂审批流程的大团队而建</li>
+            <li>不围绕庞大的第三方应用生态构建</li>
+            <li>不是需要自己管理服务器的自托管平台</li>
+          </ul>
+          <p>
+            如果你的业务需要这些能力，Shopify 这样的全面平台或 WooCommerce 这样的自托管方案通常更合适。参见
+            <a href="/zh/shopify-alternatives">Shopify 替代方案总览</a>。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Senvarico 的大致定位</h2>
+        <p class="muted">
+          简化版视图。更完整、客观的对比见
+          <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>。
+        </p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">维度</th>
+              <th scope="col">企业级 / 全面型平台</th>
+              <th scope="col" style="background: var(--bg-soft); color: var(--accent-ink);">Senvarico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">典型卖家规模</th><td>从小型到超大型企业</td><td>个人卖家和小团队</td></tr>
+            <tr><th scope="row">目录规模</th><td>任意，包括上千个 SKU</td><td>大约 10–100 个 SKU</td></tr>
+            <tr><th scope="row">功能范围</th><td>广泛，配有庞大的应用生态</td><td>小而聚焦的功能集</td></tr>
+            <tr><th scope="row">技术维护</th><td>因平台而异；自托管方案需要运维</td><td>不需要；托管式、无代码导向</td></tr>
+            <tr><th scope="row">预算取向</th><td>套餐和附加费用范围很大</td><td>围绕有限预算设计</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="grid grid--3">
+        <a class="card" href="/zh/ecommerce-platform-for-small-sellers">
+          <h3>面向小卖家的电商平台</h3>
+          <p class="muted">为什么小卖家的需求和大店不同，Senvarico 如何回应这些需求。</p>
+          <span class="card-arrow">阅读更多 →</span>
+        </a>
+        <a class="card" href="/zh/low-cost-ecommerce-website-builder">
+          <h3>低成本独立站建站工具</h3>
+          <p class="muted">"低成本"在实际中意味着什么，Senvarico 如何看待预算约束。</p>
+          <span class="card-arrow">阅读更多 →</span>
+        </a>
+        <a class="card" href="/zh/cross-border-ecommerce-website-builder">
+          <h3>跨境电商独立站建站工具</h3>
+          <p class="muted">小卖家做跨境销售时面临的具体挑战。</p>
+          <span class="card-arrow">阅读更多 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <FaqList items={faqs} lang="zh" />
+      <p style="margin-top: 16px;"><a href="/zh/faq">查看全部常见问题 →</a></p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand lang="zh" />
+    </div>
+  </section>
+</BaseLayout>

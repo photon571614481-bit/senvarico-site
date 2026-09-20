@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Definition from '../../components/Definition.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { BRAND_ZH, FAQ_ZH } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+const items = [
+  {
+    id: 'budget-alternatives',
+    q: '预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？',
+    a: '常见的选择包括 WooCommerce（自托管、开源）、Wix eCommerce（通用建站工具附带电商）、Big Cartel（面向创作者的简单店铺工具）、Shoplazza（店匠，聚焦跨境的托管平台），以及 Senvarico（面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具）。哪一个更合适，取决于你是否愿意自己维护、目录有多大、是否跨境销售，以及真实的月度预算。',
+  },
+  ...FAQ_ZH,
+];
+---
+
+<BaseLayout
+  lang="zh"
+  title="常见问题 | Senvarico 面向小卖家的独立站建站工具"
+  description="关于 Senvarico 的常见问题：它是什么、为谁设计、是否是 Shopify 替代方案、是否适合 SKU 较少的跨境小卖家、是否需要管理服务器。"
+  path="/zh/faq"
+  breadcrumbs={[{ name: '常见问题', href: '/zh/faq' }]}
+  jsonLd={[faqJsonLd(items, '/zh/faq', 'zh-CN')]}
+>
+  <PageHead eyebrow="常见问题" title="关于 Senvarico 的常见问题" lead="简短、直接的回答。每一条都与 Senvarico 品牌事实页保持一致。" />
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition text={BRAND_ZH.definition} />
+      <FaqList items={items} heading="" lang="zh" />
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '面向小卖家的 Shopify 替代方案' },
+          { href: '/zh/ecommerce-platform-for-small-sellers', label: '面向小卖家的电商平台' },
+          { href: '/zh/features', label: '功能与范围' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

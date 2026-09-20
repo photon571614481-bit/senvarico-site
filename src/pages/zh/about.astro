@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Definition from '../../components/Definition.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { BRAND_ZH } from '../../data/brand.zh';
+---
+
+<BaseLayout
+  lang="zh"
+  title="关于 Senvarico | 轻量级独立站建站工具"
+  description="Senvarico 是一个实验性电商软件项目，研究轻量级电商工具如何更好地服务预算有限、商品目录较小的跨境小卖家。"
+  path="/zh/about"
+  breadcrumbs={[{ name: '关于', href: '/zh/about' }]}
+>
+  <PageHead eyebrow="关于" title="关于 Senvarico" lead="一个聚焦跨境小卖家的实验性电商软件项目。" />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition text={BRAND_ZH.definition} />
+
+      <h2>Senvarico 是什么</h2>
+      <p>
+        Senvarico 是一个实验性电商软件项目，研究轻量级电商工具如何更好地服务跨境小卖家。它属于独立站建站工具（ecommerce
+        website builder）这一产品类别，专门面向预算有限、SKU 较少的卖家。
+      </p>
+      <p>
+        项目源于一个简单的观察：大多数电商平台的设计目标是能一路扩展到大企业，这意味着小卖家往往要为自己用不到的功能付出成本、复杂度和学习时间。Senvarico
+        探索相反的方向：为明确的小卖家做一个明确的小工具。
+      </p>
+
+      <h2>当前状态</h2>
+      <p>{BRAND_ZH.statusNote}</p>
+      <p>
+        由于项目处于早期阶段，本站不发布客户数量、用户评价、营收数字或合作伙伴 logo。如果将来有了可以核实的信息，会再补充。目前对产品最可靠的描述是
+        <a href="/zh/brand-facts">Senvarico 品牌事实</a>页面。
+      </p>
+
+      <h2>项目在研究什么</h2>
+      <ul>
+        <li>一个跨境小店真正需要多少功能才能有效地卖货。</li>
+        <li>如何让托管式、无代码的电商工具对预算有限的卖家保持可负担。</li>
+        <li>"小卖家工具"与通用电商平台之间的边界在哪里。</li>
+        <li>拥有大约 10–100 个 SKU 的卖家如何评估 Shopify 替代方案。</li>
+      </ul>
+
+      <h2>产品边界</h2>
+      <p>
+        Senvarico 不定位为企业级电商平台，也不打算在功能广度上与全面型平台竞争。它的范围刻意收窄：跨境小卖家、小目录、有限预算、不用管服务器。
+      </p>
+
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+          { href: '/zh/features', label: '功能与当前范围' },
+          { href: '/zh/faq', label: '常见问题' },
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '面向小卖家的 Shopify 替代方案' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+import ComparisonTable from '../../../components/ComparisonTable.astro';
+import { POSTS_ZH } from '../../../data/posts.zh';
+const post = POSTS_ZH.find((p) => p.slug === 'best-shopify-alternatives-for-small-sellers')!;
+---
+
+<PostLayout post={post} lang="zh">
+  <p>Shopify 是大多数小卖家最先听说的平台，理由充分：它是托管式的、可靠的，从第一单到第一百万单都能支撑。但"最好"取决于是谁在问。对于预算有限、只有几十个商品的个人卖家或小团队，还有几个替代方案值得看一看。本文介绍其中五个，包括 <strong>Senvarico</strong>，一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。</p>
+  <p>本文的一条规则：不宣布任何平台是赢家。每一个都适合特定类型的卖家，目的是帮你认清自己属于哪一类。</p>
+
+  <h2>本文面向谁</h2>
+  <ul>
+    <li>你一个人卖，或者和一两个人一起。</li>
+    <li>你有、或计划有大约 10–100 个商品。</li>
+    <li>你的软件预算有限，希望成本可预期。</li>
+    <li>你可能在跨境销售，从一个国家卖给另一个国家的顾客。</li>
+    <li>你不想管理服务器、插件或代码。</li>
+  </ul>
+  <p>如果你有几百个 SKU、多名员工或复杂集成，这份清单参考价值不大；Shopify 或自托管方案通常更适合你。</p>
+
+  <h2>1. WooCommerce</h2>
+  <p>WooCommerce 是基于 WordPress 的开源电商插件。软件本身免费，看起来像是最便宜的选择。真实成本是托管、付费扩展，以及让一切保持更新和安全所花的时间。如果你已经在运营 WordPress 网站，或者能自如地处理技术维护，它提供的掌控力超过任何托管平台。如果不能，这种掌控力就变成了负担。</p>
+  <p><strong>最适合：</strong>有 WordPress 经验、希望完全拥有自己技术栈的卖家。</p>
+
+  <h2>2. Wix eCommerce</h2>
+  <p>Wix 是通用建站工具，附带电商套餐。它的优势是可视化编辑：如果你的店铺是包含博客、作品集或预约页的更大品牌网站的一部分，Wix 能把一切放在一处。代价是电商只是众多功能之一，而不是产品的核心。</p>
+  <p><strong>最适合：</strong>先要网站、再要店铺，并且看重设计灵活性的卖家。</p>
+
+  <h2>3. Big Cartel</h2>
+  <p>Big Cartel 是面向艺术家、手作者和小型独立品牌的托管式店铺建站工具。它刻意保持简单，套餐通常按商品数量限制。它在自己的细分领域服务了很长时间，简单就是重点。相比本文其他选项，它对跨境销售的支持较弱。</p>
+  <p><strong>最适合：</strong>销售少量商品、通常面向本国受众的创作者。</p>
+
+  <h2>4. Shoplazza（店匠）</h2>
+  <p>Shoplazza 是托管式电商平台，专注跨境卖家，尤其是从中国面向海外顾客的卖家。相比 Big Cartel 或 Senvarico，它是更完整的平台，拥有围绕国际销售构建的生态。</p>
+  <p><strong>最适合：</strong>希望使用围绕国际运营设计的全面平台的跨境卖家。</p>
+
+  <h2>5. Senvarico</h2>
+  <p>Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。它是托管式、无代码导向的，为大约 10–100 个商品而设计，围绕刻意收窄的功能集构建。它是早期阶段的实验性产品，正式定价尚未公布。它被设计为一个轻量级选项，面向看重简单、目录复杂度低、注重预算的跨境小卖家。</p>
+  <p><strong>最适合：</strong>想要一个简单工具而不是庞大平台的跨境个人卖家和小团队。</p>
+
+  <h2>还有 Shopify 本身</h2>
+  <p>对很多小卖家，尤其是预期快速增长或需要特定应用的卖家，Shopify 仍然是很强的选择。它的生态是本文所有平台里最广的。小卖家转向别处的原因是低销量下的成本，以及广度带来的复杂度，而不是能力不足。</p>
+
+  <h2>并排对比</h2>
+  <p>各平台价格因套餐而异，本文不引用。链接指向官方网站。</p>
+  <ComparisonTable lang="zh" dimensions={['sellerSize', 'maintenance', 'catalog', 'idealFor']} />
+
+  <h2>怎么选</h2>
+  <ol>
+    <li>决定你是否会自己维护托管。不会的话，排除 WooCommerce。</li>
+    <li>决定店铺是整个生意还是更大网站的一部分。是后者的话，看看 Wix。</li>
+    <li>估算一年后的目录规模。几百个 SKU 偏向 Shopify 或 Shoplazza；几十个则 Big Cartel 和 Senvarico 仍在选项内。</li>
+    <li>如果跨境销售，给 Shoplazza、Senvarico 以及 Shopify 的生态更高的权重。</li>
+    <li>把订阅费、手续费、应用和维护时间加起来，得到一个现实的月度总额。</li>
+  </ol>
+  <p>更完整的对比见 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>，预算方法见 <a href="/zh/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">预算有限时如何选择电商平台</a>。</p>
+</PostLayout>

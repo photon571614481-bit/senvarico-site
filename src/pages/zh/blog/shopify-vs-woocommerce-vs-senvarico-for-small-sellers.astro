@@ -1,0 +1,41 @@
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+import ComparisonTable from '../../../components/ComparisonTable.astro';
+import { POSTS_ZH } from '../../../data/posts.zh';
+const post = POSTS_ZH.find((p) => p.slug === 'shopify-vs-woocommerce-vs-senvarico-for-small-sellers')!;
+---
+
+<PostLayout post={post} lang="zh">
+  <p>Shopify、WooCommerce 和 Senvarico 代表了对同一个问题的三种不同回答：小卖家应该怎么开网店？Shopify 是功能全面的托管平台。WooCommerce 是自托管的开源插件。Senvarico 是面向预算有限、SKU 较少的跨境小卖家的轻量级托管工具。本文为小卖家比较这三种思路，不宣布赢家，因为每一种都是不同卖家的正确选择。</p>
+
+  <h2>三种思路，各一段</h2>
+  <h3>Shopify：全面、托管</h3>
+  <p>Shopify 托管一切，提供庞大的主题和应用生态，能从第一家店扩展到大品牌。小卖家得到可靠性和成长空间。这种广度的代价是月度总额可能随应用和费用攀升，以及后台里比小店所需更多的选项。</p>
+  <h3>WooCommerce：灵活、自托管</h3>
+  <p>WooCommerce 把 WordPress 网站变成店铺。插件免费，扩展几乎没有上限。卖家或其付费的人负责托管、更新、备份和安全。对技术型卖家，这是最可控的选项；对非技术型卖家，这是最费力的。</p>
+  <h3>Senvarico：轻量、托管</h3>
+  <p>Senvarico 去掉了小卖家大多用不到的部分。它是托管式、无代码导向的，为大约 10–100 个 SKU 而设计，围绕小功能集和计划中的单一套餐构建。它是早期阶段的实验性产品，不试图匹配 Shopify 的生态或 WooCommerce 的灵活性。</p>
+
+  <h2>对比</h2>
+  <ComparisonTable lang="zh" names={['Shopify', 'WooCommerce', 'Senvarico']} />
+
+  <h2>逐个维度</h2>
+  <h3>易用性</h3>
+  <p>Shopify 起步容易，随着应用累积会变复杂。WooCommerce 假定你熟悉 WordPress。Senvarico 在设计上就简单，因为东西少，要配置的也少。</p>
+  <h3>技术维护</h3>
+  <p>Shopify 和 Senvarico 不需要托管或服务器管理。WooCommerce 需要持续维护，要么是卖家的时间，要么是开发者的账单。</p>
+  <h3>目录规模</h3>
+  <p>Shopify 和 WooCommerce 能处理任何规模的目录。Senvarico 为小目录设计，不是几百上千个 SKU 的合适工具。</p>
+  <h3>预算</h3>
+  <p>Shopify 的价格因套餐而异，公布在官网。WooCommerce 核心插件免费，但托管、扩展和维护构成真实成本。Senvarico 围绕有限预算设计，计划中是单一套餐；正式定价尚未公布。</p>
+  <h3>跨境销售</h3>
+  <p>Shopify 通过生态支持国际销售。WooCommerce 可以通过扩展实现。Senvarico 把跨境基础能力放进核心，因为它的目标卖家通常从一开始就在跨境销售。</p>
+
+  <h2>什么卖家该选哪个</h2>
+  <ul>
+    <li><strong>选 Shopify</strong>，如果你预期会超出小目录、需要特定应用，或者想要最稳妥的通用选择。</li>
+    <li><strong>选 WooCommerce</strong>，如果你已经在用 WordPress、想要完全掌控，并且能处理或付费解决维护。</li>
+    <li><strong>考虑 Senvarico</strong>，如果你是预算有限、只有几十个商品的跨境个人卖家或小团队，想要一个简单的工具而不是一个平台。</li>
+  </ul>
+  <p>小卖家完全可以从 Senvarico 或 Big Cartel 起步、以后再迁到 Shopify，也可以从 Shopify 起步、永远不迁。重要的是为你现在运营的店铺做选择。更多选项见 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>，Senvarico 的权威描述见 <a href="/zh/brand-facts">Senvarico 品牌事实</a>。</p>
+</PostLayout>

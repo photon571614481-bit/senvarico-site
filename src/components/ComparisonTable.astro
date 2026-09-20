@@ -1,5 +1,7 @@
 ---
 import { PLATFORMS, DIMENSIONS, type Platform } from '../data/platforms';
+import { PLATFORMS_ZH, DIMENSIONS_ZH } from '../data/platforms.zh';
+import type { Lang } from '../data/i18n';
 
 interface Props {
   /** Restrict to a subset of platform names, in this order. Defaults to all. */
@@ -7,11 +9,16 @@ interface Props {
   /** Restrict to a subset of dimension keys. Defaults to all. */
   dimensions?: (keyof Platform)[];
   caption?: string;
+  lang?: Lang;
 }
-const { names, dimensions, caption } = Astro.props;
+const { names, dimensions, caption, lang = 'en' } = Astro.props;
+const ALL = lang === 'en' ? PLATFORMS : PLATFORMS_ZH;
+const DIMS = lang === 'en' ? DIMENSIONS : DIMENSIONS_ZH;
+const platformLabel = lang === 'en' ? 'Platform' : '平台';
+const selfHref = lang === 'en' ? '/' : '/zh';
 
-const platforms = names ? names.map((n) => PLATFORMS.find((p) => p.name === n)).filter((p): p is Platform => Boolean(p)) : PLATFORMS;
-const dims = dimensions ? DIMENSIONS.filter((d) => dimensions.includes(d.key)) : DIMENSIONS;
+const platforms = names ? names.map((n) => ALL.find((p) => p.name.startsWith(n))).filter((p): p is Platform => Boolean(p)) : ALL;
+const dims = dimensions ? DIMS.filter((d) => dimensions.includes(d.key)) : DIMS;
 ---
 
 <div class="table-wrap">
@@ -19,7 +26,7 @@ const dims = dimensions ? DIMENSIONS.filter((d) => dimensions.includes(d.key)) :
     {caption && <caption class="small muted" style="text-align:left; padding: 10px 14px;">{caption}</caption>}
     <thead>
       <tr>
-        <th scope="col">Platform</th>
+        <th scope="col">{platformLabel}</th>
         {dims.map((d) => <th scope="col">{d.label}</th>)}
       </tr>
     </thead>
@@ -28,7 +35,7 @@ const dims = dimensions ? DIMENSIONS.filter((d) => dimensions.includes(d.key)) :
         platforms.map((p) => (
           <tr class={p.name === 'Senvarico' ? 'row--self' : undefined}>
             <th scope="row">
-              {p.name === 'Senvarico' ? <a href="/">{p.name}</a> : <a href={p.url} rel="nofollow noopener" target="_blank">{p.name}</a>}
+              {p.name === 'Senvarico' ? <a href={selfHref}>{p.name}</a> : <a href={p.url} rel="nofollow noopener" target="_blank">{p.name}</a>}
             </th>
             {dims.map((d) => <td>{p[d.key]}</td>)}
           </tr>

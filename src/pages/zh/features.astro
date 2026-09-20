@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Definition from '../../components/Definition.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { BRAND_ZH } from '../../data/brand.zh';
+
+const scope = [
+  { title: '托管式店面', body: '在 Senvarico 托管的域名或你自己的域名上运行的在线店铺。没有服务器、更新或安全补丁需要你管理。' },
+  { title: '小型商品目录', body: '面向大约 10–100 个 SKU 的店铺的商品、变体、图片和库存管理。为这个规模的清晰度而设计，而不是为超大目录。' },
+  { title: '简单结账', body: '面向单店、直接面向消费者销售的直观结账流程。不含多仓库或 B2B 流程。' },
+  { title: '跨境基础能力', body: '面向从一个国家向其他国家顾客销售的店面设置，例如币种展示和配送区域。' },
+  { title: '无代码编辑', body: '店面页面和内容通过可视化界面编辑。不需要写主题代码，也没有插件需要维护。' },
+  { title: '基础 SEO', body: '页面标题、描述、简洁 URL 和服务端渲染的商品页，让店铺可以被搜索引擎读取。' },
+];
+---
+
+<BaseLayout
+  lang="zh"
+  title="功能 | Senvarico 轻量级独立站建站工具"
+  description="Senvarico 包含什么：托管式店面、小型商品目录、简单结账、跨境基础能力和无代码编辑。为预算有限的跨境小卖家准备的聚焦功能集。"
+  path="/zh/features"
+  breadcrumbs={[{ name: '功能', href: '/zh/features' }]}
+>
+  <PageHead eyebrow="产品" title="Senvarico 功能" lead="为跨境小卖家刻意收窄的功能集。要学的更少、要付的更少、要维护的更少。" />
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition text={BRAND_ZH.definition} />
+      <div class="notice">
+        <p><strong>产品状态：</strong>{BRAND_ZH.statusNote} 下面列出的是产品的预期范围，而不是已经最终确定的承诺清单。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>当前范围</h2>
+      <div class="grid grid--3">
+        {scope.map((s) => (
+          <div class="card"><h3>{s.title}</h3><p class="muted">{s.body}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container prose">
+      <h2>刻意不做的部分</h2>
+      <p>Senvarico 是一个轻量级电商平台。保持轻量意味着对主要服务于大企业的功能说不。以下内容不在产品方向之内：</p>
+      <ul>
+        <li>上千个 SKU 的目录或层级很深的商品结构</li>
+        <li>多仓库库存、批发或 B2B 分级定价</li>
+        <li>第三方应用市场或插件生态</li>
+        <li>自定义服务端代码、自托管或由卖家管理基础设施</li>
+        <li>多部门权限、复杂审批流程等企业级功能</li>
+      </ul>
+      <p>需要这些能力的卖家更适合功能更全面的平台。参见 <a href="/zh/shopify-alternatives">Shopify 替代方案总览</a>，了解不同平台适合的卖家规模。</p>
+
+      <h2>收款与集成</h2>
+      <p>具体的支付服务商和第三方集成仍在 beta 期间评估中。与其列出尚未确认的选项，不如在可用时再更新本页。常见问题的当前答复见 <a href="/zh/faq">常见问题</a>。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CtaBand lang="zh" title="定价方向" body="Senvarico 围绕有限预算设计。了解 beta 期间的定价思路。" href="/zh/pricing" label="查看定价" />
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/ecommerce-platform-for-small-sellers', label: 'Senvarico 作为小卖家的电商平台' },
+          { href: '/zh/cross-border-ecommerce-website-builder', label: '跨境电商独立站建站工具' },
+          { href: '/zh/low-cost-ecommerce-website-builder', label: '低成本独立站建站工具' },
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

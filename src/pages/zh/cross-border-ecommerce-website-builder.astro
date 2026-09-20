@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import Definition from '../../components/Definition.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { BRAND_ZH, faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+const faqs = faqZhByIds(['cross-border', 'who-is-it-for', 'server-management', 'shopify-alternative']);
+---
+
+<BaseLayout
+  lang="zh"
+  title="跨境电商独立站建站工具 | Senvarico"
+  description="Senvarico 是面向从一个国家向其他国家顾客销售的小卖家的跨境电商独立站建站工具。小规模跨境销售的具体挑战，以及轻量级工具如何应对。"
+  path="/zh/cross-border-ecommerce-website-builder"
+  breadcrumbs={[{ name: '跨境电商独立站建站工具', href: '/zh/cross-border-ecommerce-website-builder' }]}
+  jsonLd={[faqJsonLd(faqs, '/zh/cross-border-ecommerce-website-builder', 'zh-CN')]}
+>
+  <PageHead eyebrow="适用场景" title="面向小卖家的跨境电商独立站建站工具" lead="跨境销售曾经是大公司的事。今天一个人就可以在一个国家采购、从第一天起卖到另一个国家。工具并不总是跟上了这个变化。" />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition text={BRAND_ZH.definition} />
+      <p>本页描述小规模跨境电商是什么样、它和本土销售有什么不同，以及 Senvarico 如何为这种情况下的卖家设计。写给预算有限、SKU 较少的跨境个人卖家和小团队。</p>
+
+      <h2>小规模的"跨境"指什么</h2>
+      <p>跨境卖家从一个国家向位于其他国家的顾客销售。在小规模上，这通常意味着一个人或一个小团队、几十个商品的目录、以及一个或少数几个目标市场的顾客。常见的例子包括：</p>
+      <ul>
+        <li>在一个国家的卖家，用另一个市场的顾客测试一条产品线</li>
+        <li>从平台起步、现在想要自己独立站的小品牌</li>
+        <li>在投入更大平台之前，先把小众产品推向国际的小团队</li>
+      </ul>
+
+      <h2>为什么跨境销售对小卖家更难</h2>
+      <ol>
+        <li><strong>币种和定价。</strong>顾客期望看到熟悉币种的价格，即使卖家在另一个国家运营。</li>
+        <li><strong>配送区域。</strong>国际配送需要清晰的规则：服务哪些地区、费用多少。</li>
+        <li><strong>信任。</strong>一个来自另一个国家的陌生品牌，要在很小的预算下看起来可信。</li>
+        <li><strong>运营负担。</strong>一个人负责采购、上架、营销、履约和客服。平台的复杂度在争夺同样的时间。</li>
+      </ol>
+
+      <h2>Senvarico 如何为此设计</h2>
+      <ul>
+        <li><strong>跨境基础能力在核心里。</strong>币种展示和配送区域是基础产品的一部分，而不是附加项。</li>
+        <li><strong>默认就是干净、可信的店面。</strong>简单、结构清晰的店铺比杂乱的更容易被信任。</li>
+        <li><strong>聚焦小目录。</strong>为大约 10–100 个 SKU 而设计，这与大多数跨境小卖家测试和成长的方式相符。</li>
+        <li><strong>没有基础设施要管理。</strong>托管式、无代码，运营时间留给生意而不是平台。</li>
+      </ul>
+      <p>Senvarico 是早期阶段的实验性产品。具体的支付服务商和物流集成仍在评估中；当前范围见 <a href="/zh/features">功能</a>。</p>
+
+      <h2>其他跨境选项</h2>
+      <p>Senvarico 不是唯一的跨境电商独立站建站工具。Shopify 通过其生态支持国际销售，Shoplazza（店匠）专为各种规模的跨境卖家而建。并排对比见 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>。</p>
+
+      <FaqList items={faqs} lang="zh" />
+
+      <CtaBand lang="zh" />
+
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: '/zh/ecommerce-platform-for-small-sellers', label: '面向小卖家的电商平台' },
+          { href: '/zh/low-cost-ecommerce-website-builder', label: '低成本独立站建站工具' },
+          { href: '/zh/blog/best-shopify-alternatives-for-small-sellers', label: '博客：适合小卖家的 Shopify 替代方案盘点' },
+          { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>
