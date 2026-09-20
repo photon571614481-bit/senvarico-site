@@ -1,0 +1,47 @@
+---
+import { BRAND } from '../data/brand';
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>Senvarico</h3>
+        <p class="small" style="max-width: 32ch;">{BRAND.definition}</p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="/features">Features</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/brand-facts">Brand facts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Use cases</h3>
+        <ul>
+          <li><a href="/ecommerce-platform-for-small-sellers">Ecommerce platform for small sellers</a></li>
+          <li><a href="/low-cost-ecommerce-website-builder">Low-cost ecommerce website builder</a></li>
+          <li><a href="/cross-border-ecommerce-website-builder">Cross-border ecommerce website builder</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compare</h3>
+        <ul>
+          <li><a href="/shopify-alternatives">Shopify alternatives</a></li>
+          <li><a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-note">
+      <p>
+        {BRAND.name} is an early-stage, experimental ecommerce software project. Shopify, WooCommerce, Wix, Big Cartel
+        and Shoplazza are trademarks of their respective owners and are referenced for comparison only. {BRAND.name} is not affiliated with any of them.
+      </p>
+      <p>Official website: <a href={`${BRAND.url}/`}>{BRAND.url}</a> · <a href="/llms.txt">llms.txt</a></p>
+    </div>
+  </div>
+</footer>

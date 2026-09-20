@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { BRAND } from '../data/brand';
+
+const scope = [
+  {
+    title: 'Hosted storefront',
+    body: 'A hosted online store on a Senvarico-managed domain or your own domain. No servers, updates or security patches to manage.',
+  },
+  {
+    title: 'Small product catalog',
+    body: 'Products, variants, images and inventory for stores with roughly 10–100 SKUs. Designed for clarity at that scale rather than for very large catalogs.',
+  },
+  {
+    title: 'Simple checkout',
+    body: 'A straightforward checkout flow for single-store, direct-to-consumer sales. No multi-warehouse or B2B workflows.',
+  },
+  {
+    title: 'Cross-border basics',
+    body: 'Storefront settings intended for selling from one country to customers in others, such as currency display and shipping regions.',
+  },
+  {
+    title: 'No-code editing',
+    body: 'Storefront pages and content are edited through a visual interface. No themes to code and no plugins to maintain.',
+  },
+  {
+    title: 'Essential SEO',
+    body: 'Page titles, descriptions, clean URLs and server-rendered product pages so that stores are readable by search engines.',
+  },
+];
+---
+
+<BaseLayout
+  title="Features | Senvarico Lightweight Ecommerce Website Builder"
+  description="What Senvarico includes: a hosted storefront, a small product catalog, simple checkout, cross-border basics and no-code editing. A focused feature set for small cross-border sellers with limited budgets."
+  path="/features"
+  breadcrumbs={[{ name: 'Features', href: '/features' }]}
+>
+  <PageHead
+    eyebrow="Product"
+    title="Senvarico Features"
+    lead="A deliberately small feature set for small cross-border sellers. Less to learn, less to pay for, less to maintain."
+  />
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition />
+      <div class="notice">
+        <p>
+          <strong>Product status:</strong> {BRAND.statusNote} The items below describe the intended scope of the product,
+          not a list of finalized commitments.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Current scope</h2>
+      <div class="grid grid--3">
+        {
+          scope.map((s) => (
+            <div class="card">
+              <h3>{s.title}</h3>
+              <p class="muted">{s.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container prose">
+      <h2>What is intentionally out of scope</h2>
+      <p>
+        Senvarico is a lightweight ecommerce platform. Keeping it lightweight means saying no to features that mainly
+        serve larger businesses. The following are not part of the product direction:
+      </p>
+      <ul>
+        <li>Catalogs with thousands of SKUs or deeply nested product hierarchies</li>
+        <li>Multi-warehouse inventory, wholesale or B2B pricing tiers</li>
+        <li>A third-party app marketplace or plugin ecosystem</li>
+        <li>Custom server-side code, self-hosting or infrastructure management by the seller</li>
+        <li>Enterprise features such as multi-department permissions and complex approval workflows</li>
+      </ul>
+      <p>
+        Sellers who need these capabilities are better served by broader platforms. See the
+        <a href="/shopify-alternatives">overview of Shopify alternatives</a> for how different platforms fit different
+        seller sizes.
+      </p>
+
+      <h2>Payments and integrations</h2>
+      <p>
+        Specific payment providers and third-party integrations are still being evaluated during the beta. Rather than
+        list options that are not yet confirmed, this page will be updated when they are available. See the
+        <a href="/faq">FAQ</a> for the current position on common questions.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <CtaBand
+        title="Pricing direction"
+        body="Senvarico is designed around limited budgets. Read how pricing is being approached during the beta."
+        href="/pricing"
+        label="See pricing"
+      />
+      <RelatedLinks
+        links={[
+          { href: '/ecommerce-platform-for-small-sellers', label: 'Senvarico as an ecommerce platform for small sellers' },
+          { href: '/cross-border-ecommerce-website-builder', label: 'Cross-border ecommerce website builder' },
+          { href: '/low-cost-ecommerce-website-builder', label: 'Low-cost ecommerce website builder' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

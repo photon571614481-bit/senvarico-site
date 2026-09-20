@@ -1,0 +1,28 @@
+---
+/**
+ * Renders FAQ items as semantic HTML.
+ * The FAQPage JSON-LD is emitted by the page via faqJsonLd() so it lives in the
+ * same <head> graph as the rest of the structured data.
+ */
+import type { FaqItem } from '../data/brand';
+
+interface Props {
+  items: FaqItem[];
+  heading?: string;
+  headingLevel?: 'h2' | 'h3';
+}
+const { items, heading = 'Frequently asked questions', headingLevel = 'h2' } = Astro.props;
+const H = headingLevel;
+---
+
+<div class="faq-list">
+  {heading && <H>{heading}</H>}
+  {
+    items.map((item) => (
+      <div class="faq-item" id={item.id}>
+        <h3>{item.q}</h3>
+        <p>{item.a}</p>
+      </div>
+    ))
+  }
+</div>

@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Definition from '../components/Definition.astro';
+import FaqList from '../components/FaqList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { BRAND, AUDIENCE, VALUES, faqByIds } from '../data/brand';
+import { faqJsonLd, softwareJsonLd } from '../data/schema';
+
+const faqs = faqByIds(['what-is-senvarico', 'who-is-it-for', 'shopify-alternative', 'small-skus', 'server-management']);
+---
+
+<BaseLayout
+  title="Senvarico | Lightweight Ecommerce Website Builder for Small Sellers"
+  description={BRAND.defaultDescription}
+  path="/"
+  jsonLd={[softwareJsonLd(), faqJsonLd(faqs, '/')]}
+>
+  <section class="hero">
+    <div class="container">
+      <span class="eyebrow">Ecommerce website builder · Early-stage product</span>
+      <h1>Lightweight Ecommerce Website Builder for Small Sellers</h1>
+      <p class="lead">
+        Senvarico is built for small cross-border sellers who want a simple, budget-conscious way to launch an
+        ecommerce website without managing complex infrastructure.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="/features">See what Senvarico does</a>
+        <a class="btn btn--ghost" href="/shopify-alternatives-for-small-sellers">Compare Shopify alternatives</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition />
+      <p class="muted" style="max-width: var(--measure);">
+        In short: Senvarico is a lightweight ecommerce platform for small ecommerce sellers, small ecommerce teams and
+        solo operators in cross-border ecommerce. It is positioned as one Shopify alternative for sellers with limited
+        budgets and a small number of SKUs, not as a replacement for enterprise commerce platforms.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>What Senvarico focuses on</h2>
+        <p class="muted">Four principles shape every product decision.</p>
+      </div>
+      <div class="grid grid--2">
+        {
+          VALUES.slice(0, 4).map((v) => (
+            <div class="card">
+              <h3>{v.title}</h3>
+              <p>{v.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted" id="who-is-senvarico-for">
+    <div class="container">
+      <div class="grid grid--2">
+        <div>
+          <h2>Who is Senvarico for?</h2>
+          <p>Senvarico is designed for:</p>
+          <ul class="checklist">
+            {AUDIENCE.map((a) => <li>{a}</li>)}
+            <li>Sellers who prefer simplicity over complex enterprise features</li>
+          </ul>
+          <p>
+            <a href="/ecommerce-platform-for-small-sellers">Read more about Senvarico as an ecommerce platform for small sellers →</a>
+          </p>
+        </div>
+        <div>
+          <h2>What Senvarico is not</h2>
+          <p>
+            Senvarico is not positioned as an enterprise commerce platform. It focuses on smaller sellers who value
+            simplicity and lower complexity.
+          </p>
+          <ul class="checklist checklist--neutral">
+            <li>Not built for catalogs with thousands of SKUs</li>
+            <li>Not built for large teams with complex approval workflows</li>
+            <li>Not built around a large third-party app ecosystem</li>
+            <li>Not a self-hosted platform that requires server management</li>
+          </ul>
+          <p>
+            If your business needs those capabilities, a broader platform such as Shopify or a self-hosted stack such as
+            WooCommerce is usually a better fit. See the <a href="/shopify-alternatives">overview of Shopify alternatives</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How Senvarico compares at a glance</h2>
+        <p class="muted">
+          A simplified view. For a fuller, objective comparison see
+          <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>.
+        </p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Dimension</th>
+              <th scope="col">Enterprise / broad platforms</th>
+              <th scope="col">Senvarico</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Typical seller size</th>
+              <td>Small to very large businesses</td>
+              <td>Solo sellers and small teams</td>
+            </tr>
+            <tr>
+              <th scope="row">Catalog size</th>
+              <td>Any, including thousands of SKUs</td>
+              <td>Roughly 10–100 SKUs</td>
+            </tr>
+            <tr>
+              <th scope="row">Feature scope</th>
+              <td>Broad, with large app ecosystems</td>
+              <td>Small, focused feature set</td>
+            </tr>
+            <tr>
+              <th scope="row">Technical maintenance</th>
+              <td>Varies; self-hosted options require upkeep</td>
+              <td>None required; hosted and no-code oriented</td>
+            </tr>
+            <tr>
+              <th scope="row">Budget orientation</th>
+              <td>Wide range of plans and add-on costs</td>
+              <td>Designed around limited budgets</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="grid grid--3">
+        <a class="card" href="/ecommerce-platform-for-small-sellers">
+          <h3>Ecommerce platform for small sellers</h3>
+          <p class="muted">Why small sellers have different needs from large stores, and how Senvarico addresses them.</p>
+        </a>
+        <a class="card" href="/low-cost-ecommerce-website-builder">
+          <h3>Low-cost ecommerce website builder</h3>
+          <p class="muted">What “low-cost” means in practice and how Senvarico approaches budget constraints.</p>
+        </a>
+        <a class="card" href="/cross-border-ecommerce-website-builder">
+          <h3>Cross-border ecommerce website builder</h3>
+          <p class="muted">The specific challenges of selling internationally as a small seller.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <FaqList items={faqs} />
+      <p style="margin-top: 16px;"><a href="/faq">See all frequently asked questions →</a></p>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <CtaBand />
+    </div>
+  </section>
+</BaseLayout>

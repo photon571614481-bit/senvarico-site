@@ -1,0 +1,22 @@
+---
+interface Props {
+  title?: string;
+  body?: string;
+  href?: string;
+  label?: string;
+}
+const {
+  title = 'See whether Senvarico fits your store',
+  body = 'Review the brand facts, features and pricing direction. Senvarico is an early-stage product; details may change.',
+  href = '/brand-facts',
+  label = 'Read the brand facts',
+} = Astro.props;
+---
+
+<div class="cta">
+  <div>
+    <h2>{title}</h2>
+    <p class="muted">{body}</p>
+  </div>
+  <a class="btn" href={href}>{label}</a>
+</div>

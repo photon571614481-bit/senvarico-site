@@ -1,0 +1,87 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { POSTS } from '../../data/posts';
+const post = POSTS.find((p) => p.slug === 'how-to-choose-an-ecommerce-platform-on-a-small-budget')!;
+---
+
+<PostLayout post={post}>
+  <p>
+    Most comparisons of ecommerce platforms start with the monthly price. For a small seller, that is the wrong
+    starting point. The right one is the total cost of running <em>your</em> store for a year, in money and in
+    hours. This article gives a simple method for working that out and using it to choose. It is published by
+    Senvarico, a lightweight ecommerce website builder for small cross-border sellers, but the method applies to any
+    platform.
+  </p>
+
+  <h2>Step 1: Describe your store honestly</h2>
+  <p>Write down four numbers and one answer:</p>
+  <ul>
+    <li><strong>SKUs:</strong> how many products and variants you will list in the next twelve months.</li>
+    <li><strong>Orders:</strong> a realistic monthly order count, not a hoped-for one.</li>
+    <li><strong>Markets:</strong> how many countries you will sell to.</li>
+    <li><strong>People:</strong> how many people will work in the store admin.</li>
+    <li><strong>Maintenance:</strong> are you willing to manage hosting, updates and security yourself?</li>
+  </ul>
+  <p>
+    A seller with 30 SKUs, 40 orders a month, two markets, one person and no appetite for maintenance has a very
+    different ideal platform from one with 800 SKUs and a part-time developer.
+  </p>
+
+  <h2>Step 2: Count all four costs</h2>
+  <p>For each platform you are considering, estimate:</p>
+  <ol>
+    <li><strong>Subscription.</strong> The plan that actually includes what you need, not the cheapest advertised tier.</li>
+    <li><strong>Transaction fees.</strong> Any platform fee on top of the payment processor's own fee, multiplied by your order estimate.</li>
+    <li><strong>Apps and extensions.</strong> Anything you will have to add to get basic selling functions working.</li>
+    <li><strong>Maintenance.</strong> Hosting and, honestly priced, your own hours or a developer's.</li>
+  </ol>
+  <p>
+    Add them up for twelve months. The result often reorders the list. Free software with hosting and upkeep can cost
+    more than a modest hosted plan. A cheap base tier plus four apps can cost more than a mid tier that includes them.
+  </p>
+
+  <h2>Step 3: Check the fit, not just the price</h2>
+  <p>A platform that is cheap but wrong-sized will cost you in other ways:</p>
+  <ul>
+    <li><strong>Too large:</strong> more settings, longer learning, features you pay for and never use.</li>
+    <li><strong>Too small:</strong> you outgrow it and migrate, which costs time and sometimes SEO.</li>
+  </ul>
+  <p>
+    Match the platform to the numbers from step 1. Broad platforms such as Shopify fit almost any size but carry
+    weight at the smallest end. Lightweight tools such as Big Cartel or Senvarico fit small catalogs and small teams
+    and are wrong for large ones. Self-hosted options such as WooCommerce fit sellers who want control and can
+    maintain it.
+  </p>
+
+  <h2>Step 4: Weight your special constraints</h2>
+  <p>Two constraints change the answer for many small sellers:</p>
+  <ul>
+    <li>
+      <strong>Cross-border selling.</strong> If you sell from one country into others, currency display and shipping
+      regions need to be simple. Platforms built around cross-border sellers, such as Shoplazza or Senvarico, treat
+      this as core; on others it may need apps.
+    </li>
+    <li>
+      <strong>Product testing.</strong> If you are validating products rather than scaling a proven line, a low fixed
+      cost matters more than a low percentage fee, because your volume is uncertain.
+    </li>
+  </ul>
+
+  <h2>Step 5: Decide, and set a review date</h2>
+  <p>
+    Pick the platform with the best combination of total cost and fit for the store you described, then put a review
+    date in the calendar six or twelve months out. Small stores change. The right platform for testing ten products is
+    not always the right one for selling two hundred, and that is fine. Choosing for the stage you are in, not the
+    stage you hope for, is what keeps a small budget intact.
+  </p>
+
+  <h2>Where Senvarico fits in this method</h2>
+  <p>
+    Senvarico is designed for the profile in step 1 that looks like: a small number of SKUs, a solo seller or small
+    team, some cross-border selling, and no appetite for maintenance. It is a lightweight, hosted, no-code oriented
+    tool with a single planned plan and no app ecosystem, which keeps step 2 simple. It is an early-stage, experimental
+    product and final pricing is not yet published; see the <a href="/pricing">pricing principles</a>. If your
+    profile is larger or more complex, one of the platforms in
+    <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a> will fit better.
+  </p>
+</PostLayout>

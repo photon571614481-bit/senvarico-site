@@ -1,0 +1,89 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+const faqs = faqByIds(['cross-border', 'who-is-it-for', 'server-management', 'shopify-alternative']);
+---
+
+<BaseLayout
+  title="Cross-Border Ecommerce Website Builder | Senvarico"
+  description="Senvarico is a cross-border ecommerce website builder for small sellers who sell from one country to customers in others. The specific challenges of small-scale international selling and how a lightweight tool addresses them."
+  path="/cross-border-ecommerce-website-builder"
+  breadcrumbs={[{ name: 'Cross-border ecommerce website builder', href: '/cross-border-ecommerce-website-builder' }]}
+  jsonLd={[faqJsonLd(faqs, '/cross-border-ecommerce-website-builder')]}
+>
+  <PageHead
+    eyebrow="Use case"
+    title="A Cross-Border Ecommerce Website Builder for Small Sellers"
+    lead="Selling internationally used to be a large-company activity. Today a solo seller can source in one country and sell in another from day one. The tools have not always caught up."
+  />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition />
+      <p>
+        This page describes what cross-border ecommerce looks like at small scale, why it is different from domestic
+        selling, and how Senvarico is designed for sellers in that situation. It is written for solo cross-border
+        sellers and small teams with limited budgets and a small number of SKUs.
+      </p>
+
+      <h2>What “cross-border” means at small scale</h2>
+      <p>
+        A cross-border seller sells from one country to customers located in others. At small scale this usually
+        means a single operator or a small team, a catalog of a few dozen products, and customers in one or a handful
+        of target markets. Common examples include:
+      </p>
+      <ul>
+        <li>A seller in one country testing a product line with customers in another market</li>
+        <li>A small brand that started on a marketplace and wants its own independent store</li>
+        <li>A small team launching a niche product internationally before committing to a larger platform</li>
+      </ul>
+
+      <h2>Why cross-border selling is harder for small sellers</h2>
+      <ol>
+        <li><strong>Currency and pricing.</strong> Customers expect to see prices in a familiar currency, even when the seller operates in another.</li>
+        <li><strong>Shipping regions.</strong> International shipping needs clear rules about which regions are served and at what cost.</li>
+        <li><strong>Trust.</strong> An unfamiliar brand from another country has to look credible on a small budget.</li>
+        <li><strong>Operational load.</strong> One person handles sourcing, listing, marketing, fulfilment and support. Platform complexity competes for the same hours.</li>
+      </ol>
+
+      <h2>How Senvarico is designed for this</h2>
+      <ul>
+        <li><strong>Cross-border basics in the core.</strong> Currency display and shipping regions are part of the base product rather than add-ons.</li>
+        <li><strong>A clean, credible storefront by default.</strong> A simple, well-structured store is easier to trust than a cluttered one.</li>
+        <li><strong>Small catalog focus.</strong> Designed for roughly 10–100 SKUs, which matches how most small cross-border sellers test and grow.</li>
+        <li><strong>No infrastructure to manage.</strong> Hosted and no-code, so operational hours go to the business, not the platform.</li>
+      </ul>
+      <p>
+        Senvarico is an early-stage, experimental product. Specific payment providers and shipping integrations are
+        still being evaluated; see <a href="/features">features</a> for the current scope.
+      </p>
+
+      <h2>Other cross-border options</h2>
+      <p>
+        Senvarico is not the only cross-border ecommerce website builder. Shopify supports international selling
+        through its ecosystem, and Shoplazza is built specifically around cross-border sellers at a range of sizes.
+        For a side-by-side view see <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>.
+      </p>
+
+      <FaqList items={faqs} />
+
+      <CtaBand />
+
+      <RelatedLinks
+        links={[
+          { href: '/ecommerce-platform-for-small-sellers', label: 'Ecommerce platform for small sellers' },
+          { href: '/low-cost-ecommerce-website-builder', label: 'Low-cost ecommerce website builder' },
+          { href: '/blog/best-shopify-alternatives-for-small-sellers', label: 'Blog: Best Shopify alternatives for small sellers' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

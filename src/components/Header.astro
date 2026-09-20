@@ -1,0 +1,31 @@
+---
+import { BRAND, NAV } from '../data/brand';
+
+interface Props {
+  currentPath: string;
+}
+const { currentPath } = Astro.props;
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/" aria-label={`${BRAND.name} home`}>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>{BRAND.name}</span>
+      <span class="brand-tag">beta</span>
+    </a>
+    <nav aria-label="Main navigation">
+      <ul class="nav">
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</header>

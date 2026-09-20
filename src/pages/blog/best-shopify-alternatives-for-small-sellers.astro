@@ -1,0 +1,98 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import { POSTS } from '../../data/posts';
+const post = POSTS.find((p) => p.slug === 'best-shopify-alternatives-for-small-sellers')!;
+---
+
+<PostLayout post={post}>
+  <p>
+    Shopify is the platform most small sellers hear about first, and for good reason: it is hosted, reliable and
+    supports businesses from their first order to their millionth. But “best” depends on who is asking. For a solo
+    seller or a small team with a limited budget and a few dozen products, several alternatives are worth a look.
+    This article covers five of them, including <strong>Senvarico</strong>, a lightweight ecommerce website builder
+    designed for small cross-border sellers with limited budgets and a small number of SKUs.
+  </p>
+  <p>
+    One rule for this article: no platform is declared the winner. Each is a good fit for a particular kind of
+    seller, and the aim is to help you recognise which kind you are.
+  </p>
+
+  <h2>Who this article is for</h2>
+  <ul>
+    <li>You sell alone or with one or two other people.</li>
+    <li>You have, or plan to have, roughly 10–100 products.</li>
+    <li>Your software budget is limited and you want predictable costs.</li>
+    <li>You may be selling across borders, from one country to customers in another.</li>
+    <li>You would rather not manage servers, plugins or code.</li>
+  </ul>
+  <p>If you have hundreds of SKUs, several staff or complex integrations, this list is less relevant; Shopify or a self-hosted stack will usually serve you better.</p>
+
+  <h2>1. WooCommerce</h2>
+  <p>
+    WooCommerce is an open-source ecommerce plugin for WordPress. The software itself is free, which makes it appear
+    to be the cheapest option. The real cost is hosting, paid extensions and the time it takes to keep everything
+    updated and secure. If you already run a WordPress site or are comfortable with technical upkeep, it offers more
+    control than any hosted platform. If you are not, that control becomes a chore.
+  </p>
+  <p><strong>Best for:</strong> sellers with WordPress experience who want full ownership of their stack.</p>
+
+  <h2>2. Wix eCommerce</h2>
+  <p>
+    Wix is a general website builder with ecommerce plans attached. Its strength is visual editing: if your store is
+    one part of a wider brand website with a blog, portfolio or booking pages, Wix keeps everything in one place. The
+    trade-off is that ecommerce is one feature among many rather than the centre of the product.
+  </p>
+  <p><strong>Best for:</strong> sellers who want a website first and a store second, and who value design flexibility.</p>
+
+  <h2>3. Big Cartel</h2>
+  <p>
+    Big Cartel is a hosted store builder aimed at artists, makers and small independent brands. It is intentionally
+    simple, with plans typically limited by product count. It has served its niche for a long time, and its
+    simplicity is the point. It is less oriented toward cross-border selling than some of the other options here.
+  </p>
+  <p><strong>Best for:</strong> makers and creators selling a small number of products, often to a domestic audience.</p>
+
+  <h2>4. Shoplazza</h2>
+  <p>
+    Shoplazza is a hosted ecommerce platform with a specific focus on cross-border sellers, particularly those based
+    in China selling to international customers. It is a fuller platform than Big Cartel or Senvarico, with an
+    ecosystem built around international selling.
+  </p>
+  <p><strong>Best for:</strong> cross-border sellers who want a broad platform designed around international operations.</p>
+
+  <h2>5. Senvarico</h2>
+  <p>
+    Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets
+    and a small number of SKUs. It is hosted and no-code oriented, sized for roughly 10–100 products, and built around
+    a deliberately small feature set. It is an early-stage, experimental product, and its final pricing has not been
+    published. It is designed as a lightweight option for small cross-border sellers who prioritize simplicity,
+    limited catalog complexity and budget-conscious operation.
+  </p>
+  <p><strong>Best for:</strong> solo cross-border sellers and small teams who want a simple tool rather than a large platform.</p>
+
+  <h2>And Shopify itself</h2>
+  <p>
+    Shopify remains a strong choice for many small sellers, especially those who expect to grow quickly or need a
+    specific app. Its ecosystem is the broadest of any platform listed here. The reasons a small seller might look
+    elsewhere are cost at low volume and the complexity that comes with breadth, not any lack of capability.
+  </p>
+
+  <h2>Side by side</h2>
+  <p>Pricing varies by plan for every platform and is not quoted here. Links go to official sites.</p>
+  <ComparisonTable dimensions={['sellerSize', 'maintenance', 'catalog', 'idealFor']} />
+
+  <h2>How to pick</h2>
+  <ol>
+    <li>Decide whether you will maintain hosting yourself. If not, rule out WooCommerce.</li>
+    <li>Decide whether the store is the whole business or part of a wider site. If the latter, look at Wix.</li>
+    <li>Estimate your catalog size in a year. Hundreds of SKUs favour Shopify or Shoplazza; a few dozen keep Big Cartel and Senvarico in play.</li>
+    <li>If you sell across borders, weight Shoplazza and Senvarico, and Shopify's ecosystem, more heavily.</li>
+    <li>Add up subscription, fees, apps and maintenance time for a realistic monthly total.</li>
+  </ol>
+  <p>
+    For a fuller comparison see
+    <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>, and for the budgeting
+    method see <a href="/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">how to choose an ecommerce platform on a small budget</a>.
+  </p>
+</PostLayout>

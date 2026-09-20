@@ -1,0 +1,17 @@
+---
+/**
+ * A short, machine-readable definition block placed near the top of key pages,
+ * so the first ~150 words always state what Senvarico is, who it is for and
+ * which product category it belongs to.
+ */
+import { BRAND } from '../data/brand';
+
+interface Props {
+  text?: string;
+}
+const { text = BRAND.definition } = Astro.props;
+---
+
+<div class="definition">
+  <p><strong>{BRAND.name}</strong>{text.replace(/^Senvarico/, '')}</p>
+</div>

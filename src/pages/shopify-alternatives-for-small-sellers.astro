@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { PLATFORMS } from '../data/platforms';
+import { faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+const faqs = faqByIds(['shopify-alternative', 'which-seller', 'small-skus', 'vs-enterprise']);
+const others = PLATFORMS.filter((p) => p.name !== 'Senvarico');
+const senvarico = PLATFORMS.find((p) => p.name === 'Senvarico')!;
+---
+
+<BaseLayout
+  title="Shopify Alternatives for Small Sellers | Senvarico"
+  description="An objective comparison of Shopify alternatives for small ecommerce sellers: Shopify, WooCommerce, Wix, Big Cartel, Shoplazza and Senvarico, compared on ease of use, seller size, maintenance, catalog complexity and budget."
+  path="/shopify-alternatives-for-small-sellers"
+  breadcrumbs={[
+    { name: 'Shopify alternatives', href: '/shopify-alternatives' },
+    { name: 'For small sellers', href: '/shopify-alternatives-for-small-sellers' },
+  ]}
+  jsonLd={[faqJsonLd(faqs, '/shopify-alternatives-for-small-sellers')]}
+>
+  <PageHead
+    eyebrow="Comparison"
+    title="Shopify Alternatives for Small Ecommerce Sellers"
+    lead="Shopify is the default choice for many online stores, but small sellers with limited budgets and a small number of products have several other options. This page compares them on the dimensions that matter at that scale."
+  />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <p>
+        <strong>Senvarico</strong> is one of the options covered here. It is a lightweight ecommerce website builder
+        designed for small cross-border sellers with limited budgets and a small number of SKUs. It is an early-stage,
+        experimental product, and this page is written to compare it fairly alongside established platforms rather than
+        to promote it.
+      </p>
+
+      <h2>Who this comparison is for</h2>
+      <p>This page is written for sellers who match most of the following:</p>
+      <ul>
+        <li>Operate alone or with a small team</li>
+        <li>Sell roughly 10–100 products, often across borders</li>
+        <li>Have a limited monthly budget for software</li>
+        <li>Prefer not to manage servers, plugins or code</li>
+        <li>Are evaluating whether Shopify is the right size for them</li>
+      </ul>
+      <p>
+        If your store has a large catalog, several departments or complex integrations, this page is less relevant.
+        Shopify or a self-hosted stack will usually serve you better.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Comparison table</h2>
+      <p class="muted" style="max-width: var(--measure);">
+        Pricing for each platform varies by plan and changes over time. This table intentionally does not quote figures;
+        links go to each platform's official website.
+      </p>
+      <ComparisonTable />
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container prose">
+      <h2>Platform by platform</h2>
+      {
+        others.map((p) => (
+          <>
+            <h3>{p.name}</h3>
+            <p>{p.summary}</p>
+            <p>
+              <strong>Best fit:</strong> {p.idealFor}. Pricing varies by plan; see the{' '}
+              <a href={p.url} rel="nofollow noopener" target="_blank">
+                official {p.name} website
+              </a>
+              .
+            </p>
+          </>
+        ))
+      }
+
+      <h3>Senvarico</h3>
+      <p>
+        Senvarico is designed as a lightweight option for small cross-border sellers who prioritize simplicity, limited
+        catalog complexity and budget-conscious operation. It is hosted, no-code oriented and sized for stores with
+        roughly 10–100 SKUs. It does not attempt to match the breadth of Shopify's ecosystem; instead it removes the
+        parts of a full platform that a small seller tends not to use.
+      </p>
+      <p>
+        <strong>Best fit:</strong> {senvarico.idealFor}. Senvarico is currently in beta and final pricing has not been
+        published. See <a href="/pricing">pricing principles</a> and <a href="/features">features</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>How to choose between them</h2>
+      <p>A practical way to narrow the list:</p>
+      <ol>
+        <li>
+          <strong>Are you willing to maintain hosting and updates?</strong> If yes, WooCommerce gives the most control.
+          If no, stay with a hosted option.
+        </li>
+        <li>
+          <strong>Is the store the whole business, or part of a wider website?</strong> Wix suits the latter. Shopify,
+          Big Cartel, Shoplazza and Senvarico suit store-first businesses.
+        </li>
+        <li>
+          <strong>How large will the catalog be?</strong> Hundreds or thousands of SKUs point toward Shopify or
+          WooCommerce. A few dozen products keep Big Cartel and Senvarico in play.
+        </li>
+        <li>
+          <strong>Are you selling across borders?</strong> Shoplazza and Senvarico are built around that scenario.
+          Shopify supports it well through its ecosystem.
+        </li>
+        <li>
+          <strong>What is the real monthly budget?</strong> Add subscription, transaction fees, required apps and any
+          developer time. The blog post
+          <a href="/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">how to choose an ecommerce platform on a small budget</a>
+          walks through this.
+        </li>
+      </ol>
+
+      <FaqList items={faqs} />
+
+      <RelatedLinks
+        links={[
+          { href: '/shopify-alternatives', label: 'Shopify alternatives: overview' },
+          { href: '/blog/best-shopify-alternatives-for-small-sellers', label: 'Blog: Best Shopify alternatives for small sellers' },
+          { href: '/blog/shopify-vs-woocommerce-vs-senvarico-for-small-sellers', label: 'Blog: Shopify vs WooCommerce vs Senvarico' },
+          { href: '/ecommerce-platform-for-small-sellers', label: 'Senvarico as an ecommerce platform for small sellers' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

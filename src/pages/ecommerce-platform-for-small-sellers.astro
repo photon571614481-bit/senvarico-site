@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { AUDIENCE, faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+const faqs = faqByIds(['small-sellers', 'who-is-it-for', 'beginners', 'vs-enterprise']);
+---
+
+<BaseLayout
+  title="Ecommerce Platform for Small Sellers | Senvarico"
+  description="Senvarico is an ecommerce platform for small sellers: solo operators and small ecommerce teams with limited budgets and roughly 10–100 SKUs. Learn why small sellers have different needs and how Senvarico addresses them."
+  path="/ecommerce-platform-for-small-sellers"
+  breadcrumbs={[{ name: 'Ecommerce platform for small sellers', href: '/ecommerce-platform-for-small-sellers' }]}
+  jsonLd={[faqJsonLd(faqs, '/ecommerce-platform-for-small-sellers')]}
+>
+  <PageHead
+    eyebrow="Use case"
+    title="An Ecommerce Platform for Small Sellers"
+    lead="Small sellers are not small versions of large retailers. They have different constraints, and a platform built for them should reflect that."
+  />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition />
+      <p>
+        This page explains what “small seller” means in Senvarico's context, why small sellers are often poorly served
+        by general-purpose ecommerce platforms, and what Senvarico does differently. It is written for solo sellers and
+        small ecommerce teams evaluating their options.
+      </p>
+
+      <h2>What “small seller” means here</h2>
+      <p>Senvarico uses the term to describe sellers who match most of these characteristics:</p>
+      <ul class="checklist">
+        {AUDIENCE.map((a) => <li>{a}</li>)}
+      </ul>
+      <p>
+        Size is about the operation, not ambition. A small seller may grow into a large one. Senvarico is designed for
+        the stage where the catalog is small, the team is small and the budget is tight.
+      </p>
+
+      <h2>Why general-purpose platforms are a poor fit at this size</h2>
+      <p>Most ecommerce platforms are designed to work for large businesses as well as small ones. For a small seller that has three costs:</p>
+      <ol>
+        <li>
+          <strong>Money.</strong> Subscriptions, transaction fees and paid apps are priced for businesses with meaningful
+          revenue. For a seller testing products, the platform can cost more than the store earns.
+        </li>
+        <li>
+          <strong>Time.</strong> Every feature a seller does not need is still a setting to understand, a menu to
+          navigate and a decision to make. Learning time is a real cost for a person doing everything alone.
+        </li>
+        <li>
+          <strong>Maintenance.</strong> Self-hosted platforms transfer hosting, updates and security to the seller.
+          Hosted platforms avoid that, but app-heavy setups still need ongoing attention.
+        </li>
+      </ol>
+
+      <h2>How Senvarico approaches this</h2>
+      <p>Senvarico is a lightweight ecommerce platform built around the constraints above:</p>
+      <ul>
+        <li><strong>Small feature set.</strong> Catalog, storefront and checkout, without an app ecosystem to manage.</li>
+        <li><strong>Sized for small catalogs.</strong> Designed for roughly 10–100 SKUs, not thousands.</li>
+        <li><strong>Hosted and no-code.</strong> No servers, no plugins, no code.</li>
+        <li><strong>Budget-oriented pricing.</strong> A single planned plan rather than tiers. See <a href="/pricing">pricing</a>.</li>
+        <li><strong>Cross-border basics built in.</strong> Because many small sellers today sell internationally from day one.</li>
+      </ul>
+
+      <h2>When a small seller should choose something else</h2>
+      <p>
+        Senvarico is one option, not the only one. A small seller who expects to grow into hundreds of SKUs, who needs
+        a specific app integration, or who already runs a WordPress site may be better served by Shopify, Wix or
+        WooCommerce. The <a href="/shopify-alternatives-for-small-sellers">comparison of Shopify alternatives for small sellers</a>
+        lays out the trade-offs without favoring any one platform.
+      </p>
+
+      <FaqList items={faqs} />
+
+      <CtaBand
+        title="See what is included"
+        body="Senvarico's current feature scope, and what is intentionally left out."
+        href="/features"
+        label="View features"
+      />
+
+      <RelatedLinks
+        links={[
+          { href: '/low-cost-ecommerce-website-builder', label: 'Low-cost ecommerce website builder' },
+          { href: '/cross-border-ecommerce-website-builder', label: 'Cross-border ecommerce website builder' },
+          { href: '/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget', label: 'Blog: How to choose an ecommerce platform on a small budget' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import { POSTS } from '../../data/posts';
+const post = POSTS.find((p) => p.slug === 'shopify-vs-woocommerce-vs-senvarico-for-small-sellers')!;
+---
+
+<PostLayout post={post}>
+  <p>
+    Shopify, WooCommerce and Senvarico represent three different answers to the same question: how should a small
+    seller run an online store? Shopify is a broad hosted platform. WooCommerce is a self-hosted open-source plugin.
+    Senvarico is a lightweight hosted tool designed for small cross-border sellers with limited budgets and a small
+    number of SKUs. This article compares the three approaches for small sellers without declaring a winner, because
+    each is the right choice for a different seller.
+  </p>
+
+  <h2>The three approaches in one paragraph each</h2>
+  <h3>Shopify: broad and hosted</h3>
+  <p>
+    Shopify hosts everything, offers a large theme and app ecosystem, and scales from a first store to a large brand.
+    A small seller gets reliability and room to grow. The cost of that breadth is a total monthly figure that can
+    climb with apps and fees, and an admin with more options than a small store needs.
+  </p>
+  <h3>WooCommerce: flexible and self-hosted</h3>
+  <p>
+    WooCommerce turns a WordPress site into a store. The plugin is free and can be extended almost without limit.
+    The seller, or someone they pay, is responsible for hosting, updates, backups and security. For a technical
+    seller it is the most controllable option. For a non-technical one it is the most demanding.
+  </p>
+  <h3>Senvarico: lightweight and hosted</h3>
+  <p>
+    Senvarico removes most of what a small seller does not use. It is hosted, no-code oriented, sized for roughly
+    10–100 SKUs, and built around a small feature set with a single planned plan. It is an early-stage, experimental
+    product and does not try to match Shopify's ecosystem or WooCommerce's flexibility.
+  </p>
+
+  <h2>Comparison</h2>
+  <ComparisonTable names={['Shopify', 'WooCommerce', 'Senvarico']} />
+
+  <h2>Dimension by dimension</h2>
+  <h3>Ease of use</h3>
+  <p>
+    Shopify is easy to start and grows more involved as apps accumulate. WooCommerce assumes WordPress familiarity.
+    Senvarico is simple by design, with less to configure because there is less in it.
+  </p>
+  <h3>Technical maintenance</h3>
+  <p>
+    Shopify and Senvarico require no hosting or server management. WooCommerce requires ongoing maintenance, which is
+    either the seller's time or a developer's invoice.
+  </p>
+  <h3>Catalog size</h3>
+  <p>
+    Shopify and WooCommerce handle catalogs of any size. Senvarico is designed for small catalogs and is not the
+    right tool for hundreds or thousands of SKUs.
+  </p>
+  <h3>Budget</h3>
+  <p>
+    Pricing varies by plan on Shopify and is published on its official site. WooCommerce's core plugin is free but
+    hosting, extensions and maintenance form the real cost. Senvarico is designed around limited budgets with a single
+    planned plan; its final pricing is not yet published.
+  </p>
+  <h3>Cross-border selling</h3>
+  <p>
+    Shopify supports international selling through its ecosystem. WooCommerce can do so through extensions.
+    Senvarico includes cross-border basics in its core because its target seller usually sells across borders from
+    the start.
+  </p>
+
+  <h2>Which seller should choose which</h2>
+  <ul>
+    <li><strong>Choose Shopify</strong> if you expect to grow past a small catalog, need specific apps, or want the safest general-purpose choice.</li>
+    <li><strong>Choose WooCommerce</strong> if you already use WordPress, want full control, and can handle or pay for maintenance.</li>
+    <li><strong>Consider Senvarico</strong> if you are a solo cross-border seller or small team with a limited budget and a few dozen products, and you want a simple tool rather than a platform.</li>
+  </ul>
+  <p>
+    A small seller can reasonably start with Senvarico or Big Cartel and move to Shopify later, or start with Shopify
+    and never move. What matters is choosing for the store you are running now. See
+    <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a> for the wider set of
+    options, and <a href="/brand-facts">Senvarico brand facts</a> for the definitive description of what Senvarico is.
+  </p>
+</PostLayout>

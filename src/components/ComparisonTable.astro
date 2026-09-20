@@ -1,0 +1,39 @@
+---
+import { PLATFORMS, DIMENSIONS, type Platform } from '../data/platforms';
+
+interface Props {
+  /** Restrict to a subset of platform names, in this order. Defaults to all. */
+  names?: string[];
+  /** Restrict to a subset of dimension keys. Defaults to all. */
+  dimensions?: (keyof Platform)[];
+  caption?: string;
+}
+const { names, dimensions, caption } = Astro.props;
+
+const platforms = names ? names.map((n) => PLATFORMS.find((p) => p.name === n)).filter((p): p is Platform => Boolean(p)) : PLATFORMS;
+const dims = dimensions ? DIMENSIONS.filter((d) => dimensions.includes(d.key)) : DIMENSIONS;
+---
+
+<div class="table-wrap">
+  <table>
+    {caption && <caption class="small muted" style="text-align:left; padding: 10px 14px;">{caption}</caption>}
+    <thead>
+      <tr>
+        <th scope="col">Platform</th>
+        {dims.map((d) => <th scope="col">{d.label}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {
+        platforms.map((p) => (
+          <tr>
+            <th scope="row">
+              {p.name === 'Senvarico' ? <a href="/">{p.name}</a> : <a href={p.url} rel="nofollow noopener" target="_blank">{p.name}</a>}
+            </th>
+            {dims.map((d) => <td>{p[d.key]}</td>)}
+          </tr>
+        ))
+      }
+    </tbody>
+  </table>
+</div>

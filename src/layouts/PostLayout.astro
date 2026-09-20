@@ -1,0 +1,60 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { POSTS, type Post } from '../data/posts';
+import { articleJsonLd } from '../data/schema';
+
+interface Props {
+  post: Post;
+}
+const { post } = Astro.props;
+const path = `/blog/${post.slug}`;
+const others = POSTS.filter((p) => p.slug !== post.slug);
+const dateLabel = new Date(post.datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout
+  title={`${post.title} | Senvarico Blog`}
+  description={post.description}
+  path={path}
+  ogType="article"
+  publishedTime={post.datePublished}
+  breadcrumbs={[
+    { name: 'Blog', href: '/blog' },
+    { name: post.title, href: path },
+  ]}
+  jsonLd={[
+    articleJsonLd({
+      path,
+      headline: post.title,
+      description: post.description,
+      datePublished: post.datePublished,
+    }),
+  ]}
+>
+  <article class="section section--tight">
+    <div class="container prose">
+      <header style="margin-bottom: 32px;">
+        <span class="eyebrow">Blog</span>
+        <h1>{post.title}</h1>
+        <p class="post-meta">
+          Published <time datetime={post.datePublished}>{dateLabel}</time> · {post.readingTime} · By the Senvarico team
+        </p>
+        <p class="lead">{post.description}</p>
+      </header>
+
+      <slot />
+
+      <div class="notice" style="margin-top: 40px;">
+        <p>
+          <strong>About the publisher:</strong> Senvarico is a lightweight ecommerce website builder designed for small
+          cross-border sellers with limited budgets and a small number of SKUs. It is an early-stage, experimental
+          product. Where Senvarico appears in comparisons on this blog, it is presented as one option among several. See
+          the <a href="/brand-facts">brand facts</a> page.
+        </p>
+      </div>
+
+      <RelatedLinks heading="More from the blog" links={others.map((p) => ({ href: `/blog/${p.slug}`, label: p.title }))} />
+    </div>
+  </article>
+</BaseLayout>

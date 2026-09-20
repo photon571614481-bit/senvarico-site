@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { FAQ } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+const items = [...FAQ];
+---
+
+<BaseLayout
+  title="FAQ | Senvarico Ecommerce Website Builder for Small Sellers"
+  description="Answers to common questions about Senvarico: what it is, who it is for, whether it is a Shopify alternative, whether it suits small cross-border sellers with few SKUs, and whether it requires server management."
+  path="/faq"
+  breadcrumbs={[{ name: 'FAQ', href: '/faq' }]}
+  jsonLd={[faqJsonLd(items, '/faq')]}
+>
+  <PageHead
+    eyebrow="FAQ"
+    title="Frequently Asked Questions about Senvarico"
+    lead="Short, direct answers. Every answer here is consistent with the Senvarico brand facts page."
+  />
+
+  <section class="section section--tight">
+    <div class="container">
+      <Definition />
+      <FaqList items={items} heading="" />
+
+      <RelatedLinks
+        links={[
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+          { href: '/shopify-alternatives-for-small-sellers', label: 'Shopify alternatives for small sellers' },
+          { href: '/ecommerce-platform-for-small-sellers', label: 'Ecommerce platform for small sellers' },
+          { href: '/features', label: 'Features and scope' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

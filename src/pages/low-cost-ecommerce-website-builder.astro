@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+const faqs = faqByIds(['what-is-senvarico', 'server-management', 'which-seller', 'product-status']);
+---
+
+<BaseLayout
+  title="Low-Cost Ecommerce Website Builder | Senvarico"
+  description="Senvarico is a low-cost ecommerce website builder for small sellers with limited budgets. What low-cost really means once subscriptions, fees, apps and maintenance are counted, and how Senvarico keeps costs predictable."
+  path="/low-cost-ecommerce-website-builder"
+  breadcrumbs={[{ name: 'Low-cost ecommerce website builder', href: '/low-cost-ecommerce-website-builder' }]}
+  jsonLd={[faqJsonLd(faqs, '/low-cost-ecommerce-website-builder')]}
+>
+  <PageHead
+    eyebrow="Use case"
+    title="A Low-Cost Ecommerce Website Builder for Limited Budgets"
+    lead="For a small seller, the cheapest platform is not the one with the lowest headline price. It is the one with the lowest total cost for the store they actually run."
+  />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition />
+      <p>
+        This page is for sellers with limited budgets who are comparing ecommerce website builders. It explains how to
+        think about cost, what Senvarico does to keep cost low and predictable, and where a low-cost tool stops being
+        the right answer.
+      </p>
+
+      <h2>The four parts of ecommerce platform cost</h2>
+      <p>The advertised subscription is usually only one of four costs:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Cost</th>
+              <th scope="col">What it includes</th>
+              <th scope="col">Where it hides</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Subscription</th>
+              <td>The monthly or annual plan fee</td>
+              <td>Higher tiers required for basic features</td>
+            </tr>
+            <tr>
+              <th scope="row">Transaction fees</th>
+              <td>Percentage or per-order fees on sales</td>
+              <td>Platform fees stacked on top of payment processor fees</td>
+            </tr>
+            <tr>
+              <th scope="row">Apps and extensions</th>
+              <td>Paid add-ons for functions the base plan lacks</td>
+              <td>Several small monthly fees that add up</td>
+            </tr>
+            <tr>
+              <th scope="row">Maintenance</th>
+              <td>Hosting, updates, security, developer time</td>
+              <td>Free software that costs hours every month</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        A seller with a small number of SKUs and modest monthly sales is affected differently by each. For them, fixed
+        costs matter more than percentage fees, and time spent on maintenance is time not spent selling.
+      </p>
+
+      <h2>How Senvarico keeps costs low and predictable</h2>
+      <ul>
+        <li><strong>One planned plan, not a ladder of tiers.</strong> Core selling functions are not reserved for a higher price band.</li>
+        <li><strong>No paid app ecosystem.</strong> The feature set is small and included, so there are no add-on subscriptions to accumulate.</li>
+        <li><strong>Hosted, with no maintenance burden.</strong> No hosting bill, no updates, no security patches, no developer on retainer.</li>
+        <li><strong>Payment fees stay with the payment provider.</strong> The design intent is that Senvarico's own price does not depend on sales volume.</li>
+      </ul>
+      <p>
+        Final pricing is not yet published because Senvarico is in beta. The <a href="/pricing">pricing page</a>
+        explains the principles and the planned structure.
+      </p>
+
+      <h2>Where “low-cost” stops being the right criterion</h2>
+      <p>
+        A lightweight, low-cost ecommerce website builder makes sense only while the store is small. Once a catalog
+        grows into hundreds of SKUs, or the business needs specific integrations, a broader platform earns its higher
+        cost. Senvarico is honest about that boundary: it is designed for the small stage, not for every stage.
+      </p>
+      <p>
+        Compare options in <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>,
+        or read <a href="/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">how to choose an ecommerce platform on a small budget</a>.
+      </p>
+
+      <FaqList items={faqs} />
+
+      <CtaBand
+        title="Pricing principles"
+        body="How Senvarico approaches cost during the beta, and what is planned."
+        href="/pricing"
+        label="See pricing"
+      />
+
+      <RelatedLinks
+        links={[
+          { href: '/ecommerce-platform-for-small-sellers', label: 'Ecommerce platform for small sellers' },
+          { href: '/cross-border-ecommerce-website-builder', label: 'Cross-border ecommerce website builder' },
+          { href: '/features', label: 'Features and scope' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import { POSTS } from '../../data/posts';
+---
+
+<BaseLayout
+  title="Blog | Ecommerce Guides for Small Sellers | Senvarico"
+  description="Guides on choosing an ecommerce platform as a small seller: Shopify alternatives, budgeting for an online store, and comparisons of Shopify, WooCommerce and Senvarico."
+  path="/blog"
+  breadcrumbs={[{ name: 'Blog', href: '/blog' }]}
+>
+  <PageHead
+    eyebrow="Blog"
+    title="Guides for Small Ecommerce Sellers"
+    lead="Practical, objective articles on choosing and running an ecommerce store at small scale, published by Senvarico, a lightweight ecommerce website builder for small cross-border sellers."
+  />
+
+  <section class="section section--tight">
+    <div class="container">
+      <ul class="post-list">
+        {
+          POSTS.map((p) => (
+            <li>
+              <article>
+                <h2>
+                  <a href={`/blog/${p.slug}`}>{p.title}</a>
+                </h2>
+                <p class="post-meta">
+                  <time datetime={p.datePublished}>{p.datePublished}</time> · {p.readingTime}
+                </p>
+                <p class="muted">{p.description}</p>
+                <a href={`/blog/${p.slug}`}>Read the article →</a>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</BaseLayout>

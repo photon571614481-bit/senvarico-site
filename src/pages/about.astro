@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Definition from '../components/Definition.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { BRAND } from '../data/brand';
+---
+
+<BaseLayout
+  title="About Senvarico | Lightweight Ecommerce Website Builder"
+  description="Senvarico is an experimental ecommerce software project studying how lightweight ecommerce tools can better serve small cross-border sellers with limited budgets and small catalogs."
+  path="/about"
+  breadcrumbs={[{ name: 'About', href: '/about' }]}
+>
+  <PageHead
+    eyebrow="About"
+    title="About Senvarico"
+    lead="An experimental ecommerce software project focused on small cross-border sellers."
+  />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <Definition />
+
+      <h2>What Senvarico is</h2>
+      <p>
+        Senvarico is an experimental ecommerce software project focused on studying how lightweight ecommerce tools can
+        better serve small cross-border sellers. It belongs to the product category of ecommerce website builders, and it
+        is aimed specifically at sellers with limited budgets and a small number of SKUs.
+      </p>
+      <p>
+        The project starts from a simple observation: most ecommerce platforms are designed to scale up to large
+        businesses, which means small sellers often pay in cost, complexity and learning time for features they never
+        use. Senvarico explores the opposite direction: a deliberately small tool for a deliberately small seller.
+      </p>
+
+      <h2>Current status</h2>
+      <p>{BRAND.statusNote}</p>
+      <p>
+        Because the project is early-stage, this website does not publish customer counts, testimonials, revenue figures
+        or partner logos. If and when such information exists and can be verified, it will be added. Until then, the
+        most reliable description of the product is the <a href="/brand-facts">Senvarico brand facts</a> page.
+      </p>
+
+      <h2>What the project is studying</h2>
+      <ul>
+        <li>How few features a small cross-border store actually needs to sell effectively.</li>
+        <li>How to keep a hosted, no-code ecommerce tool affordable for sellers with limited budgets.</li>
+        <li>Where the boundary lies between a “small seller” tool and a general-purpose ecommerce platform.</li>
+        <li>How sellers with roughly 10–100 SKUs evaluate Shopify alternatives.</li>
+      </ul>
+
+      <h2>Product boundaries</h2>
+      <p>
+        Senvarico is not positioned as an enterprise commerce platform and does not aim to compete with broad platforms
+        on breadth of features. Its scope is intentionally narrow: small cross-border sellers, small catalogs, limited
+        budgets, and no server management.
+      </p>
+
+      <RelatedLinks
+        links={[
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+          { href: '/features', label: 'Features and current scope' },
+          { href: '/faq', label: 'Frequently asked questions' },
+          { href: '/shopify-alternatives-for-small-sellers', label: 'Shopify alternatives for small sellers' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>
