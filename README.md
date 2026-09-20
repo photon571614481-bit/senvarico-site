@@ -19,3 +19,9 @@ pnpm preview
 ## Content rules
 
 See the brand facts page (`/brand-facts`) and `src/data/brand.ts`. Do not add customer counts, reviews, ratings, press, funding or partner claims unless they are real and verifiable.
+
+## Deploy
+
+Current deployment: GitHub Pages in branch mode. `pnpm run deploy` builds and force-pushes `dist/` to the `gh-pages` branch.
+
+`deploy/github-pages-workflow.yml` is an equivalent GitHub Actions workflow. To use it, move it to `.github/workflows/deploy.yml`, grant the `workflow` scope to the GitHub token (`gh auth refresh -s workflow`), and switch Pages source to "GitHub Actions".
