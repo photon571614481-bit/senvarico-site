@@ -4,14 +4,21 @@
  * The FAQPage JSON-LD is emitted by the page via faqJsonLd() so it lives in the
  * same <head> graph as the rest of the structured data.
  */
-import type { FaqItem } from '../data/brand';
+import { UI, type Lang } from '../data/i18n';
 
+interface Item {
+  id: string;
+  q: string;
+  a: string;
+}
 interface Props {
-  items: FaqItem[];
+  items: readonly Item[];
   heading?: string;
   headingLevel?: 'h2' | 'h3';
+  lang?: Lang;
 }
-const { items, heading = 'Frequently asked questions', headingLevel = 'h2' } = Astro.props;
+const { items, headingLevel = 'h2', lang = 'en' } = Astro.props;
+const heading = Astro.props.heading ?? UI[lang].faqHeading;
 const H = headingLevel;
 ---
 

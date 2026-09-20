@@ -1,29 +1,47 @@
 ---
-import { BRAND, NAV } from '../data/brand';
+import { BRAND } from '../data/brand';
+import { UI, LOCALES, localePath, type Lang } from '../data/i18n';
 
 interface Props {
   currentPath: string;
+  lang?: Lang;
+  altPath?: string;
 }
-const { currentPath } = Astro.props;
+const { currentPath, lang = 'en', altPath } = Astro.props;
+const ui = UI[lang];
+const altLang: Lang = lang === 'en' ? 'zh' : 'en';
+const homeHref = lang === 'en' ? '/' : '/zh';
 ---
 
 <header class="site-header">
   <div class="container">
-    <a class="brand" href="/" aria-label={`${BRAND.name} home`}>
+    <a class="brand" href={homeHref} aria-label={`${BRAND.name} ${ui.home}`}>
       <span class="brand-mark" aria-hidden="true"></span>
       <span>{BRAND.name}</span>
-      <span class="brand-tag">beta</span>
+      <span class="brand-tag">{ui.beta}</span>
     </a>
-    <nav aria-label="Main navigation">
+    <nav aria-label={ui.mainNav}>
       <ul class="nav">
         {
-          NAV.map((item) => (
-            <li>
-              <a href={item.href} aria-current={currentPath === item.href ? 'page' : undefined}>
-                {item.label}
+          ui.nav.map((item) => {
+            const href = localePath(item.slug, lang);
+            return (
+              <li>
+                <a href={href} aria-current={currentPath === href ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+        {
+          altPath && (
+            <li class="nav-lang">
+              <a href={altPath} hreflang={LOCALES[altLang].hreflang} lang={LOCALES[altLang].htmlLang} rel="alternate">
+                {ui.switchLang}
               </a>
             </li>
-          ))
+          )
         }
       </ul>
     </nav>

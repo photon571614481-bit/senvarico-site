@@ -26,7 +26,7 @@ const dims = dimensions ? DIMENSIONS.filter((d) => dimensions.includes(d.key)) :
     <tbody>
       {
         platforms.map((p) => (
-          <tr>
+          <tr class={p.name === 'Senvarico' ? 'row--self' : undefined}>
             <th scope="row">
               {p.name === 'Senvarico' ? <a href="/">{p.name}</a> : <a href={p.url} rel="nofollow noopener" target="_blank">{p.name}</a>}
             </th>

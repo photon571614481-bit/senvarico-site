@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import { BRAND, SITE_URL } from '../data/brand';
+import { LOCALES, UI, alternatePath, type Lang } from '../data/i18n';
 
 export interface Crumb {
   name: string;
@@ -24,6 +25,7 @@ interface Props {
   noindex?: boolean;
   publishedTime?: string;
   modifiedTime?: string;
+  lang?: Lang;
 }
 
 const {
@@ -36,7 +38,16 @@ const {
   noindex = false,
   publishedTime,
   modifiedTime,
+  lang = 'en',
 } = Astro.props;
+
+const locale = LOCALES[lang];
+const ui = UI[lang];
+const altPath = alternatePath(path, lang);
+const altLang: Lang = lang === 'en' ? 'zh' : 'en';
+const toAbs = (p: string) => (p === '/' ? `${SITE_URL}/` : `${SITE_URL}${p}`);
+const enUrl = toAbs(lang === 'en' ? path : altPath);
+const zhUrl = toAbs(lang === 'zh' ? path : altPath);
 
 const canonical = path === '/' ? `${SITE_URL}/` : `${SITE_URL}${path}`;
 const ogImage = `${SITE_URL}/og-image.png`;
@@ -60,7 +71,7 @@ const website = {
   name: BRAND.name,
   description: BRAND.definition,
   publisher: { '@id': `${SITE_URL}/#organization` },
-  inLanguage: 'en',
+  inLanguage: ['en', 'zh-CN'],
 };
 
 const webPage = {
@@ -71,10 +82,10 @@ const webPage = {
   description,
   isPartOf: { '@id': `${SITE_URL}/#website` },
   about: { '@id': `${SITE_URL}/#organization` },
-  inLanguage: 'en',
+  inLanguage: locale.htmlLang,
 };
 
-const crumbTrail: Crumb[] = [{ name: 'Home', href: '/' }, ...(breadcrumbs ?? [])];
+const crumbTrail: Crumb[] = [{ name: ui.home, href: lang === 'en' ? '/' : '/zh' }, ...(breadcrumbs ?? [])];
 const breadcrumbList =
   breadcrumbs && breadcrumbs.length
     ? {
@@ -84,7 +95,7 @@ const breadcrumbList =
           '@type': 'ListItem',
           position: i + 1,
           name: c.name,
-          item: c.href === '/' ? `${SITE_URL}/` : `${SITE_URL}${c.href}`,
+          item: toAbs(c.href),
         })),
       }
     : null;
@@ -96,7 +107,7 @@ const graph = {
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={locale.htmlLang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -104,16 +115,32 @@ const graph = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {
+      !noindex && (
+        <>
+          <link rel="alternate" hreflang="en" href={enUrl} />
+          <link rel="alternate" hreflang="zh-CN" href={zhUrl} />
+          <link rel="alternate" hreflang="x-default" href={enUrl} />
+        </>
+      )
+    }
 
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
     <meta name="theme-color" content="#1d4ed8" />
 
     <meta property="og:type" content={ogType} />
     <meta property="og:site_name" content={BRAND.name} />
-    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale" content={locale.ogLocale} />
+    <meta property="og:locale:alternate" content={LOCALES[altLang].ogLocale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -132,12 +159,12 @@ const graph = {
     <script type="application/ld+json" set:html={JSON.stringify(graph)} />
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
-    <Header currentPath={path} />
-    {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb trail={crumbTrail} />}
+    <a class="skip" href="#main">{ui.skip}</a>
+    <Header currentPath={path} lang={lang} altPath={altPath} />
+    {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb trail={crumbTrail} lang={lang} />}
     <main id="main">
       <slot />
     </main>
-    <Footer />
+    <Footer lang={lang} />
   </body>
 </html>

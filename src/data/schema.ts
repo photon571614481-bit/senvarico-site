@@ -1,10 +1,16 @@
-import { SITE_URL, BRAND, type FaqItem } from './brand';
+import { SITE_URL, BRAND } from './brand';
+
+interface FaqLike {
+  q: string;
+  a: string;
+}
 
 /** FAQPage JSON-LD for a list of canonical FAQ items. */
-export function faqJsonLd(items: FaqItem[], path: string) {
+export function faqJsonLd(items: readonly FaqLike[], path: string, inLanguage = 'en') {
   return {
     '@type': 'FAQPage',
     '@id': `${SITE_URL}${path}#faq`,
+    inLanguage,
     mainEntity: items.map((f) => ({
       '@type': 'Question',
       name: f.q,
@@ -19,6 +25,7 @@ export interface ArticleMeta {
   description: string;
   datePublished: string;
   dateModified?: string;
+  inLanguage?: string;
 }
 
 /** Article JSON-LD. Author/publisher is the Senvarico organization; no fake people. */
@@ -35,7 +42,7 @@ export function articleJsonLd(meta: ArticleMeta) {
     dateModified: meta.dateModified ?? meta.datePublished,
     author: { '@id': `${SITE_URL}/#organization` },
     publisher: { '@id': `${SITE_URL}/#organization` },
-    inLanguage: 'en',
+    inLanguage: meta.inLanguage ?? 'en',
     image: `${SITE_URL}/og-image.png`,
   };
 }

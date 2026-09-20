@@ -1,13 +1,15 @@
 ---
 import type { Crumb } from '../layouts/BaseLayout.astro';
+import { UI, type Lang } from '../data/i18n';
 
 interface Props {
   trail: Crumb[];
+  lang?: Lang;
 }
-const { trail } = Astro.props;
+const { trail, lang = 'en' } = Astro.props;
 ---
 
-<nav class="breadcrumb container" aria-label="Breadcrumb">
+<nav class="breadcrumb container" aria-label={UI[lang].breadcrumb}>
   <ol>
     {
       trail.map((c, i) => (

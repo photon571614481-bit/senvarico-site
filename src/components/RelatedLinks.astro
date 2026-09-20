@@ -3,11 +3,14 @@ interface Link {
   href: string;
   label: string;
 }
+import { UI, type Lang } from '../data/i18n';
 interface Props {
   links: Link[];
   heading?: string;
+  lang?: Lang;
 }
-const { links, heading = 'Related pages' } = Astro.props;
+const { links, lang = 'en' } = Astro.props;
+const heading = Astro.props.heading ?? UI[lang].related;
 ---
 
 <aside class="related" aria-label={heading}>

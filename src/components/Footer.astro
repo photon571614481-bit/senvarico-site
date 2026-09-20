@@ -1,5 +1,16 @@
 ---
 import { BRAND } from '../data/brand';
+import { BRAND_ZH } from '../data/brand.zh';
+import { UI, localePath, type Lang } from '../data/i18n';
+
+interface Props {
+  lang?: Lang;
+}
+const { lang = 'en' } = Astro.props;
+const ui = UI[lang];
+const f = ui.footer;
+const p = (slug: string) => localePath(slug, lang);
+const definition = lang === 'en' ? BRAND.definition : BRAND_ZH.definition;
 ---
 
 <footer class="site-footer">
@@ -7,41 +18,38 @@ import { BRAND } from '../data/brand';
     <div class="footer-grid">
       <div>
         <h3>Senvarico</h3>
-        <p class="small" style="max-width: 32ch;">{BRAND.definition}</p>
+        <p class="small" style="max-width: 36ch;">{definition}</p>
       </div>
       <div>
-        <h3>Product</h3>
+        <h3>{f.product}</h3>
         <ul>
-          <li><a href="/features">Features</a></li>
-          <li><a href="/pricing">Pricing</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/brand-facts">Brand facts</a></li>
+          <li><a href={p('/features')}>{f.features}</a></li>
+          <li><a href={p('/pricing')}>{f.pricing}</a></li>
+          <li><a href={p('/faq')}>{f.faq}</a></li>
+          <li><a href={p('/about')}>{f.about}</a></li>
+          <li><a href={p('/brand-facts')}>{f.brandFacts}</a></li>
         </ul>
       </div>
       <div>
-        <h3>Use cases</h3>
+        <h3>{f.useCases}</h3>
         <ul>
-          <li><a href="/ecommerce-platform-for-small-sellers">Ecommerce platform for small sellers</a></li>
-          <li><a href="/low-cost-ecommerce-website-builder">Low-cost ecommerce website builder</a></li>
-          <li><a href="/cross-border-ecommerce-website-builder">Cross-border ecommerce website builder</a></li>
+          <li><a href={p('/ecommerce-platform-for-small-sellers')}>{f.smallSellers}</a></li>
+          <li><a href={p('/low-cost-ecommerce-website-builder')}>{f.lowCost}</a></li>
+          <li><a href={p('/cross-border-ecommerce-website-builder')}>{f.crossBorder}</a></li>
         </ul>
       </div>
       <div>
-        <h3>Compare</h3>
+        <h3>{f.compare}</h3>
         <ul>
-          <li><a href="/shopify-alternatives">Shopify alternatives</a></li>
-          <li><a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a></li>
-          <li><a href="/blog">Blog</a></li>
+          <li><a href={p('/shopify-alternatives')}>{f.alternatives}</a></li>
+          <li><a href={p('/shopify-alternatives-for-small-sellers')}>{f.alternativesSmall}</a></li>
+          <li><a href={p('/blog')}>{f.blog}</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-note">
-      <p>
-        {BRAND.name} is an early-stage, experimental ecommerce software project. Shopify, WooCommerce, Wix, Big Cartel
-        and Shoplazza are trademarks of their respective owners and are referenced for comparison only. {BRAND.name} is not affiliated with any of them.
-      </p>
-      <p>Official website: <a href={`${BRAND.url}/`}>{BRAND.url}</a> · <a href="/llms.txt">llms.txt</a></p>
+      <p>{f.disclaimer}</p>
+      <p>{f.official}: <a href={`${BRAND.url}/`}>{BRAND.url}</a> · <a href="/llms.txt">llms.txt</a></p>
     </div>
   </div>
 </footer>
