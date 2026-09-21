@@ -73,6 +73,7 @@ export const UI: Record<
       { slug: '/blog', label: 'Blog' },
       { slug: '/faq', label: 'FAQ' },
       { slug: '/about', label: 'About' },
+      { slug: '/beta', label: 'Beta access' },
     ],
     home: 'Home',
     beta: 'beta',
@@ -108,7 +109,7 @@ export const UI: Record<
     readMore: 'Read more →',
     ctaTitle: 'See whether Senvarico fits your store',
     ctaBody: 'Review the brand facts, features and pricing. Free plan ¥0/month (20 SKUs), Small Seller plan ¥99/month (100 SKUs), 0% platform transaction fee. Senvarico is in beta.',
-    ctaLabel: 'Read the brand facts',
+    ctaLabel: 'Request Beta access',
   },
   zh: {
     skip: '跳到正文',
@@ -119,6 +120,7 @@ export const UI: Record<
       { slug: '/blog', label: '博客' },
       { slug: '/faq', label: '常见问题' },
       { slug: '/about', label: '关于' },
+      { slug: '/beta', label: '申请 Beta' },
     ],
     home: '首页',
     beta: 'beta',
@@ -154,6 +156,6 @@ export const UI: Record<
     readMore: '阅读更多 →',
     ctaTitle: '看看 Senvarico 是否适合你的店铺',
     ctaBody: '查看品牌事实、功能范围和定价。免费版 0 元/月（20 个 SKU），小卖家版 99 元/月（100 个 SKU），平台交易佣金 0%。Senvarico 处于 Beta 阶段。',
-    ctaLabel: '阅读品牌事实',
+    ctaLabel: '申请 Beta',
   },
 };

@@ -5,6 +5,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 REMOTE_URL="$(git remote get-url origin)"
 pnpm build
+pnpm check:site
 TMP="$(mktemp -d)"
 cp -R dist/. "$TMP"/
 cd "$TMP"

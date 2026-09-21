@@ -1,6 +1,6 @@
 # Directory submission kit for Senvarico
 
-Every directory below needs an account owned by a real person, so submissions are done by you, not by automation. This file gives you the exact text so each submission takes a few minutes and every listing says the same thing. Consistency across listings is what lets search engines and AI assistants confirm the entity.
+Use an account owned by the maker for each directory. This is a submission draft: check each site's current requirements and review product facts before publishing. Consistent listings can help identify the product, but do not guarantee search indexing or AI mentions.
 
 Rules while submitting:
 - Use the canonical sentence unchanged. Do not add "best", "#1", user counts, ratings or testimonials.
@@ -36,6 +36,8 @@ Senvarico is a lightweight ecommerce website builder for small cross-border sell
 - Pricing: https://senvarico.com/pricing
 - Brand facts: https://senvarico.com/brand-facts
 - Chinese: https://senvarico.com/zh
+- Beta access: https://senvarico.com/beta
+- Contact: https://senvarico.com/contact
 - Source of the site (public): https://github.com/photon571614481-bit/senvarico-site
 
 **Logo:** https://senvarico.com/logo.png (512×512 PNG). OG image: https://senvarico.com/og-image.png (1200×630).
@@ -47,17 +49,19 @@ Senvarico is a lightweight ecommerce website builder for small cross-border sell
 | 1 | AlternativeTo | https://alternativeto.net/manage/add-app/ | Appears in "X alternatives" searches. Add Shopify, Big Cartel, Ecwid as "alternative to". Choose license "Freemium". |
 | 2 | SaaSHub | https://www.saashub.com/submit | Free. Pick category "eCommerce Platforms". |
 | 3 | Product Hunt | https://www.producthunt.com/launch | Self-launch is fine. Never ask for upvotes. Post as "Beta". Use the short description. |
-| 4 | BetaList | https://betalist.com/submit | Specifically for beta products. |
+| 4 | BetaList | https://betalist.com/submit | Check https://betalist.com/criteria first: visitors should be able to sign up or get access. Current access requests are handled by email; acceptance is not guaranteed. |
 | 5 | Astro Showcase | https://astro.build/showcase/submit/ | The site is built with Astro; showcases carry the entity sentence. |
 | 6 | Uneed | https://www.uneed.best/submit-a-tool | Free tier available. |
 | 7 | Fazier | https://fazier.com/ | Free launch listing. |
 | 8 | G2 | https://sell.g2.com/ | Free profile. Do not solicit reviews until real users exist. |
-| 9 | Capterra | https://www.capterra.com/vendors/ | Same owner as G2; list once G2 is approved. |
+| 9 | Capterra | https://www.capterra.com/vendors/ | Check its vendor submission requirements independently; G2 approval is not a prerequisite established by this kit. |
 | 10 | AMZ123 / 雨果跨境 (community posts, ZH) | https://www.amz123.com/ , https://www.cifnews.com/ | Post as the maker, disclose affiliation, link /zh/shopify-alternatives-for-small-sellers. No promotional language. |
 
 ## After each listing
 
 Add the listing URL to `content/brand-facts.json` under a new `sameAs` array and to the Organization JSON-LD in `src/layouts/BaseLayout.astro`, so the entity graph links back to real profiles. Do not add a profile before it is live.
+
+Only use `sameAs` for a page identifying the same entity. A showcase of this website or an article mentioning the product is not automatically an Organization profile. Record the live URL, submission date and review status before choosing the appropriate structured-data entity.
 
 ## What not to do
 

@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "check:site": "python3 scripts/check-site.py",
     "preview": "astro preview",
     "astro": "astro",
     "deploy": "bash scripts/deploy-gh-pages.sh"
