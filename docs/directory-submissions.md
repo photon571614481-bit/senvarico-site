@@ -70,3 +70,15 @@ Only use `sameAs` for a page identifying the same entity. A showcase of this web
 - No paid "featured" placements presented as editorial.
 - No reviews written by the team or by friends.
 - No claims that differ from https://senvarico.com/brand-facts.
+
+
+## Status log
+
+| Date | Directory | Status | URL |
+|---|---|---|---|
+| 2026-09-21 | Astro showcase (GitHub discussion #521) | posted | https://github.com/withastro/roadmap/discussions/521#discussioncomment-18539669 |
+| 2026-09-21 | AlternativeTo | submitted, pending review (free queue) | https://alternativeto.net/software/senvarico/ |
+| 2026-09-21 | BetaList | draft saved (submission 189310); only paid options ($39/$99/$299) at final step — owner decision | https://betalist.com/submissions/189310 |
+| 2026-09-21 | Uneed | scheduled in free waiting line, launch 2027-02-18 (needs upvote score 10 that day); page https://www.uneed.best/tool/senvarico after launch | https://www.uneed.best/edit/waiting-line/54030 |
+| 2026-09-21 | Fazier | skipped: free tier requires 3 comments on other products + footer badge + DR>0 (new domain is DR 0) | https://fazier.com/launch |
+| 2026-09-21 | Baidu 站长平台 | blocked at slider CAPTCHA on 添加网站 step; owner must solve, then verification continues | https://ziyuan.baidu.com/site/siteadd |
