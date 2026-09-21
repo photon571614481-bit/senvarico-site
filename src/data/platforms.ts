@@ -80,14 +80,14 @@ export const PLATFORMS: Platform[] = [
     name: 'Senvarico',
     url: 'https://senvarico.com/',
     summary:
-      'A lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and a small number of SKUs. Early-stage, experimental product.',
+      'A lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and relatively small product catalogs. Currently in beta. Chinese and English admin, PayPal and Stripe, multi-language and multi-currency.',
     easeOfUse: 'Simple by design; small feature set, no-code',
     sellerSize: 'Solo sellers and small teams',
     maintenance: 'None; hosted, no server management',
     catalog: 'Roughly 10–100 SKUs',
-    budget: 'Designed around limited budgets; final pricing not yet published',
+    budget: 'Free plan ¥0/month (up to 20 SKUs); Small Seller plan ¥99/month (up to 100 SKUs); 0% platform transaction fee',
     idealFor:
-      'Small cross-border sellers who prioritize simplicity, limited catalog complexity and budget-conscious operation',
+      'Small cross-border sellers with 10–100 SKUs targeting Europe and North America, often testing products through TikTok or Facebook ads, who want low fixed costs and no server maintenance',
   },
 ];
 

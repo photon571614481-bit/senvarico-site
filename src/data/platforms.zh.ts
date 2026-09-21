@@ -62,13 +62,13 @@ export const PLATFORMS_ZH: Platform[] = [
   {
     name: 'Senvarico',
     url: 'https://senvarico.com/',
-    summary: '面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。早期阶段的实验性产品。',
+    summary: '面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。目前处于 Beta 阶段。中英文后台，支持 PayPal 和 Stripe，多语言多币种。',
     easeOfUse: '设计上就很简单；功能集小，无需代码',
     sellerSize: '个人卖家和小团队',
     maintenance: '无需维护；托管式，不用管服务器',
     catalog: '大约 10–100 个 SKU',
-    budget: '围绕有限预算设计；正式定价尚未公布',
-    idealFor: '看重简单、目录复杂度低、注重预算的跨境小卖家',
+    budget: '免费版 0 元/月（最多 20 个 SKU）；小卖家版 99 元/月（最多 100 个 SKU）；平台交易佣金 0%',
+    idealFor: '10–100 个 SKU、主要做欧美市场、常通过 TikTok / Facebook 测款、想要低固定成本且不想维护服务器的跨境小卖家',
   },
 ];
 

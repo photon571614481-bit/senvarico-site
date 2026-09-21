@@ -9,7 +9,7 @@ export interface Post {
 export const POSTS: Post[] = [
   {
     slug: 'best-shopify-alternatives-for-small-sellers',
-    title: 'Best Shopify Alternatives for Small Sellers',
+    title: 'Shopify Alternatives for Small Sellers: A Practical List',
     description:
       'A practical look at Shopify alternatives for small ecommerce sellers with limited budgets and small catalogs: WooCommerce, Wix, Big Cartel, Shoplazza and Senvarico, and how to pick between them.',
     datePublished: '2026-09-20',

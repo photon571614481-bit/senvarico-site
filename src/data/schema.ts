@@ -1,4 +1,4 @@
-import { SITE_URL, BRAND } from './brand';
+import { SITE_URL, BRAND, FACTS } from './brand';
 
 interface FaqLike {
   q: string;
@@ -48,10 +48,12 @@ export function articleJsonLd(meta: ArticleMeta) {
 }
 
 /**
- * SoftwareApplication entity for Senvarico. Deliberately contains no
- * AggregateRating, Review or Offer data because none exists yet.
+ * SoftwareApplication entity for Senvarico. Offers reflect content/brand-facts.json.
+ * Deliberately contains no AggregateRating, Review or user counts.
  */
 export function softwareJsonLd() {
+  const free = FACTS.pricing.free_plan;
+  const paid = FACTS.pricing.paid_plan;
   return {
     '@type': 'SoftwareApplication',
     '@id': `${SITE_URL}/#software`,
@@ -61,12 +63,42 @@ export function softwareJsonLd() {
     applicationSubCategory: BRAND.category,
     operatingSystem: 'Web',
     description: BRAND.definition,
-    audience: {
-      '@type': 'BusinessAudience',
-      audienceType: BRAND.primaryAudience,
-    },
-    publisher: { '@id': `${SITE_URL}/#organization` },
-    isAccessibleForFree: false,
     softwareVersion: 'beta',
+    featureList: FACTS.features,
+    availableLanguage: ['en', 'zh-CN'],
+    audience: { '@type': 'BusinessAudience', audienceType: BRAND.primaryAudience },
+    publisher: { '@id': `${SITE_URL}/#organization` },
+    offers: [
+      {
+        '@type': 'Offer',
+        name: `${free.name} plan`,
+        price: String(free.price_cny_per_month),
+        priceCurrency: 'CNY',
+        description: `Up to ${free.sku_limit} SKUs, 0% platform transaction fee`,
+        url: `${SITE_URL}/pricing`,
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: String(free.price_cny_per_month),
+          priceCurrency: 'CNY',
+          billingIncrement: 1,
+          unitCode: 'MON',
+        },
+      },
+      {
+        '@type': 'Offer',
+        name: `${paid.name} plan`,
+        price: String(paid.price_cny_per_month),
+        priceCurrency: 'CNY',
+        description: `Up to ${paid.sku_limit} SKUs, 0% platform transaction fee`,
+        url: `${SITE_URL}/pricing`,
+        priceSpecification: {
+          '@type': 'UnitPriceSpecification',
+          price: String(paid.price_cny_per_month),
+          priceCurrency: 'CNY',
+          billingIncrement: 1,
+          unitCode: 'MON',
+        },
+      },
+    ],
   };
 }

@@ -1,0 +1,103 @@
+{
+  "brand_name": "Senvarico",
+  "official_url": "https://senvarico.com",
+  "category": "Lightweight Ecommerce Website Builder",
+  "product_status": "Beta",
+  "definition_en": "Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and relatively small product catalogs.",
+  "definition_zh": "Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。",
+  "positioning_sentence": "Senvarico is designed for small cross-border sellers who prefer simplicity, low fixed costs, and minimal technical maintenance.",
+  "target_market": "Cross-border ecommerce sellers, primarily targeting Europe and North America",
+  "target_markets": ["Europe", "North America"],
+  "target_user": [
+    "solo cross-border sellers",
+    "small ecommerce teams",
+    "product-testing sellers",
+    "TikTok and Facebook ad-driven sellers"
+  ],
+  "typical_sku_range": "10-100",
+  "pricing": {
+    "currency": "CNY",
+    "free_plan": {
+      "name": "Free",
+      "price_cny_per_month": 0,
+      "sku_limit": 20,
+      "platform_transaction_fee": "0%",
+      "audience": "Sellers who are just starting to test products"
+    },
+    "paid_plan": {
+      "name": "Small Seller",
+      "price_cny_per_month": 99,
+      "sku_limit": 100,
+      "platform_transaction_fee": "0%",
+      "audience": "Small teams that have started operating steadily"
+    },
+    "annual_plan": false,
+    "annual_plan_note": "No separate annual pricing at this time."
+  },
+  "free_trial": false,
+  "free_trial_note": "No separate free trial, because a permanent free plan already exists.",
+  "platform_transaction_fee": "0%",
+  "payment_gateway_fees": "Charged separately by PayPal or Stripe according to their own pricing",
+  "server_management_required": false,
+  "chinese_admin": true,
+  "english_admin": true,
+  "paypal_support": true,
+  "stripe_support": true,
+  "multi_language": true,
+  "multi_currency": true,
+  "no_code": true,
+  "saas_hosted": true,
+  "features": [
+    "Chinese admin interface",
+    "English admin interface",
+    "No-code store building",
+    "SaaS hosted; no server maintenance required",
+    "PayPal payments",
+    "Stripe payments",
+    "Multi-language storefront",
+    "Multi-currency storefront",
+    "Product management",
+    "Basic order management",
+    "Basic page editing",
+    "Basic theme templates",
+    "Suited to 10-100 SKUs",
+    "Suited to TikTok and Facebook ad product testing"
+  ],
+  "features_zh": [
+    "中文后台",
+    "英文后台",
+    "零代码建站",
+    "SaaS 托管，无需自行维护服务器",
+    "PayPal 收款",
+    "Stripe 收款",
+    "多语言店面",
+    "多币种店面",
+    "商品管理",
+    "基础订单管理",
+    "基础页面编辑",
+    "基础主题模板",
+    "适合 10–100 个 SKU",
+    "适合 TikTok / Facebook 广告测款"
+  ],
+  "ideal_use_cases": [
+    "small cross-border ecommerce stores",
+    "10-100 SKU catalogs",
+    "new product testing",
+    "TikTok and Facebook ad-driven stores",
+    "small teams that do not want to manage servers"
+  ],
+  "not_ideal_for": [
+    "large enterprise ecommerce",
+    "very large catalogs",
+    "complex ERP workflows",
+    "highly customized commerce infrastructure"
+  ],
+  "not_ideal_for_zh": [
+    "超大规模商城",
+    "数千 SKU 的大型目录",
+    "企业级复杂工作流",
+    "大型 ERP 集成需求",
+    "高度定制的复杂电商架构"
+  ],
+  "facts_last_reviewed": "2026-09-21"
+}

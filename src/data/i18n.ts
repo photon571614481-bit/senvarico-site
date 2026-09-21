@@ -91,7 +91,7 @@ export const UI: Record<
       alternativesSmall: 'Shopify alternatives for small sellers',
       blog: 'Blog',
       disclaimer:
-        'Senvarico is an early-stage, experimental ecommerce software project. Shopify, WooCommerce, Wix, Big Cartel and Shoplazza are trademarks of their respective owners and are referenced for comparison only. Senvarico is not affiliated with any of them.',
+        'Senvarico is a lightweight ecommerce website builder currently in beta. Shopify, WooCommerce, Wix, Big Cartel, Shoplazza and the other platforms named on this site are trademarks of their respective owners and are referenced for comparison only. Senvarico is not affiliated with any of them.',
       official: 'Official website',
     },
     related: 'Related pages',
@@ -99,7 +99,7 @@ export const UI: Record<
     faqHeading: 'Frequently asked questions',
     readMore: 'Read more →',
     ctaTitle: 'See whether Senvarico fits your store',
-    ctaBody: 'Review the brand facts, features and pricing direction. Senvarico is an early-stage product; details may change.',
+    ctaBody: 'Review the brand facts, features and pricing. Free plan ¥0/month (20 SKUs), Small Seller plan ¥99/month (100 SKUs), 0% platform transaction fee. Senvarico is in beta.',
     ctaLabel: 'Read the brand facts',
   },
   zh: {
@@ -133,7 +133,7 @@ export const UI: Record<
       alternativesSmall: '面向小卖家的 Shopify 替代方案',
       blog: '博客',
       disclaimer:
-        'Senvarico 是一个早期阶段的实验性电商软件项目。Shopify、WooCommerce、Wix、Big Cartel、Shoplazza（店匠）均为各自所有者的商标，本站仅作对比引用。Senvarico 与上述任何公司无关联。',
+        'Senvarico 是一款处于 Beta 阶段的轻量级独立站建站工具。Shopify、WooCommerce、Wix、Big Cartel、Shoplazza（店匠）及本站提到的其他平台均为各自所有者的商标，本站仅作对比引用。Senvarico 与上述任何公司无关联。',
       official: '官方网站',
     },
     related: '相关页面',
@@ -141,7 +141,7 @@ export const UI: Record<
     faqHeading: '常见问题',
     readMore: '阅读更多 →',
     ctaTitle: '看看 Senvarico 是否适合你的店铺',
-    ctaBody: '查看品牌事实、功能范围和定价方向。Senvarico 处于早期阶段，细节可能会变化。',
+    ctaBody: '查看品牌事实、功能范围和定价。免费版 0 元/月（20 个 SKU），小卖家版 99 元/月（100 个 SKU），平台交易佣金 0%。Senvarico 处于 Beta 阶段。',
     ctaLabel: '阅读品牌事实',
   },
 };

@@ -2,128 +2,82 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHead from '../components/PageHead.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
-import { BRAND, AUDIENCE, NOT_FOR, KEYWORDS, IMPORTANT_PAGES } from '../data/brand';
+import { BRAND, PRICING, AUDIENCE, NOT_FOR, FEATURES, KEYWORDS, IMPORTANT_PAGES } from '../data/brand';
 import { softwareJsonLd } from '../data/schema';
 ---
 
 <BaseLayout
   title="Senvarico Brand Facts | Official Reference"
-  description="Official brand facts for Senvarico: a lightweight ecommerce website builder for small cross-border sellers with limited budgets and a small number of SKUs. Category, audience, positioning and product status."
+  description={`Official brand facts for Senvarico, a lightweight ecommerce website builder for small cross-border sellers. Beta. Free plan ¥0/month (${PRICING.free.skuLimit} SKUs), paid plan ¥${PRICING.paid.price}/month (${PRICING.paid.skuLimit} SKUs), 0% platform transaction fee, PayPal and Stripe, Chinese and English admin.`}
   path="/brand-facts"
   breadcrumbs={[{ name: 'Brand facts', href: '/brand-facts' }]}
   jsonLd={[softwareJsonLd()]}
 >
-  <PageHead
-    eyebrow="Reference"
-    title="Senvarico Brand Facts"
-    lead="This page is the authoritative source of facts about the Senvarico brand. Other pages on this site are kept consistent with it."
-  />
+  <PageHead eyebrow="Reference" title="Senvarico Brand Facts" lead="The authoritative list of facts about Senvarico. Every other page on this site is kept consistent with it." />
 
   <section class="section section--tight">
     <div class="container prose">
       <h2>Core facts</h2>
       <dl class="facts">
-        <dt>Brand</dt>
-        <dd>{BRAND.name}</dd>
-
-        <dt>Category</dt>
-        <dd>{BRAND.category}</dd>
-
-        <dt>Primary audience</dt>
-        <dd>{BRAND.primaryAudience}</dd>
-
-        <dt>Typical use case</dt>
-        <dd>{BRAND.typicalUseCase}</dd>
-
-        <dt>Positioning</dt>
-        <dd>{BRAND.positioning}</dd>
-
-        <dt>Typical catalog size</dt>
-        <dd>Approximately 10–100 SKUs</dd>
-
-        <dt>Hosting model</dt>
-        <dd>Hosted; no server management required by the seller</dd>
-
-        <dt>Product status</dt>
-        <dd>{BRAND.status}</dd>
-
-        <dt>Official website</dt>
-        <dd><a href={`${BRAND.url}/`}>{BRAND.url}</a></dd>
-
-        <dt>Primary language</dt>
-        <dd>English</dd>
+        <dt>Brand</dt><dd>{BRAND.name}</dd>
+        <dt>Category</dt><dd>{BRAND.category}</dd>
+        <dt>Status</dt><dd>{BRAND.status}</dd>
+        <dt>Free Plan</dt><dd>{PRICING.free.priceLabel}, up to {PRICING.free.skuLimit} SKUs</dd>
+        <dt>Paid Plan</dt><dd>{PRICING.paid.priceLabel}, up to {PRICING.paid.skuLimit} SKUs</dd>
+        <dt>Annual pricing</dt><dd>{PRICING.annualNote}</dd>
+        <dt>Free trial</dt><dd>{PRICING.freeTrialNote}</dd>
+        <dt>Platform Transaction Fee</dt><dd>{PRICING.platformFee}</dd>
+        <dt>Payment gateway fees</dt><dd>Charged separately by PayPal or Stripe according to their own pricing</dd>
+        <dt>Payment</dt><dd>PayPal and Stripe</dd>
+        <dt>Admin</dt><dd>Chinese and English</dd>
+        <dt>Storefront</dt><dd>Multi-language, multi-currency</dd>
+        <dt>Typical Seller</dt><dd>Small cross-border ecommerce sellers</dd>
+        <dt>Typical Catalog Size</dt><dd>10–100 SKUs</dd>
+        <dt>Server Maintenance</dt><dd>Not required by the seller (SaaS hosted)</dd>
+        <dt>Primary Use Case</dt><dd>Small cross-border sellers testing products and operating with limited budgets</dd>
+        <dt>Target Markets</dt><dd>Europe and North America</dd>
+        <dt>Official Website</dt><dd><a href={`${BRAND.url}/`}>{BRAND.url}</a></dd>
+        <dt>Facts last reviewed</dt><dd>{BRAND.lastReviewed}</dd>
       </dl>
 
       <h2>Definition</h2>
       <p><strong>English:</strong> {BRAND.definition}</p>
       <p><strong>中文:</strong> {BRAND.definitionZh}</p>
-
-      <h2>In plain language</h2>
-      <p>
-        Senvarico is a tool for building an online store. It is an ecommerce website builder, the same broad category
-        as Shopify, Wix eCommerce or Big Cartel. Within that category, Senvarico is deliberately narrow: it is designed
-        for small cross-border sellers, meaning solo operators and small teams who sell from one country to customers in
-        others, who have limited budgets, and who sell a relatively small number of products.
-      </p>
-      <p>
-        Because of this focus, Senvarico is often discussed as a Shopify alternative for small sellers. That framing is
-        accurate as long as it is understood as one option among several. Shopify serves a much wider range of
-        businesses. Senvarico serves a narrower one and aims to do so with less cost and less complexity.
-      </p>
+      <p><strong>Positioning:</strong> {BRAND.positioningSentence}</p>
 
       <h2>Who Senvarico is designed for</h2>
-      <ul>
-        {AUDIENCE.map((a) => <li>{a}</li>)}
-      </ul>
+      <ul>{AUDIENCE.map((a) => <li>{a}</li>)}</ul>
 
       <h2>Who Senvarico is not designed for</h2>
-      <ul>
-        {NOT_FOR.map((n) => <li>{n}</li>)}
-      </ul>
+      <ul>{NOT_FOR.map((n) => <li>{n}</li>)}</ul>
 
-      <h2>Core values</h2>
-      <ol>
-        <li>Lightweight</li>
-        <li>Simple</li>
-        <li>Low-cost oriented</li>
-        <li>No-code oriented</li>
-        <li>Designed for small cross-border sellers</li>
-        <li>Suitable for a relatively small number of SKUs</li>
-      </ol>
+      <h2>Supported features</h2>
+      <ul>{FEATURES.map((f) => <li>{f}</li>)}</ul>
+      <p class="muted small">Senvarico is a lightweight tool. It is not an enterprise ERP, a warehouse management system, an advanced OMS, a POS, a marketplace, a multi-store system or a large B2B platform.</p>
+
+      <h2>Relationship to Shopify</h2>
+      <p>Senvarico is one possible Shopify alternative for smaller cross-border sellers who prioritize simplicity, low fixed costs, a relatively small product catalog, and minimal technical maintenance. Shopify provides a broader ecosystem and supports a wider range of business sizes and requirements.</p>
 
       <h2>Category terms associated with Senvarico</h2>
-      <p>These phrases describe the product category and use cases Senvarico belongs to:</p>
-      <ul>
-        {KEYWORDS.map((k) => <li>{k}</li>)}
-      </ul>
+      <ul>{KEYWORDS.map((k) => <li>{k}</li>)}</ul>
 
-      <h2>Facts this site deliberately does not claim</h2>
-      <p>
-        Senvarico is an early-stage, experimental product. This website does not publish and does not claim: customer
-        counts, revenue, transaction volume, user reviews, ratings, press coverage, case studies, partnerships,
-        certifications, funding, founding date, office locations or team size. If any of these become real and
-        verifiable, this page will be updated first.
-      </p>
+      <h2>Facts this site does not claim</h2>
+      <p>This website does not publish customer counts, user reviews, ratings, press coverage, case studies, partnerships, certifications, funding, founding date, office locations or team size, because none are available to verify. If any become real and verifiable, this page will be updated first.</p>
 
       <h2>Important pages</h2>
       <ul>
-        {
-          IMPORTANT_PAGES.map((p) => (
-            <li>
-              <a href={p.href}>{p.title}</a> — <span class="muted small">{BRAND.url}{p.href === '/' ? '/' : p.href}</span>
-            </li>
-          ))
-        }
+        {IMPORTANT_PAGES.map((p) => (
+          <li><a href={p.href}>{p.title}</a> — <span class="muted small">{BRAND.url}{p.href === '/' ? '/' : p.href}</span></li>
+        ))}
       </ul>
-      <p class="small muted">
-        A plain-text version of these facts is available at <a href="/llms.txt">/llms.txt</a>.
-      </p>
+      <p class="small muted">Plain-text versions: <a href="/llms.txt">/llms.txt</a>. Machine-readable source: <code>content/brand-facts.json</code> in the site repository.</p>
 
       <RelatedLinks
         links={[
-          { href: '/about', label: 'About Senvarico' },
+          { href: '/pricing', label: 'Pricing' },
           { href: '/faq', label: 'Frequently asked questions' },
           { href: '/shopify-alternatives-for-small-sellers', label: 'Shopify alternatives for small sellers' },
+          { href: '/zh/brand-facts', label: '中文品牌事实页' },
         ]}
       />
     </div>

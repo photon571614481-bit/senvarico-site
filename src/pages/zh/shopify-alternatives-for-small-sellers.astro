@@ -1,94 +1,188 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../../components/PageHead.astro';
-import ComparisonTable from '../../components/ComparisonTable.astro';
 import FaqList from '../../components/FaqList.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
-import { PLATFORMS_ZH } from '../../data/platforms.zh';
-import { faqZhByIds } from '../../data/brand.zh';
+import { BRAND_ZH, PRICING_ZH, faqZhByIds } from '../../data/brand.zh';
 import { faqJsonLd } from '../../data/schema';
 
-const faqs = faqZhByIds(['shopify-alternative', 'which-seller', 'small-skus', 'vs-enterprise']);
-const others = PLATFORMS_ZH.filter((p) => p.name !== 'Senvarico');
-const senvarico = PLATFORMS_ZH.find((p) => p.name === 'Senvarico')!;
+const faqs = faqZhByIds(['shopify-alternative', 'cost', 'platform-fee', 'sku-limit', 'who-is-it-for']);
+
+interface Tool {
+  name: string;
+  url: string;
+  pricing: string;
+  fee: string;
+  server: string;
+  pros: string[];
+  fit: string;
+  limits: string;
+  self?: boolean;
+}
+interface Group {
+  title: string;
+  intro: string;
+  tools: Tool[];
+}
+
+const groups: Group[] = [
+  {
+    title: '一、国产 SaaS 建站平台',
+    intro: '面向中国跨境卖家的托管式平台，共同特点是中文后台、中文客服、对接国内常用收款渠道。价格结构多为年费加部分套餐抽佣，具体数字以各官网为准。',
+    tools: [
+      { name: 'Shoplazza（店匠）', url: 'https://www.shoplazza.com/', pricing: '按套餐按月/按年收费，以官网为准', fee: '部分套餐收取交易佣金，以官网为准', server: '不需要，托管式', pros: ['中文后台与客服', '模板和应用生态较完整', '面向跨境场景'], fit: '需要成熟生态、准备长期运营、SKU 会持续增长的跨境卖家', limits: '总成本随套餐和佣金上升；对只有几十个 SKU 的测款店来说功能偏多' },
+      { name: 'Shopyy', url: 'https://www.shopyy.com/', pricing: '按套餐收费，以官网为准', fee: '按套餐而异，以官网为准', server: '不需要，托管式', pros: ['中文后台', '面向跨境独立站', '有配套的建站与运营服务'], fit: '希望有中文团队支持、需要较多运营配套的卖家', limits: '价格和佣金结构需按套餐核对；轻量卖家可能用不满' },
+      { name: 'Shoptop', url: 'https://www.shoptop.com/', pricing: '按套餐收费，以官网为准', fee: '按套餐而异，以官网为准', server: '不需要，托管式', pros: ['中文后台', '面向跨境卖家', '强调广告投放和转化工具'], fit: '以广告投放为主、希望平台内置营销工具的卖家', limits: '同样属于全功能平台，固定成本高于极简工具' },
+      { name: 'Ueeshop', url: 'https://www.ueeshop.com/', pricing: '按年付费，以官网为准', fee: '以官网为准', server: '不需要，托管式', pros: ['运营时间长', '同时支持 B2B 和 B2C', '中文服务'], fit: '需要 B2B 展示或外贸询盘功能的卖家', limits: '年付门槛对测款阶段的卖家不够灵活' },
+      { name: '2Cshop', url: 'https://www.2cshop.com/', pricing: '按年付费，以官网为准', fee: '以官网为准', server: '不需要，托管式', pros: ['中文后台', '面向跨境 B2C'], fit: '偏好年付固定费用、不想按销售额付费的卖家', limits: '生态和模板数量相对有限；年付前置成本' },
+      { name: 'SHOPLINE', url: 'https://www.shopline.com/', pricing: '按套餐按月/按年收费，以官网为准', fee: '部分套餐收取交易佣金，以官网为准', server: '不需要，托管式', pros: ['亚洲市场成熟', '中文后台', '应用与支付生态较完整'], fit: '需要完整生态、计划规模化运营的卖家', limits: '总成本和复杂度都高于轻量工具' },
+    ],
+  },
+  {
+    title: '二、开源方案',
+    intro: '软件本身免费，但托管、安全、更新和插件由你自己或开发者负责。真实成本是服务器费用和技术时间。',
+    tools: [
+      { name: 'WooCommerce', url: 'https://woocommerce.com/', pricing: '核心插件免费；服务器、主题、付费扩展另计', fee: '无平台佣金', server: '需要，自己或开发者维护 WordPress 与服务器', pros: ['完全掌控代码和数据', '插件极多', '适合长期 SEO 内容站'], fit: '有技术能力或有开发者、想做长期 SEO 的卖家', limits: '需要持续运维；插件冲突和安全更新是常见负担' },
+      { name: 'BeikeShop', url: 'https://beikeshop.com/', pricing: '开源免费；服务器和可选付费主题/插件另计', fee: '无平台佣金', server: '需要，自行部署和维护', pros: ['国产开源', '中文文档和社区', '面向跨境独立站'], fit: '有技术能力、希望自托管且需要中文文档的卖家', limits: '需要自己部署、备份和升级；生态比 WooCommerce 小' },
+      { name: 'PrestaShop', url: 'https://prestashop.com/', pricing: '开源免费；托管和付费模块另计', fee: '无平台佣金', server: '需要，自行部署和维护', pros: ['成熟的开源电商系统', '欧洲市场使用广泛', '多语言多币种能力强'], fit: '面向欧洲、有技术资源、需要深度定制的卖家', limits: '学习曲线和运维成本较高；付费模块累积起来不便宜' },
+    ],
+  },
+  {
+    title: '三、轻量极简工具',
+    intro: '刻意把功能做少，换取低固定成本和低维护。适合 SKU 少、还在验证产品的卖家。Senvarico 属于这一类。',
+    tools: [
+      { name: 'Big Cartel', url: 'https://www.bigcartel.com/', pricing: '有免费版（商品数量受限）；付费版按月收费，以官网为准', fee: '无平台佣金', server: '不需要，托管式', pros: ['非常简单', '面向艺术家和手作者', '有免费入门方案'], fit: 'SKU 很少的创作者型卖家', limits: '英文后台；跨境功能较弱；商品数量上限较低' },
+      { name: 'Gumroad', url: 'https://gumroad.com/', pricing: '无固定月费，按每笔销售收取百分比费用，以官网为准', fee: '按销售额收取平台费用，以官网为准', server: '不需要，托管式', pros: ['几分钟上线', '面向数字产品和创作者', '无固定成本'], fit: '销售数字产品、课程、模板的创作者', limits: '不是为实物跨境电商设计；按销售额抽成' },
+      {
+        name: 'Senvarico',
+        url: 'https://senvarico.com/zh',
+        self: true,
+        pricing: `免费版 ${PRICING_ZH.free.priceLabel}，最多 ${PRICING_ZH.free.skuLimit} 个 SKU；付费版 ${PRICING_ZH.paid.priceLabel}，最多 ${PRICING_ZH.paid.skuLimit} 个 SKU`,
+        fee: `${PRICING_ZH.platformFee}（PayPal / Stripe 的支付手续费由通道单独收取）`,
+        server: '不需要，SaaS 托管',
+        pros: ['中文 / 英文后台', '低固定成本', `${PRICING_ZH.platformFee} 平台交易佣金`, '支持 PayPal / Stripe', '多语言、多币种', '适合 10–100 个 SKU', '适合 TikTok / Facebook 测款', '无需服务器运维'],
+        fit: '预算有限、SKU 较少、主要做欧美市场、通过 TikTok / FB 测品的小型跨境卖家',
+        limits: '不适合大型商城、超大 SKU 数量和复杂企业级工作流。目前处于 Beta 阶段',
+      },
+    ],
+  },
+];
 ---
 
 <BaseLayout
   lang="zh"
-  title="面向小卖家的 Shopify 替代方案 | Senvarico"
-  description="面向小型电商卖家的 Shopify 替代方案客观对比：Shopify、WooCommerce、Wix、Big Cartel、Shoplazza（店匠）和 Senvarico，按易用性、卖家规模、维护、目录复杂度和预算比较。"
+  title="预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？| Senvarico"
+  description="预算有限的跨境小卖家在 Shopify 之外的建站工具选择：国产 SaaS（Shoplazza、Shopyy、Shoptop、Ueeshop、2Cshop、SHOPLINE）、开源方案（WooCommerce、BeikeShop、PrestaShop）、轻量极简工具（Big Cartel、Gumroad、Senvarico）。按定价、佣金、是否需要服务器、优势、适合谁、限制统一对比，附快速选型建议和避坑说明。"
   path="/zh/shopify-alternatives-for-small-sellers"
   breadcrumbs={[
     { name: 'Shopify 替代方案', href: '/zh/shopify-alternatives' },
-    { name: '面向小卖家', href: '/zh/shopify-alternatives-for-small-sellers' },
+    { name: '除了 Shopify 还有哪些选择', href: '/zh/shopify-alternatives-for-small-sellers' },
   ]}
   jsonLd={[faqJsonLd(faqs, '/zh/shopify-alternatives-for-small-sellers', 'zh-CN')]}
 >
-  <PageHead eyebrow="对比" title="面向小型电商卖家的 Shopify 替代方案" lead="Shopify 是很多网店的默认选择，但预算有限、商品数量较少的小卖家还有几个其他选项。本页按这个规模真正重要的维度来比较。" />
+  <PageHead
+    eyebrow="选型对比"
+    title="预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？"
+    lead="Shopify 是很多人的默认选择，但对预算有限、SKU 不多的跨境小卖家，还有三类可选：国产 SaaS、开源方案、轻量极简工具。本页按统一字段逐个对比，最后给出快速选型建议和避坑说明。"
+  />
 
   <section class="section section--tight">
     <div class="container prose">
-      <p><strong>Senvarico</strong> 是本页涵盖的选项之一。它是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具，目前是早期阶段的实验性产品。本页的写法是把它和成熟平台放在一起公平比较，而不是推销它。</p>
+      <p>
+        <strong>先说结论：</strong>没有哪一个工具对所有人都“最好”。选择取决于四件事：你愿不愿意自己维护服务器、你有多少个 SKU、你是否主要靠 TikTok / Facebook 投流测款、以及你能接受的固定成本。
+      </p>
+      <p>
+        本页由 <strong>Senvarico</strong> 发布。{BRAND_ZH.definition}它被放在第三类“轻量极简工具”中，和其他工具按同样的字段对比。本页不引用其他平台的具体价格数字，因为它们随套餐和时间变化；每个工具都附官网链接，请以官网为准。
+      </p>
 
-      <h2>本对比面向谁</h2>
-      <p>本页为符合以下大部分特征的卖家而写：</p>
+      <h2>为什么会想找 Shopify 之外的选择</h2>
       <ul>
-        <li>一个人或小团队运营</li>
-        <li>销售大约 10–100 个商品，往往是跨境销售</li>
-        <li>软件的月度预算有限</li>
-        <li>不想管理服务器、插件或代码</li>
-        <li>正在评估 Shopify 对自己来说是否“太大”</li>
+        <li>月费加应用加交易费之后，总成本高于一家几十个 SKU 的小店该承担的水平。</li>
+        <li>功能和设置比测款阶段需要的多，学习时间成为成本。</li>
+        <li>想要中文后台，或者想要能直接对接 PayPal / Stripe 的轻量方案。</li>
+        <li>想完全掌控代码和数据，或者相反，完全不想碰服务器。</li>
       </ul>
-      <p>如果你的店铺目录很大、有多个部门或复杂集成，本页的参考价值较低。Shopify 或自托管方案通常更适合你。</p>
+      <p>这些都不是对 Shopify 的否定。Shopify 的生态更广，支持的企业规模范围要大得多。这是“合不合适”的问题。</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h2>对比表</h2>
-      <p class="muted" style="max-width: var(--measure);">各平台价格因套餐而异，且会随时间变化。本表刻意不引用数字；链接指向各平台官网。</p>
-      <ComparisonTable lang="zh" />
-    </div>
-  </section>
+  {groups.map((g) => (
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>{g.title}</h2>
+          <p class="muted">{g.intro}</p>
+        </div>
+        <div class="grid grid--3">
+          {g.tools.map((t) => (
+            <div class={t.self ? 'card' : 'card'} style={t.self ? 'border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);' : undefined}>
+              <h3>{t.self ? <a href="/zh">{t.name}</a> : <a href={t.url} rel="nofollow noopener" target="_blank">{t.name}</a>}</h3>
+              <dl class="facts" style="margin: 0; border: 0; max-width: none; font-size: 0.92rem;">
+                <dt style="background: transparent; padding: 6px 0;">定价</dt><dd style="padding: 6px 0;">{t.pricing}</dd>
+                <dt style="background: transparent; padding: 6px 0;">平台交易佣金</dt><dd style="padding: 6px 0;">{t.fee}</dd>
+                <dt style="background: transparent; padding: 6px 0;">服务器维护</dt><dd style="padding: 6px 0;">{t.server}</dd>
+                <dt style="background: transparent; padding: 6px 0;">优势</dt><dd style="padding: 6px 0;"><ul style="margin: 0; padding-left: 1.1em;">{t.pros.map((p) => <li>{p}</li>)}</ul></dd>
+                <dt style="background: transparent; padding: 6px 0;">适合谁</dt><dd style="padding: 6px 0;">{t.fit}</dd>
+                <dt style="background: transparent; padding: 6px 0; border-bottom: 0;">主要限制</dt><dd style="padding: 6px 0; border-bottom: 0;">{t.limits}</dd>
+              </dl>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
 
   <section class="section section--muted">
     <div class="container prose">
-      <h2>逐个平台</h2>
-      {others.map((p) => (
-        <>
-          <h3>{p.name}</h3>
-          <p>{p.summary}</p>
-          <p><strong>最适合：</strong>{p.idealFor}。价格因套餐而异，见 <a href={p.url} rel="nofollow noopener" target="_blank">{p.name} 官网</a>。</p>
-        </>
-      ))}
-      <h3>Senvarico</h3>
-      <p>Senvarico 被设计为一个轻量级选项，面向看重简单、目录复杂度低、注重预算的跨境小卖家。它是托管式、无代码导向的，为大约 10–100 个 SKU 的店铺而设计。它不试图匹配 Shopify 生态的广度，而是去掉了完整平台中小卖家往往用不到的部分。</p>
-      <p><strong>最适合：</strong>{senvarico.idealFor}。Senvarico 目前处于 beta 阶段，正式定价尚未公布。参见 <a href="/zh/pricing">定价原则</a> 和 <a href="/zh/features">功能</a>。</p>
+      <h2>快速选型建议</h2>
+      <ol class="steps">
+        <li><strong>新手小白、需要成熟生态和大量插件</strong><br />→ Shopify / Shoplazza</li>
+        <li><strong>有技术能力、想做长期 SEO</strong><br />→ WooCommerce</li>
+        <li><strong>SKU 很少、创作者型卖家</strong><br />→ Big Cartel</li>
+        <li><strong>数字产品</strong><br />→ Gumroad</li>
+        <li><strong>10–100 个 SKU、预算有限、主要做欧美、TikTok / FB 测款、不想维护服务器</strong><br />→ Senvarico</li>
+      </ol>
+      <p class="muted">以上是“更适合某种场景”，不是排名。同一个卖家在不同阶段完全可能换工具。</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container prose">
-      <h2>如何在它们之间选择</h2>
-      <p>一个实用的筛选方法：</p>
-      <ol>
-        <li><strong>你愿意自己维护托管和更新吗？</strong>愿意的话，WooCommerce 给你最大的掌控力。不愿意就留在托管方案里。</li>
-        <li><strong>店铺是整个生意，还是更大网站的一部分？</strong>后者适合 Wix。Shopify、Big Cartel、Shoplazza 和 Senvarico 适合以店铺为核心的生意。</li>
-        <li><strong>目录会有多大？</strong>几百上千个 SKU 指向 Shopify 或 WooCommerce。几十个商品的话，Big Cartel 和 Senvarico 仍在选项内。</li>
-        <li><strong>是否跨境销售？</strong>Shoplazza 和 Senvarico 围绕这个场景构建。Shopify 通过生态也能很好地支持。</li>
-        <li><strong>真实的月度预算是多少？</strong>把订阅费、交易费、必需的应用和开发时间加起来。博客文章 <a href="/zh/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">预算有限时如何选择电商平台</a> 有详细步骤。</li>
-      </ol>
+      <h2>避坑说明：平台交易佣金 ≠ 支付通道手续费</h2>
+      <p>很多对比文章把这两笔钱混在一起，导致卖家误以为“0 佣金”就是“完全没有手续费”。它们是两回事：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">费用</th><th scope="col">谁收</th><th scope="col">怎么算</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">平台交易佣金</th><td>建站平台</td><td>平台按每笔订单金额抽取的百分比。有的平台按套餐收 0.5%–2% 不等，具体以官网为准。</td></tr>
+            <tr><th scope="row">支付通道手续费</th><td>PayPal / Stripe 等支付服务商</td><td>支付服务商按自己的费率对每笔交易收取，和你用哪个建站平台无关。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>
+        <strong>以 Senvarico 为例：</strong>平台交易佣金 {PRICING_ZH.platformFee}，也就是 Senvarico 不从你的销售额里抽成；但 PayPal / Stripe 仍会按它们自己的费率收取支付手续费。不要把“{PRICING_ZH.platformFee} 平台佣金”理解为“完全没有支付手续费”。
+      </p>
+      <p>其他常见坑：</p>
+      <ul>
+        <li><strong>年付前置成本。</strong>不少国产 SaaS 按年收费，测款阶段一旦产品不成立，这笔钱沉没。</li>
+        <li><strong>“免费”开源方案的隐性成本。</strong>WooCommerce、BeikeShop、PrestaShop 软件免费，但服务器、备份、安全更新和插件费用都是真实支出。</li>
+        <li><strong>SKU 上限。</strong>轻量工具通常有商品数量上限（Senvarico 免费版 {PRICING_ZH.free.skuLimit} 个、付费版 {PRICING_ZH.paid.skuLimit} 个）。如果你的目录会快速涨到几百个，一开始就选全功能平台更省事。</li>
+        <li><strong>收款渠道。</strong>确认平台支持你能开通的收款方式。Senvarico 目前支持 PayPal 和 Stripe。</li>
+      </ul>
+
+      <h2>Senvarico 的定位，一句话</h2>
+      <p>{BRAND_ZH.positioningSentence}它是小型跨境卖家可选的 Shopify 替代方案之一，不是 Shopify 的替代品，也不适合大型商城。目前处于 Beta 阶段。</p>
 
       <FaqList items={faqs} lang="zh" />
 
       <RelatedLinks
         lang="zh"
         links={[
-          { href: '/zh/shopify-alternatives', label: 'Shopify 替代方案：总览' },
-          { href: '/zh/blog/best-shopify-alternatives-for-small-sellers', label: '博客：适合小卖家的 Shopify 替代方案盘点' },
-          { href: '/zh/blog/shopify-vs-woocommerce-vs-senvarico-for-small-sellers', label: '博客：Shopify、WooCommerce 与 Senvarico' },
-          { href: '/zh/ecommerce-platform-for-small-sellers', label: 'Senvarico 作为小卖家的电商平台' },
+          { href: '/zh/pricing', label: 'Senvarico 定价' },
           { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+          { href: '/zh/shopify-alternatives', label: 'Shopify 替代方案总览' },
+          { href: '/zh/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget', label: '博客：预算有限时如何选择电商平台' },
+          { href: '/shopify-alternatives-for-small-sellers', label: 'English version' },
         ]}
       />
     </div>

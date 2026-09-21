@@ -4,7 +4,7 @@ import PageHead from '../components/PageHead.astro';
 import Definition from '../components/Definition.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import CtaBand from '../components/CtaBand.astro';
-import { BRAND } from '../data/brand';
+import { BRAND, FEATURES, PRICING } from '../data/brand';
 
 const scope = [
   {
@@ -13,15 +13,23 @@ const scope = [
   },
   {
     title: 'Small product catalog',
-    body: 'Products, variants, images and inventory for stores with roughly 10–100 SKUs. Designed for clarity at that scale rather than for very large catalogs.',
+    body: `Products, variants, images and inventory for stores with roughly 10–100 SKUs (${PRICING.free.skuLimit} on the Free plan, ${PRICING.paid.skuLimit} on the Small Seller plan).`,
   },
   {
-    title: 'Simple checkout',
-    body: 'A straightforward checkout flow for single-store, direct-to-consumer sales. No multi-warehouse or B2B workflows.',
+    title: 'Basic order management',
+    body: 'A straightforward checkout and order list for single-store, direct-to-consumer sales. No multi-warehouse or B2B workflows.',
   },
   {
-    title: 'Cross-border basics',
-    body: 'Storefront settings intended for selling from one country to customers in others, such as currency display and shipping regions.',
+    title: 'Multi-language and multi-currency',
+    body: 'Storefronts in several languages and currencies for sellers targeting multiple markets in Europe and North America.',
+  },
+  {
+    title: 'PayPal and Stripe',
+    body: `Checkout through PayPal and Stripe. ${PRICING.platformFee} platform transaction fee; the providers charge their own processing fees.`,
+  },
+  {
+    title: 'Chinese and English admin',
+    body: 'The admin interface is available in both Chinese and English.',
   },
   {
     title: 'No-code editing',
@@ -35,8 +43,8 @@ const scope = [
 ---
 
 <BaseLayout
-  title="Features | Senvarico Lightweight Ecommerce Website Builder"
-  description="What Senvarico includes: a hosted storefront, a small product catalog, simple checkout, cross-border basics and no-code editing. A focused feature set for small cross-border sellers with limited budgets."
+  title="Features | Senvarico – Lightweight Ecommerce Website Builder"
+  description="What Senvarico includes: Chinese and English admin, no-code store building, SaaS hosting, PayPal and Stripe, multi-language and multi-currency storefronts, product and basic order management, basic themes. Suited to 10–100 SKUs and TikTok / Facebook product testing."
   path="/features"
   breadcrumbs={[{ name: 'Features', href: '/features' }]}
 >
@@ -51,8 +59,7 @@ const scope = [
       <Definition />
       <div class="notice">
         <p>
-          <strong>Product status:</strong> {BRAND.statusNote} The items below describe the intended scope of the product,
-          not a list of finalized commitments.
+          <strong>Product status:</strong> {BRAND.statusNote}
         </p>
       </div>
     </div>
@@ -94,20 +101,17 @@ const scope = [
         seller sizes.
       </p>
 
-      <h2>Payments and integrations</h2>
-      <p>
-        Specific payment providers and third-party integrations are still being evaluated during the beta. Rather than
-        list options that are not yet confirmed, this page will be updated when they are available. See the
-        <a href="/faq">FAQ</a> for the current position on common questions.
-      </p>
+      <h2>Full feature list</h2>
+      <ul>{FEATURES.map((f) => <li>{f}</li>)}</ul>
+      <p class="muted">Senvarico is not an enterprise ERP, warehouse management system, advanced OMS, POS, marketplace, multi-store system or large B2B platform. See the <a href="/faq">FAQ</a> for common questions.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
       <CtaBand
-        title="Pricing direction"
-        body="Senvarico is designed around limited budgets. Read how pricing is being approached during the beta."
+        title="Pricing"
+        body={`Free plan ${PRICING.free.priceLabel} (${PRICING.free.skuLabel}); Small Seller plan ${PRICING.paid.priceLabel} (${PRICING.paid.skuLabel}); ${PRICING.platformFee} platform transaction fee.`}
         href="/pricing"
         label="See pricing"
       />

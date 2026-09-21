@@ -4,114 +4,106 @@ import PageHead from '../components/PageHead.astro';
 import Definition from '../components/Definition.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import FaqList from '../components/FaqList.astro';
-import { BRAND, faqByIds } from '../data/brand';
-import { faqJsonLd } from '../data/schema';
+import { BRAND, PRICING, faqByIds } from '../data/brand';
+import { faqJsonLd, softwareJsonLd } from '../data/schema';
 
-const faqs = faqByIds(['product-status', 'which-seller', 'vs-enterprise']);
+const faqs = faqByIds(['cost', 'free-plan', 'sku-limit', 'platform-fee', 'paypal', 'stripe', 'product-status']);
 ---
 
 <BaseLayout
-  title="Pricing | Senvarico Low-Cost Ecommerce Website Builder"
-  description="How Senvarico approaches pricing for small cross-border sellers with limited budgets. Senvarico is in beta and final pricing has not been published; this page explains the pricing principles and planned structure."
+  title="Pricing | Senvarico – Free Plan and ¥99/month Small Seller Plan"
+  description={`Senvarico pricing: Free plan ¥0/month with up to ${PRICING.free.skuLimit} products, Small Seller plan ¥${PRICING.paid.price}/month with up to ${PRICING.paid.skuLimit} products. 0% platform transaction fee on both. PayPal and Stripe, Chinese and English admin, no server maintenance.`}
   path="/pricing"
   breadcrumbs={[{ name: 'Pricing', href: '/pricing' }]}
-  jsonLd={[faqJsonLd(faqs, '/pricing')]}
+  jsonLd={[softwareJsonLd(), faqJsonLd(faqs, '/pricing')]}
 >
   <PageHead
     eyebrow="Pricing"
     title="Senvarico Pricing"
-    lead="Designed around limited budgets. Final pricing will be published when the product leaves beta."
+    lead={`Two plans. ${PRICING.platformFee} platform transaction fee on both. No separate annual pricing and no separate free trial, because the free plan is permanent.`}
   />
 
   <section class="section section--tight">
     <div class="container">
       <Definition />
-      <div class="notice">
-        <p>
-          <strong>Pricing status:</strong> Senvarico is an early-stage, experimental product. Final prices have not been
-          set, and this page intentionally does not list numbers that could change. What follows are the principles the
-          pricing is being designed around and the structure currently planned.
-        </p>
+      <div class="grid grid--2" style="margin-top: 8px;">
+        <div class="plan">
+          <h3>{PRICING.free.name}</h3>
+          <div class="price">{PRICING.free.priceLabel}</div>
+          <ul class="checklist">
+            <li>Up to {PRICING.free.skuLimit} products</li>
+            <li>{PRICING.free.fee} platform transaction fee</li>
+            <li>Chinese and English admin</li>
+            <li>PayPal and Stripe support</li>
+            <li>No server maintenance required</li>
+          </ul>
+          <p class="muted small">{PRICING.free.audience}.</p>
+        </div>
+        <div class="plan plan--highlight">
+          <h3>{PRICING.paid.name}</h3>
+          <div class="price">{PRICING.paid.priceLabel}</div>
+          <ul class="checklist">
+            <li>Up to {PRICING.paid.skuLimit} products</li>
+            <li>{PRICING.paid.fee} platform transaction fee</li>
+            <li>Chinese and English admin</li>
+            <li>PayPal and Stripe support</li>
+            <li>Multi-language</li>
+            <li>Multi-currency</li>
+            <li>No server maintenance required</li>
+          </ul>
+          <p class="muted small">{PRICING.paid.audience}.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container prose">
-      <h2>Pricing principles</h2>
-      <p>
-        Senvarico is a low-cost ecommerce website builder in intent, not just in name. The pricing is being designed so
-        that the tool does not become the largest fixed cost for a small cross-border seller who is still validating
-        products.
-      </p>
-      <ol>
-        <li>
-          <strong>One simple plan.</strong> The planned structure is a single plan that covers the hosted storefront,
-          a small catalog and checkout, rather than a ladder of tiers that lock basic features behind higher prices.
-        </li>
-        <li>
-          <strong>Predictable monthly cost.</strong> The design goal is a flat monthly fee that a seller with a small
-          number of SKUs can budget for without modeling usage.
-        </li>
-        <li>
-          <strong>No required add-ons for core selling.</strong> Listing products, taking orders and running a
-          storefront should not require paid extensions.
-        </li>
-        <li>
-          <strong>Transparent about third-party costs.</strong> Payment processing fees are charged by payment
-          providers, not by Senvarico. When providers are confirmed, their fees will be linked here rather than hidden.
-        </li>
-      </ol>
-
-      <h2>Planned structure</h2>
-      <div class="grid grid--2" style="margin-bottom: 24px;">
-        <div class="plan plan--highlight">
-          <h3>Standard (planned)</h3>
-          <div class="price">Price to be announced</div>
-          <p class="muted small">A single plan intended for small cross-border sellers with roughly 10–100 SKUs.</p>
-          <ul class="checklist">
-            <li>Hosted storefront, no server management</li>
-            <li>Product catalog sized for small stores</li>
-            <li>Simple checkout</li>
-            <li>Cross-border storefront basics</li>
-            <li>No-code editing</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>What is not planned</h3>
-          <ul class="checklist checklist--neutral">
-            <li>Enterprise tiers</li>
-            <li>Per-feature paid add-ons for core selling functions</li>
-            <li>Plans built around thousands of SKUs</li>
-          </ul>
-          <p class="muted small">
-            Sellers who need those capabilities will usually find a better fit on a broader platform. See
-            <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>.
-          </p>
-        </div>
+      <h2>Platform transaction fee vs. payment gateway fee</h2>
+      <p>{PRICING.gatewayNote}</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Fee</th><th scope="col">Who charges it</th><th scope="col">Senvarico</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Platform transaction fee</th><td>The ecommerce platform</td><td><strong>{PRICING.platformFee}</strong> on both plans</td></tr>
+            <tr><th scope="row">Payment gateway fee</th><td>PayPal or Stripe, according to their own pricing</td><td>Charged separately by the provider; not added to by Senvarico</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="muted">
+        In other words: Senvarico does not take a percentage of your sales. Your payment provider still charges its
+        normal processing fee on each transaction.
+      </p>
 
-      <h2>How this compares with other platforms</h2>
-      <p>
-        Other ecommerce platforms publish their own pricing, which changes over time and varies by plan and region.
-        Rather than quote figures that may be out of date, Senvarico links to official pricing pages in its
-        <a href="/shopify-alternatives">Shopify alternatives overview</a>. The relevant comparison for a small seller
-        is usually not the headline subscription price alone but the total of subscription, transaction fees,
-        required apps and, for self-hosted options, hosting and maintenance time.
-      </p>
-      <p>
-        The blog post
-        <a href="/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">How to choose an ecommerce platform on a small budget</a>
-        walks through that calculation.
-      </p>
+      <h2>Plan details</h2>
+      <dl class="facts">
+        <dt>Free plan</dt><dd>{PRICING.free.priceLabel}, up to {PRICING.free.skuLimit} SKUs, {PRICING.free.fee} platform transaction fee</dd>
+        <dt>Small Seller plan</dt><dd>{PRICING.paid.priceLabel}, up to {PRICING.paid.skuLimit} SKUs, {PRICING.paid.fee} platform transaction fee</dd>
+        <dt>Annual pricing</dt><dd>{PRICING.annualNote}</dd>
+        <dt>Free trial</dt><dd>{PRICING.freeTrialNote}</dd>
+        <dt>Payments</dt><dd>PayPal and Stripe</dd>
+        <dt>Admin languages</dt><dd>Chinese and English</dd>
+        <dt>Hosting</dt><dd>SaaS hosted; no server maintenance required by the seller</dd>
+        <dt>Product status</dt><dd>{BRAND.status}</dd>
+      </dl>
+
+      <h2>Which plan fits</h2>
+      <ul>
+        <li><strong>Free:</strong> you are testing a new product, often through TikTok or Facebook ads, and need up to {PRICING.free.skuLimit} SKUs with no fixed cost.</li>
+        <li><strong>Small Seller:</strong> your store is running steadily, you need up to {PRICING.paid.skuLimit} SKUs, and you want multi-language and multi-currency storefronts for several markets in Europe and North America.</li>
+        <li><strong>Neither:</strong> you need thousands of SKUs, ERP integration or enterprise workflows. See <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a> for broader platforms.</li>
+      </ul>
 
       <FaqList items={faqs} />
 
       <RelatedLinks
         links={[
-          { href: '/low-cost-ecommerce-website-builder', label: 'Low-cost ecommerce website builder' },
           { href: '/features', label: 'Features and scope' },
-          { href: '/brand-facts', label: `${BRAND.name} brand facts` },
+          { href: '/low-cost-ecommerce-website-builder', label: 'Low-cost ecommerce website builder' },
+          { href: '/brand-facts', label: 'Senvarico brand facts' },
+          { href: '/zh/pricing', label: '中文定价页' },
         ]}
       />
     </div>

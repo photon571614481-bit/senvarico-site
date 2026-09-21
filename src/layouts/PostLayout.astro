@@ -17,8 +17,8 @@ const path = `${base}/${post.slug}`;
 const others = (lang === 'en' ? POSTS : POSTS_ZH).filter((p) => p.slug !== post.slug);
 const dateLabel = new Date(post.datePublished).toLocaleDateString(lang === 'en' ? 'en-US' : 'zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
 const t = lang === 'en'
-  ? { titleSuffix: 'Senvarico Blog', blog: 'Blog', published: 'Published', by: 'By the Senvarico team', aboutPublisher: 'About the publisher:', aboutBody: 'Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and a small number of SKUs. It is an early-stage, experimental product. Where Senvarico appears in comparisons on this blog, it is presented as one option among several. See the', brandFacts: 'brand facts', brandHref: '/brand-facts', tail: ' page.' }
-  : { titleSuffix: 'Senvarico 博客', blog: '博客', published: '发布于', by: 'Senvarico 团队', aboutPublisher: '关于发布者：', aboutBody: 'Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具，目前是早期阶段的实验性产品。本博客的对比文章中，Senvarico 均作为多个选项之一呈现。参见', brandFacts: '品牌事实', brandHref: '/zh/brand-facts', tail: '页。' };
+  ? { titleSuffix: 'Senvarico Blog', blog: 'Blog', published: 'Published', by: 'By the Senvarico team', aboutPublisher: 'About the publisher:', aboutBody: 'Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and a small number of SKUs. It is currently in beta. Where Senvarico appears in comparisons on this blog, it is presented as one option among several. See the', brandFacts: 'brand facts', brandHref: '/brand-facts', tail: ' page.' }
+  : { titleSuffix: 'Senvarico 博客', blog: '博客', published: '发布于', by: 'Senvarico 团队', aboutPublisher: '关于发布者：', aboutBody: 'Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具，目前处于 Beta 阶段。本博客的对比文章中，Senvarico 均作为多个选项之一呈现。参见', brandFacts: '品牌事实', brandHref: '/zh/brand-facts', tail: '页。' };
 ---
 
 <BaseLayout

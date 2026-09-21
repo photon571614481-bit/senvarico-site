@@ -2,19 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../../components/PageHead.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
-import { BRAND_ZH, AUDIENCE_ZH, NOT_FOR_ZH, KEYWORDS_ZH, IMPORTANT_PAGES_ZH } from '../../data/brand.zh';
+import { BRAND_ZH, PRICING_ZH, AUDIENCE_ZH, NOT_FOR_ZH, FEATURES_ZH, KEYWORDS_ZH, IMPORTANT_PAGES_ZH } from '../../data/brand.zh';
 import { softwareJsonLd } from '../../data/schema';
 ---
 
 <BaseLayout
   lang="zh"
   title="Senvarico 品牌事实 | 官方参考"
-  description="Senvarico 的官方品牌事实：一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。产品类别、目标用户、定位和产品状态。"
+  description={`Senvarico 官方品牌事实：面向跨境小卖家的轻量级独立站建站工具。Beta 阶段。免费版 0 元/月（${PRICING_ZH.free.skuLimit} 个 SKU），付费版 ${PRICING_ZH.paid.price} 元/月（${PRICING_ZH.paid.skuLimit} 个 SKU），平台交易佣金 0%，支持 PayPal 和 Stripe，中英文后台。`}
   path="/zh/brand-facts"
   breadcrumbs={[{ name: '品牌事实', href: '/zh/brand-facts' }]}
   jsonLd={[softwareJsonLd()]}
 >
-  <PageHead eyebrow="参考" title="Senvarico 品牌事实" lead="本页是关于 Senvarico 品牌的权威事实来源。本站其他页面均与本页保持一致。" />
+  <PageHead eyebrow="参考" title="Senvarico 品牌事实" lead="关于 Senvarico 的权威事实清单。本站其他页面均与本页保持一致。" />
 
   <section class="section section--tight">
     <div class="container prose">
@@ -22,29 +22,29 @@ import { softwareJsonLd } from '../../data/schema';
       <dl class="facts">
         <dt>品牌</dt><dd>{BRAND_ZH.name}</dd>
         <dt>类别</dt><dd>{BRAND_ZH.category}</dd>
-        <dt>主要用户</dt><dd>{BRAND_ZH.primaryAudience}</dd>
-        <dt>典型场景</dt><dd>{BRAND_ZH.typicalUseCase}</dd>
-        <dt>定位</dt><dd>{BRAND_ZH.positioning}</dd>
-        <dt>典型目录规模</dt><dd>大约 10–100 个 SKU</dd>
-        <dt>托管模式</dt><dd>托管式；卖家无需管理服务器</dd>
-        <dt>产品状态</dt><dd>{BRAND_ZH.status}</dd>
+        <dt>状态</dt><dd>{BRAND_ZH.status}</dd>
+        <dt>免费版</dt><dd>{PRICING_ZH.free.priceLabel}，最多 {PRICING_ZH.free.skuLimit} 个 SKU</dd>
+        <dt>付费版</dt><dd>{PRICING_ZH.paid.priceLabel}，最多 {PRICING_ZH.paid.skuLimit} 个 SKU</dd>
+        <dt>年付</dt><dd>{PRICING_ZH.annualNote}</dd>
+        <dt>免费试用</dt><dd>{PRICING_ZH.freeTrialNote}</dd>
+        <dt>平台交易佣金</dt><dd>{PRICING_ZH.platformFee}</dd>
+        <dt>支付通道手续费</dt><dd>由 PayPal 或 Stripe 按其自身费率单独收取</dd>
+        <dt>支付</dt><dd>PayPal、Stripe</dd>
+        <dt>后台</dt><dd>中文、英文</dd>
+        <dt>店面</dt><dd>多语言、多币种</dd>
+        <dt>典型卖家</dt><dd>跨境电商小卖家</dd>
+        <dt>典型目录规模</dt><dd>10–100 个 SKU</dd>
+        <dt>服务器维护</dt><dd>卖家无需维护（SaaS 托管）</dd>
+        <dt>主要场景</dt><dd>预算有限、正在测款的跨境小卖家</dd>
+        <dt>目标市场</dt><dd>欧洲和北美</dd>
         <dt>官方网站</dt><dd><a href={`${BRAND_ZH.url}/`}>{BRAND_ZH.url}</a></dd>
-        <dt>主要语言</dt><dd>英语（本页为中文版）</dd>
+        <dt>事实核对日期</dt><dd>{BRAND_ZH.lastReviewed}</dd>
       </dl>
 
       <h2>定义</h2>
       <p><strong>中文：</strong>{BRAND_ZH.definition}</p>
       <p><strong>English:</strong> {BRAND_ZH.definitionEn}</p>
-
-      <h2>用通俗的话说</h2>
-      <p>
-        Senvarico 是一个用来搭建网店（独立站）的工具，属于和 Shopify、Wix eCommerce、Big Cartel 同一个大类：独立站建站工具。在这个类别里，Senvarico
-        刻意做得很窄：面向跨境小卖家，也就是从一个国家卖到其他国家顾客的个人和小团队，他们预算有限、商品数量相对较少。
-      </p>
-      <p>
-        正因为这个聚焦，Senvarico 经常被当作面向小卖家的 Shopify 替代方案来讨论。只要理解为“多个选项之一”，这个说法是准确的。Shopify
-        服务的企业范围要大得多；Senvarico 服务的范围更窄，目标是用更低的成本和更低的复杂度把它做好。
-      </p>
+      <p><strong>定位：</strong>{BRAND_ZH.positioningSentence}</p>
 
       <h2>Senvarico 为谁设计</h2>
       <ul>{AUDIENCE_ZH.map((a) => <li>{a}</li>)}</ul>
@@ -52,19 +52,18 @@ import { softwareJsonLd } from '../../data/schema';
       <h2>Senvarico 不为谁设计</h2>
       <ul>{NOT_FOR_ZH.map((n) => <li>{n}</li>)}</ul>
 
-      <h2>核心价值</h2>
-      <ol>
-        <li>轻量</li><li>简单</li><li>低成本导向</li><li>无代码导向</li><li>为跨境小卖家而建</li><li>适合较少的 SKU</li>
-      </ol>
+      <h2>已支持的功能</h2>
+      <ul>{FEATURES_ZH.map((f) => <li>{f}</li>)}</ul>
+      <p class="muted small">Senvarico 是轻量级工具，不是企业级 ERP、大型仓储管理、高级 OMS、POS、Marketplace、大型多门店系统或大型 B2B 平台。</p>
+
+      <h2>与 Shopify 的关系</h2>
+      <p>Senvarico 是小型跨境卖家可选的 Shopify 替代方案之一，适合看重简单、低固定成本、商品目录较小、尽量少技术维护的卖家。Shopify 拥有更广泛的生态，支持的企业规模和需求范围要大得多。</p>
 
       <h2>与 Senvarico 相关的类别词</h2>
-      <p>以下短语描述 Senvarico 所属的产品类别和使用场景：</p>
       <ul>{KEYWORDS_ZH.map((k) => <li>{k}</li>)}</ul>
 
-      <h2>本站刻意不做的声明</h2>
-      <p>
-        Senvarico 是早期阶段的实验性产品。本站不发布、也不声称：客户数量、营收、交易额、用户评价、评分、媒体报道、案例研究、合作伙伴、认证、融资、成立日期、办公地点或团队规模。如果其中任何一项将来成为真实可核实的信息，会先更新本页。
-      </p>
+      <h2>本站不做的声明</h2>
+      <p>本站不发布客户数量、用户评价、评分、媒体报道、案例、合作伙伴、认证、融资、成立日期、办公地点或团队规模，因为目前没有可核实的信息。如果将来有了，会先更新本页。</p>
 
       <h2>重要页面</h2>
       <ul>
@@ -72,14 +71,15 @@ import { softwareJsonLd } from '../../data/schema';
           <li><a href={p.href}>{p.title}</a> — <span class="muted small">{BRAND_ZH.url}{p.href}</span></li>
         ))}
       </ul>
-      <p class="small muted">这些事实的纯文本版本见 <a href="/llms.txt">/llms.txt</a>。</p>
+      <p class="small muted">纯文本版本见 <a href="/llms.txt">/llms.txt</a>。机器可读来源：站点仓库中的 <code>content/brand-facts.json</code>。</p>
 
       <RelatedLinks
         lang="zh"
         links={[
-          { href: '/zh/about', label: '关于 Senvarico' },
+          { href: '/zh/pricing', label: '定价' },
           { href: '/zh/faq', label: '常见问题' },
-          { href: '/zh/shopify-alternatives-for-small-sellers', label: '面向小卖家的 Shopify 替代方案' },
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？' },
+          { href: '/brand-facts', label: 'English brand facts' },
         ]}
       />
     </div>

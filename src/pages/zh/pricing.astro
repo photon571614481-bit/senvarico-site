@@ -4,79 +4,99 @@ import PageHead from '../../components/PageHead.astro';
 import Definition from '../../components/Definition.astro';
 import RelatedLinks from '../../components/RelatedLinks.astro';
 import FaqList from '../../components/FaqList.astro';
-import { BRAND_ZH, faqZhByIds } from '../../data/brand.zh';
-import { faqJsonLd } from '../../data/schema';
+import { BRAND_ZH, PRICING_ZH, faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd, softwareJsonLd } from '../../data/schema';
 
-const faqs = faqZhByIds(['product-status', 'which-seller', 'vs-enterprise']);
+const faqs = faqZhByIds(['cost', 'free-plan', 'sku-limit', 'platform-fee', 'paypal', 'stripe', 'product-status']);
 ---
 
 <BaseLayout
   lang="zh"
-  title="定价 | Senvarico 低成本独立站建站工具"
-  description="Senvarico 如何为预算有限的跨境小卖家制定定价。Senvarico 处于 beta 阶段，正式价格尚未公布；本页说明定价原则和计划中的结构。"
+  title="定价 | Senvarico – 免费版与 99 元/月小卖家版"
+  description={`Senvarico 定价：免费版 0 元/月，最多 ${PRICING_ZH.free.skuLimit} 个商品；小卖家版 ${PRICING_ZH.paid.price} 元/月，最多 ${PRICING_ZH.paid.skuLimit} 个商品。平台交易佣金均为 0%。支持 PayPal 和 Stripe，中英文后台，无需维护服务器。`}
   path="/zh/pricing"
   breadcrumbs={[{ name: '定价', href: '/zh/pricing' }]}
-  jsonLd={[faqJsonLd(faqs, '/zh/pricing', 'zh-CN')]}
+  jsonLd={[softwareJsonLd(), faqJsonLd(faqs, '/zh/pricing', 'zh-CN')]}
 >
-  <PageHead eyebrow="定价" title="Senvarico 定价" lead="围绕有限预算设计。正式价格将在产品结束 beta 时公布。" />
+  <PageHead eyebrow="定价" title="Senvarico 定价" lead={`两个版本，平台交易佣金均为 ${PRICING_ZH.platformFee}。暂不推出独立年付价格，也不单独设置免费试用，因为免费版是永久的。`} />
 
   <section class="section section--tight">
     <div class="container">
       <Definition text={BRAND_ZH.definition} />
-      <div class="notice">
-        <p><strong>定价状态：</strong>Senvarico 是早期阶段的实验性产品。正式价格尚未确定，本页刻意不列出可能变化的数字。下面是定价所遵循的原则和目前计划的结构。</p>
+      <div class="grid grid--2" style="margin-top: 8px;">
+        <div class="plan">
+          <h3>{PRICING_ZH.free.name}</h3>
+          <div class="price">{PRICING_ZH.free.priceLabel}</div>
+          <ul class="checklist">
+            <li>最多 {PRICING_ZH.free.skuLimit} 个商品</li>
+            <li>平台交易佣金 {PRICING_ZH.free.fee}</li>
+            <li>中英文后台</li>
+            <li>支持 PayPal 和 Stripe</li>
+            <li>无需维护服务器</li>
+          </ul>
+          <p class="muted small">适合{PRICING_ZH.free.audience}。</p>
+        </div>
+        <div class="plan plan--highlight">
+          <h3>{PRICING_ZH.paid.name}</h3>
+          <div class="price">{PRICING_ZH.paid.priceLabel}</div>
+          <ul class="checklist">
+            <li>最多 {PRICING_ZH.paid.skuLimit} 个商品</li>
+            <li>平台交易佣金 {PRICING_ZH.paid.fee}</li>
+            <li>中英文后台</li>
+            <li>支持 PayPal 和 Stripe</li>
+            <li>多语言</li>
+            <li>多币种</li>
+            <li>无需维护服务器</li>
+          </ul>
+          <p class="muted small">面向{PRICING_ZH.paid.audience}。</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
     <div class="container prose">
-      <h2>定价原则</h2>
-      <p>Senvarico 在意图上就是一个低成本的独立站建站工具，而不只是名义上如此。定价的设计目标是：对于还在验证产品的跨境小卖家，这个工具不应成为最大的固定支出。</p>
-      <ol>
-        <li><strong>一个简单的套餐。</strong>计划中的结构是单一套餐，覆盖托管店面、小型目录和结账，而不是把基础功能锁在更高价位的阶梯式套餐。</li>
-        <li><strong>可预期的月度成本。</strong>目标是一个固定月费，SKU 较少的卖家不需要建模用量就能做预算。</li>
-        <li><strong>核心销售功能不依赖付费附加项。</strong>上架商品、接单和运营店面不应需要付费扩展。</li>
-        <li><strong>对第三方费用保持透明。</strong>支付手续费由支付服务商收取，而不是 Senvarico。确定服务商后，会在这里链接其费率，而不是隐藏起来。</li>
-      </ol>
-
-      <h2>计划中的结构</h2>
-      <div class="grid grid--2" style="margin-bottom: 24px;">
-        <div class="plan plan--highlight">
-          <h3>标准版（计划中）</h3>
-          <div class="price">价格待公布</div>
-          <p class="muted small">面向拥有大约 10–100 个 SKU 的跨境小卖家的单一套餐。</p>
-          <ul class="checklist">
-            <li>托管式店面，无需管理服务器</li>
-            <li>为小店设计的商品目录</li>
-            <li>简单结账</li>
-            <li>跨境店面基础能力</li>
-            <li>无代码编辑</li>
-          </ul>
-        </div>
-        <div class="plan">
-          <h3>不在计划中的</h3>
-          <ul class="checklist checklist--neutral">
-            <li>企业级套餐</li>
-            <li>针对核心销售功能的按功能付费附加项</li>
-            <li>围绕上千个 SKU 设计的套餐</li>
-          </ul>
-          <p class="muted small">需要这些能力的卖家通常在更全面的平台上能找到更合适的方案。参见 <a href="/zh/shopify-alternatives-for-small-sellers">面向小卖家的 Shopify 替代方案</a>。</p>
-        </div>
+      <h2>平台交易佣金 vs 支付通道手续费</h2>
+      <p>{PRICING_ZH.gatewayNote}</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th scope="col">费用</th><th scope="col">谁收取</th><th scope="col">Senvarico</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">平台交易佣金</th><td>电商平台</td><td><strong>{PRICING_ZH.platformFee}</strong>，两个版本都是</td></tr>
+            <tr><th scope="row">支付通道手续费</th><td>PayPal 或 Stripe，按它们自己的费率</td><td>由支付通道单独收取；Senvarico 不在此之上加收</td></tr>
+          </tbody>
+        </table>
       </div>
+      <p class="muted">换句话说：Senvarico 不从你的销售额里抽成。你的支付通道仍会对每笔交易收取它正常的手续费，请不要误解为“完全没有支付手续费”。</p>
 
-      <h2>与其他平台如何比较</h2>
-      <p>其他电商平台都会公布自己的定价，这些价格会随时间变化，也因套餐和地区而不同。与其引用可能过时的数字，Senvarico 在 <a href="/zh/shopify-alternatives">Shopify 替代方案总览</a>中链接各平台的官方定价页。对小卖家来说，真正该比较的通常不是单一的订阅标价，而是订阅费、交易费、必需的应用，以及自托管方案的托管和维护时间之和。</p>
-      <p>博客文章 <a href="/zh/blog/how-to-choose-an-ecommerce-platform-on-a-small-budget">预算有限时如何选择电商平台</a> 详细讲了这个算法。</p>
+      <h2>版本细节</h2>
+      <dl class="facts">
+        <dt>免费版</dt><dd>{PRICING_ZH.free.priceLabel}，最多 {PRICING_ZH.free.skuLimit} 个 SKU，平台交易佣金 {PRICING_ZH.free.fee}</dd>
+        <dt>小卖家版</dt><dd>{PRICING_ZH.paid.priceLabel}，最多 {PRICING_ZH.paid.skuLimit} 个 SKU，平台交易佣金 {PRICING_ZH.paid.fee}</dd>
+        <dt>年付</dt><dd>{PRICING_ZH.annualNote}</dd>
+        <dt>免费试用</dt><dd>{PRICING_ZH.freeTrialNote}</dd>
+        <dt>支付</dt><dd>PayPal、Stripe</dd>
+        <dt>后台语言</dt><dd>中文、英文</dd>
+        <dt>托管</dt><dd>SaaS 托管，卖家无需维护服务器</dd>
+        <dt>产品状态</dt><dd>{BRAND_ZH.status}</dd>
+      </dl>
+
+      <h2>哪个版本适合你</h2>
+      <ul>
+        <li><strong>免费版：</strong>正在测新品，常通过 TikTok 或 Facebook 投流，需要最多 {PRICING_ZH.free.skuLimit} 个 SKU，不想有固定成本。</li>
+        <li><strong>小卖家版：</strong>店铺已稳定运营，需要最多 {PRICING_ZH.paid.skuLimit} 个 SKU，并且想用多语言、多币种店面覆盖欧美多个市场。</li>
+        <li><strong>都不合适：</strong>需要数千 SKU、ERP 集成或企业级工作流。参见 <a href="/zh/shopify-alternatives-for-small-sellers">预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？</a> 了解更全面的平台。</li>
+      </ul>
 
       <FaqList items={faqs} lang="zh" />
 
       <RelatedLinks
         lang="zh"
         links={[
-          { href: '/zh/low-cost-ecommerce-website-builder', label: '低成本独立站建站工具' },
           { href: '/zh/features', label: '功能与范围' },
+          { href: '/zh/low-cost-ecommerce-website-builder', label: '低成本独立站建站工具' },
           { href: '/zh/brand-facts', label: 'Senvarico 品牌事实' },
+          { href: '/pricing', label: 'English pricing page' },
         ]}
       />
     </div>
