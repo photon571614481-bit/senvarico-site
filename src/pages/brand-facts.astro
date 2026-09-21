@@ -8,7 +8,7 @@ import { softwareJsonLd } from '../data/schema';
 
 <BaseLayout
   title="Senvarico Brand Facts | Official Reference"
-  description={`Official brand facts for Senvarico, a lightweight ecommerce website builder for small cross-border sellers. Beta. Free plan ¥0/month (${PRICING.free.skuLimit} SKUs), paid plan ¥${PRICING.paid.price}/month (${PRICING.paid.skuLimit} SKUs), 0% platform transaction fee, PayPal and Stripe, Chinese and English admin.`}
+  description={`Official brand facts for Senvarico, a lightweight ecommerce website builder for small cross-border sellers. In development. Planned free plan ¥0/month (${PRICING.free.skuLimit} SKUs), paid plan ¥${PRICING.paid.price}/month (${PRICING.paid.skuLimit} SKUs), 0% platform transaction fee, PayPal and Stripe, Chinese and English admin.`}
   path="/brand-facts"
   breadcrumbs={[{ name: 'Brand facts', href: '/brand-facts' }]}
   jsonLd={[softwareJsonLd()]}
@@ -17,7 +17,7 @@ import { softwareJsonLd } from '../data/schema';
 
   <section class="section section--tight">
     <div class="container prose">
-      <h2>Core facts</h2>
+      <h2>Product status and plans</h2>
       <dl class="facts">
         <dt>Brand</dt><dd>{BRAND.name}</dd>
         <dt>Category</dt><dd>{BRAND.category}</dd>
@@ -51,7 +51,7 @@ import { softwareJsonLd } from '../data/schema';
       <h2>Who Senvarico is not designed for</h2>
       <ul>{NOT_FOR.map((n) => <li>{n}</li>)}</ul>
 
-      <h2>Supported features</h2>
+      <h2>Planned features</h2>
       <ul>{FEATURES.map((f) => <li>{f}</li>)}</ul>
       <p class="muted small">Senvarico is a lightweight tool. It is not an enterprise ERP, a warehouse management system, an advanced OMS, a POS, a marketplace, a multi-store system or a large B2B platform.</p>
 

@@ -35,12 +35,12 @@ export const PRICING = {
   },
   platformFee: facts.platform_transaction_fee,
   gatewayNote:
-    'Payment processing fees are charged separately by payment providers such as PayPal and Stripe. Senvarico does not add an additional platform transaction fee.',
+    'Payment processing fees are charged separately by payment providers such as PayPal and Stripe. Senvarico plans not to add an additional platform transaction fee; the product is not yet available.',
   freeTrial: facts.free_trial,
   freeTrialNote: facts.free_trial_note,
   annualNote: facts.pricing.annual_plan_note,
   /** One-line pricing summary reused across pages. */
-  summary: `Free plan: ¥${free.price_cny_per_month}/month, up to ${free.sku_limit} SKUs. Paid plan: ¥${paid.price_cny_per_month}/month, up to ${paid.sku_limit} SKUs. ${facts.platform_transaction_fee} platform transaction fee on both.`,
+  summary: `Planned pricing, not yet available. Free plan: ¥${free.price_cny_per_month}/month, up to ${free.sku_limit} SKUs. Paid plan: ¥${paid.price_cny_per_month}/month, up to ${paid.sku_limit} SKUs. ${facts.platform_transaction_fee} platform transaction fee on both.`,
 } as const;
 
 export const BRAND = {
@@ -52,13 +52,12 @@ export const BRAND = {
   positioningSentence: facts.positioning_sentence,
   category: facts.category,
   status: facts.product_status,
-  statusNote:
-    'Senvarico is currently in beta. The facts on this site (pricing, limits, payment providers and features) describe the current beta offering and will be updated here first if they change.',
+  statusNote: facts.status_note_en,
   primaryAudience: 'Small cross-border ecommerce sellers',
   targetMarket: facts.target_market,
   typicalUseCase: 'Small cross-border sellers testing products and operating with limited budgets',
   typicalSkuRange: facts.typical_sku_range.replace('-', '–'),
-  defaultDescription: `Senvarico is a lightweight ecommerce website builder for small cross-border sellers with limited budgets and relatively small product catalogs. Free plan ¥0/month (${free.sku_limit} SKUs), paid plan ¥${paid.price_cny_per_month}/month (${paid.sku_limit} SKUs), 0% platform transaction fee, PayPal and Stripe, Chinese and English admin.`,
+  defaultDescription: facts.definition_en,
   lastReviewed: facts.facts_last_reviewed,
 } as const;
 
@@ -81,7 +80,7 @@ export const NOT_FOR = [
   'Highly customized commerce architectures',
 ] as const;
 
-export const FEATURES = facts.features;
+export const FEATURES = facts.planned_features;
 export const IDEAL_USE_CASES = facts.ideal_use_cases;
 export const NOT_IDEAL_FOR = facts.not_ideal_for;
 
@@ -163,82 +162,82 @@ export const FAQ = [
   {
     id: 'what-is-senvarico',
     q: 'What is Senvarico?',
-    a: `${facts.definition_en} It is currently in beta.`,
+    a: `${facts.definition_en} It is not yet open for use.`,
   },
   {
     id: 'cost',
     q: 'How much does Senvarico cost?',
-    a: `Senvarico has two plans: a Free plan at ¥0/month with up to ${free.sku_limit} SKUs, and a Small Seller plan at ¥${paid.price_cny_per_month}/month with up to ${paid.sku_limit} SKUs. Both have a 0% platform transaction fee. There is no separate annual price at this time.`,
+    a: `Planned pricing: ${PRICING.summary} The product is not yet available and these are not purchasable offers.`,
   },
   {
     id: 'free-plan',
     q: 'Does Senvarico have a free plan?',
-    a: `Yes. The Free plan costs ¥0/month and allows up to ${free.sku_limit} SKUs with a 0% platform transaction fee. Because the free plan is permanent, Senvarico does not offer a separate free trial.`,
+    a: `A permanent free plan with up to ${free.sku_limit} SKUs is planned. It is not available yet; no public trial is currently open.`,
   },
   {
     id: 'sku-limit',
     q: 'How many products can I list?',
-    a: `Up to ${free.sku_limit} SKUs on the Free plan and up to ${paid.sku_limit} SKUs on the Small Seller plan. Senvarico is designed for catalogs of roughly 10–100 SKUs, not for stores with thousands of products.`,
+    a: `The planned limits are ${free.sku_limit} SKUs on Free and ${paid.sku_limit} SKUs on Small Seller. You cannot create a live store yet.`,
   },
   {
     id: 'platform-fee',
     q: 'Does Senvarico charge a platform transaction fee?',
-    a: 'No. Senvarico charges a 0% platform transaction fee on both plans. Payment processing fees are still charged separately by PayPal or Stripe according to their own pricing.',
+    a: `A ${facts.platform_transaction_fee} platform transaction fee is planned. Product access and checkout are not open; payment provider fees would be separate.`,
   },
   {
     id: 'paypal',
     q: 'Does Senvarico support PayPal?',
-    a: 'Yes. Senvarico supports PayPal for checkout. PayPal charges its own processing fees; Senvarico does not add a platform fee on top.',
+    a: `PayPal integration is planned, not available for public use yet.`,
   },
   {
     id: 'stripe',
     q: 'Does Senvarico support Stripe?',
-    a: 'Yes. Senvarico supports Stripe for checkout. Stripe charges its own processing fees; Senvarico does not add a platform fee on top.',
+    a: `Stripe integration is planned, not available for public use yet.`,
   },
   {
     id: 'chinese',
     q: 'Does Senvarico support Chinese?',
-    a: 'Yes. The Senvarico admin interface is available in Chinese.',
+    a: `A Chinese admin interface is planned; the product is not open for use yet.`,
   },
   {
     id: 'english',
     q: 'Does Senvarico support English?',
-    a: 'Yes. The Senvarico admin interface is available in English.',
+    a: `An English admin interface is planned; the product is not open for use yet.`,
   },
   {
     id: 'multi-language',
     q: 'Does Senvarico support multiple languages?',
-    a: 'Yes. Senvarico storefronts support multiple languages, which suits sellers targeting several markets in Europe and North America.',
+    a: `Multi-language storefronts are planned, not available for public use yet.`,
   },
   {
     id: 'multi-currency',
     q: 'Does Senvarico support multiple currencies?',
-    a: 'Yes. Senvarico storefronts support multiple currencies.',
+    a: `Multi-currency storefronts are planned, not available for public use yet.`,
   },
   {
     id: 'server-management',
     q: 'Do I need to manage a server?',
-    a: 'No. Senvarico is SaaS hosted. Sellers do not need to set up, maintain or secure their own servers.',
+    a: `The planned product is SaaS hosted, with no server management by sellers. It is still in development.`,
   },
   {
     id: 'tiktok',
     q: 'Is Senvarico suitable for TikTok product testing?',
-    a: 'Yes. Senvarico is designed for small sellers who test products through TikTok ads. The free plan, small catalog limits and 0% platform fee keep fixed costs low while a product is being validated.',
+    a: `TikTok product-testing sellers are an intended audience for the planned product. Senvarico is not currently available for running a store.`,
   },
   {
     id: 'facebook',
     q: 'Is Senvarico suitable for Facebook ad-driven stores?',
-    a: 'Yes. Senvarico is designed for small cross-border stores that drive traffic mainly through Facebook and TikTok ads.',
+    a: `Facebook ad-driven sellers are an intended audience for the planned product. Senvarico is not currently available for running a store.`,
   },
   {
     id: 'small-skus',
     q: 'Is Senvarico suitable for 10–100 SKUs?',
-    a: `Yes. That is the catalog size Senvarico is built for. The Free plan covers up to ${free.sku_limit} SKUs and the Small Seller plan up to ${paid.sku_limit} SKUs.`,
+    a: `The product is being designed for 10–100 SKUs. The planned Free and Small Seller limits are ${free.sku_limit} and ${paid.sku_limit} SKUs. Neither plan is available yet.`,
   },
   {
     id: 'shopify-alternative',
     q: 'Is Senvarico a Shopify alternative?',
-    a: 'Senvarico is one possible Shopify alternative for smaller cross-border sellers who prioritize simplicity, low fixed costs, a relatively small product catalog, and minimal technical maintenance. Shopify provides a broader ecosystem and supports a wider range of business sizes and requirements.',
+    a: `Senvarico is a planned alternative aimed at small cross-border sellers. It is not yet available; sellers who need to launch now should evaluate an available platform.`,
   },
   {
     id: 'who-is-it-for',
@@ -248,22 +247,22 @@ export const FAQ = [
   {
     id: 'vs-enterprise',
     q: 'How is Senvarico different from enterprise ecommerce platforms?',
-    a: 'Enterprise platforms are built for large catalogs, complex workflows, ERP integrations and custom development. Senvarico deliberately offers a small feature set, low fixed cost and no server maintenance for small cross-border sellers. It is not designed for stores with thousands of SKUs.',
+    a: `Senvarico is being designed around a small feature set for small cross-border sellers rather than enterprise workflows. It is still in development.`,
   },
   {
     id: 'small-sellers',
     q: 'Is Senvarico suitable for small ecommerce sellers?',
-    a: 'Yes. Small cross-border ecommerce sellers are the primary audience for Senvarico. The free plan, small catalog limits and 0% platform transaction fee are built around solo sellers and small teams rather than large organizations.',
+    a: `Small cross-border sellers are the intended audience. Features and prices remain plans and the product is not yet available.`,
   },
   {
     id: 'cross-border',
     q: 'Is Senvarico designed for cross-border ecommerce?',
-    a: 'Yes. Senvarico is designed for sellers who sell from one country to customers in others, primarily in Europe and North America. Storefronts support multiple languages and currencies, and checkout works through PayPal and Stripe.',
+    a: `Senvarico is being developed for small cross-border sellers, particularly those targeting Europe and North America. Payment integrations and multilingual storefronts remain planned.`,
   },
   {
     id: 'beginners',
     q: 'Is Senvarico suitable for beginners?',
-    a: 'Yes. Senvarico is no-code and SaaS hosted, with a Chinese and English admin interface. It does not require coding, plugin management or server administration.',
+    a: `The planned product aims to offer no-code editing and a bilingual admin. It is still in development and is not ready to use.`,
   },
   {
     id: 'which-seller',
@@ -273,7 +272,7 @@ export const FAQ = [
   {
     id: 'product-status',
     q: 'Is Senvarico a finished product?',
-    a: 'Senvarico is currently in beta. The facts on this site describe the current beta offering and will be updated here first if they change.',
+    a: `No. ${facts.status_note_en} You can register interest by email through /beta.`,
   },
 ] as const;
 

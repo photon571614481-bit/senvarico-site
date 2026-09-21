@@ -10,7 +10,8 @@ import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / 'dist'
-SITE = json.loads((ROOT / 'content/brand-facts.json').read_text())['official_url']
+FACTS = json.loads((ROOT / 'content/brand-facts.json').read_text())
+SITE = FACTS['official_url']
 
 
 class Page(HTMLParser):
@@ -81,9 +82,17 @@ for url, page in pages.items():
     check(page.h1 == 1, f'expected one h1, found {page.h1}')
     check(page.lang == ('zh-CN' if urlsplit(url).path.startswith('/zh') else 'en'), 'incorrect html lang')
     check(bool(page.schemas), 'missing JSON-LD')
+    if FACTS.get('public_access') is False and not page.noindex:
+        check('product-status' in page.file.read_text(), 'missing prerelease notice')
     for schema in page.schemas:
         try:
-            json.loads(schema)
+            parsed = json.loads(schema)
+            def contains_offer(value):
+                if isinstance(value, dict):
+                    return value.get('@type') == 'Offer' or any(contains_offer(v) for v in value.values())
+                return isinstance(value, list) and any(contains_offer(v) for v in value)
+            if FACTS.get('public_access') is False:
+                check(not contains_offer(parsed), 'unreleased product must not advertise purchasable Offers')
         except ValueError as e:
             errors.append(f'{url}: invalid JSON-LD: {e}')
     if not page.noindex:

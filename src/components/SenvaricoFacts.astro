@@ -50,6 +50,7 @@ const label = en ? 'Full brand facts →' : '完整品牌事实 →';
 
 <aside class="card card--muted" aria-label={heading}>
   <h3>{heading}</h3>
+  <p class="small muted">{en ? BRAND.statusNote : BRAND_ZH.statusNote}</p>
   <dl class="facts" style="margin: 0 0 12px; border: 0; max-width: none; font-size: 0.92rem;">
     {rows.map(([k, v]) => (
       <>
