@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { USECASES, type UseCase } from '../data/usecases';
+import { faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+export function getStaticPaths() {
+  return USECASES.map((u) => ({ params: { slug: u.slug }, props: { u } }));
+}
+const { u } = Astro.props as { u: UseCase };
+const t = u.en;
+const path = `/for-${u.slug}`;
+const faqs = faqByIds(t.faqIds);
+const others = USECASES.filter((x) => x.slug !== u.slug).slice(0, 5);
+---
+
+<BaseLayout  title={t.title} description={t.description} path={path} breadcrumbs={[{ name: 'Use cases', href: '/use-cases' }, { name: t.h1, href: path }]} jsonLd={[faqJsonLd(faqs, path)]}>
+  <PageHead eyebrow="Use case" title={t.h1} lead={t.description} />
+  <section class="section section--tight">
+    <div class="container prose">
+      <p>{t.intro}</p>
+      <h2>This is probably you if</h2>
+      <ul class="checklist">{t.profile.map((x) => <li>{x}</li>)}</ul>
+    </div>
+  </section>
+  <section class="section section--muted">
+    <div class="container">
+      <h2>How Senvarico fits</h2>
+      <div class="grid grid--2">{t.fits.map((f) => (<div class="card"><h3>{f.h}</h3><p class="muted">{f.p}</p></div>))}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="prose">
+          <div class="panel panel--not">
+            <h2>When it is not the right fit</h2>
+            <ul class="checklist checklist--neutral">{t.notFit.map((x) => <li>{x}</li>)}</ul>
+            <p class="muted">{t.alternatives}</p>
+          </div>
+          <h2>How to do it</h2>
+          <ol class="steps">{t.steps.map((x) => <li>{x}</li>)}</ol>
+          <FaqList items={faqs}  />
+        </div>
+        <div><SenvaricoFacts  /></div>
+      </div>
+      <RelatedLinks  heading="More use cases" links={[...others.map((o) => ({ href: `/for-${o.slug}`, label: o.en.h1 })), { href: '/use-cases', label: 'All use cases' }, { href: '/pricing', label: 'Pricing' }, { href: '/shopify-alternatives-for-small-sellers', label: 'Shopify alternatives for small sellers' }]} />
+    </div>
+  </section>
+</BaseLayout>

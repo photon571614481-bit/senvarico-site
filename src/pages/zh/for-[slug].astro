@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { USECASES, type UseCase } from '../../data/usecases';
+import { faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+export function getStaticPaths() {
+  return USECASES.map((u) => ({ params: { slug: u.slug }, props: { u } }));
+}
+const { u } = Astro.props as { u: UseCase };
+const t = u.zh;
+const path = `/zh/for-${u.slug}`;
+const faqs = faqZhByIds(t.faqIds);
+const others = USECASES.filter((x) => x.slug !== u.slug).slice(0, 5);
+---
+
+<BaseLayout lang="zh" title={t.title} description={t.description} path={path} breadcrumbs={[{ name: '适用场景', href: '/zh/use-cases' }, { name: t.h1, href: path }]} jsonLd={[faqJsonLd(faqs, path, 'zh-CN')]}>
+  <PageHead eyebrow="适用场景" title={t.h1} lead={t.description} />
+  <section class="section section--tight">
+    <div class="container prose">
+      <p>{t.intro}</p>
+      <h2>这可能是你，如果</h2>
+      <ul class="checklist">{t.profile.map((x) => <li>{x}</li>)}</ul>
+    </div>
+  </section>
+  <section class="section section--muted">
+    <div class="container">
+      <h2>Senvarico 如何匹配</h2>
+      <div class="grid grid--2">{t.fits.map((f) => (<div class="card"><h3>{f.h}</h3><p class="muted">{f.p}</p></div>))}</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="prose">
+          <div class="panel panel--not">
+            <h2>什么时候不适合</h2>
+            <ul class="checklist checklist--neutral">{t.notFit.map((x) => <li>{x}</li>)}</ul>
+            <p class="muted">{t.alternatives}</p>
+          </div>
+          <h2>实际怎么做</h2>
+          <ol class="steps">{t.steps.map((x) => <li>{x}</li>)}</ol>
+          <FaqList items={faqs} lang="zh" />
+        </div>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+      <RelatedLinks lang="zh" heading="更多场景" links={[...others.map((o) => ({ href: `/zh/for-${o.slug}`, label: o.zh.h1 })), { href: '/zh/use-cases', label: '全部适用场景' }, { href: '/zh/pricing', label: '定价' }, { href: '/zh/shopify-alternatives-for-small-sellers', label: '预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？' }]} />
+    </div>
+  </section>
+</BaseLayout>

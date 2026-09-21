@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import { COMPETITORS, HUB_COMPETITORS, CATEGORY_LABEL } from '../../data/competitors';
+---
+
+<BaseLayout
+  lang="zh"
+  title="Senvarico 与其他电商平台的对比 | Senvarico"
+  description="Senvarico 的全部对比页汇总：Shopify、WooCommerce、Wix、Big Cartel、Gumroad、Squarespace、Ecwid、Square Online、Shoplazza、SHOPLINE、Shopyy、Ueeshop，以及面向小卖家的替代方案清单。"
+  path="/zh/compare"
+  breadcrumbs={[{ name: '对比', href: '/zh/compare' }]}
+>
+  <PageHead eyebrow="对比" title="Senvarico 与其他电商平台的对比" lead="面向跨境小卖家的客观单页对比。每一页使用同样的维度，直接说明各自适合谁。" />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <div>
+          <h2>一对一对比</h2>
+          <ul class="post-list">
+            {COMPETITORS.map((c) => (
+              <li><article><h3 style="margin:0 0 4px;"><a href={`/zh/senvarico-vs-${c.slug}`}>Senvarico 与 {c.name}</a></h3><p class="muted small" style="margin:0;">{CATEGORY_LABEL[c.category].zh} · {c.zh.fit}</p></article></li>
+            ))}
+          </ul>
+          <h2 style="margin-top: 32px;">替代方案清单</h2>
+          <ul class="post-list">
+            <li><article><h3 style="margin:0 0 4px;"><a href="/zh/shopify-alternatives-for-small-sellers">预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？</a></h3><p class="muted small" style="margin:0;">三类 12 个工具，统一字段对比，附快速选型和避坑说明。</p></article></li>
+            {HUB_COMPETITORS.map((c) => (
+              <li><article><h3 style="margin:0 0 4px;"><a href={`/zh/${c.slug}-alternatives-for-small-sellers`}>{c.name} 替代方案</a></h3><p class="muted small" style="margin:0;">谁会找 {c.name} 的替代方案，以及他们通常考虑什么。</p></article></li>
+            ))}
+          </ul>
+        </div>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

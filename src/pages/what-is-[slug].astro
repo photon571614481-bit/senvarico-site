@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { GLOSSARY, type Term } from '../data/glossary';
+import { faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+export function getStaticPaths() {
+  return GLOSSARY.map((term) => ({ params: { slug: term.slug }, props: { term } }));
+}
+const { term } = Astro.props as { term: Term };
+const t = term.en;
+const path = `/what-is-${term.slug}`;
+const faqs = faqByIds(t.faqIds);
+const others = GLOSSARY.filter((x) => x.slug !== term.slug);
+const defined = { '@type': 'DefinedTerm', '@id': `https://senvarico.com${path}#term`, name: t.h1.replace(/^What Is |^什么是|\?|？/g, '').trim(), description: t.definition, url: `https://senvarico.com${path}`, inLanguage: 'en' };
+---
+
+<BaseLayout  title={t.title} description={t.description} path={path} breadcrumbs={[{ name: 'Glossary', href: '/glossary' }, { name: t.h1, href: path }]} jsonLd={[defined, faqJsonLd(faqs, path)]}>
+  <PageHead eyebrow="Definition" title={t.h1} />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <article class="prose">
+          <div class="definition"><p>{t.definition}</p></div>
+          {t.paragraphs.map((p) => <p>{p}</p>)}
+          <h2>Example</h2>
+          <p>{t.example}</p>
+          <FaqList items={faqs}  />
+        </article>
+        <div><SenvaricoFacts  /></div>
+      </div>
+      <RelatedLinks  heading="More definitions" links={[...others.map((o) => ({ href: `/what-is-${o.slug}`, label: o.en.h1 })), { href: '/glossary', label: 'All terms' }, { href: '/guides', label: 'Guides' }]} />
+    </div>
+  </section>
+</BaseLayout>

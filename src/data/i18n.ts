@@ -48,6 +48,10 @@ export const UI: Record<
       alternatives: string;
       alternativesSmall: string;
       blog: string;
+      allComparisons: string;
+      allUseCases: string;
+      guides: string;
+      glossary: string;
       disclaimer: string;
       official: string;
     };
@@ -90,6 +94,10 @@ export const UI: Record<
       alternatives: 'Shopify alternatives',
       alternativesSmall: 'Shopify alternatives for small sellers',
       blog: 'Blog',
+      allComparisons: 'All comparisons',
+      allUseCases: 'All use cases',
+      guides: 'Guides',
+      glossary: 'Glossary',
       disclaimer:
         'Senvarico is a lightweight ecommerce website builder currently in beta. Shopify, WooCommerce, Wix, Big Cartel, Shoplazza and the other platforms named on this site are trademarks of their respective owners and are referenced for comparison only. Senvarico is not affiliated with any of them.',
       official: 'Official website',
@@ -132,6 +140,10 @@ export const UI: Record<
       alternatives: 'Shopify 替代方案',
       alternativesSmall: '面向小卖家的 Shopify 替代方案',
       blog: '博客',
+      allComparisons: '全部对比',
+      allUseCases: '全部适用场景',
+      guides: '指南',
+      glossary: '术语表',
       disclaimer:
         'Senvarico 是一款处于 Beta 阶段的轻量级独立站建站工具。Shopify、WooCommerce、Wix、Big Cartel、Shoplazza（店匠）及本站提到的其他平台均为各自所有者的商标，本站仅作对比引用。Senvarico 与上述任何公司无关联。',
       official: '官方网站',

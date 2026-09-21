@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import FaqList from '../components/FaqList.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { COMPETITORS, HUB_COMPETITORS, CATEGORY_LABEL, type Competitor } from '../data/competitors';
+import { BRAND, PRICING, faqByIds } from '../data/brand';
+import { faqJsonLd } from '../data/schema';
+
+export function getStaticPaths() {
+  return HUB_COMPETITORS.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props as { c: Competitor };
+const t = c.en;
+const path = `/${c.slug}-alternatives-for-small-sellers`;
+const faqs = faqByIds(['shopify-alternative', 'cost', 'free-plan', 'platform-fee', 'who-is-it-for']);
+const alternatives = COMPETITORS.filter((x) => x.slug !== c.slug && x.slug !== 'shopyy' && x.slug !== 'ueeshop');
+---
+
+<BaseLayout
+  title={`${c.name} Alternatives for Small Sellers | Senvarico`}
+  description={`${c.name} alternatives for small cross-border sellers with limited budgets: Shopify, WooCommerce, Wix, Big Cartel, Gumroad, Squarespace, Ecwid, Square Online, Shoplazza, SHOPLINE and Senvarico, each described for the seller it fits.`}
+  path={path}
+  breadcrumbs={[
+    { name: 'Compare', href: '/compare' },
+    { name: `${c.name} alternatives`, href: path },
+  ]}
+  jsonLd={[faqJsonLd(faqs, path)]}
+>
+  <PageHead eyebrow="Alternatives" title={`${c.name} Alternatives for Small Ecommerce Sellers`} lead={`${c.name} is a good fit for ${t.fit.charAt(0).toLowerCase()}${t.fit.slice(1)} If that is not you, here are the other options a small cross-border seller with limited budgets usually considers, including Senvarico.`} />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <p><strong>About {c.name}:</strong> {t.summary}</p>
+      <h2>Why sellers look for a {c.name} alternative</h2>
+      <p>The usual reason is fit, not quality. {t.limits} Sellers who run into those limits look for a tool sized to their own situation: catalog size, markets, payment methods, budget and appetite for maintenance.</p>
+      <p class="muted small">This page is published by Senvarico, one of the options listed below. Competitor pricing is described qualitatively with links to official sites; Senvarico's facts come from its <a href="/brand-facts">brand facts</a> page.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>The alternatives, by category</h2>
+      <div class="grid grid--3">
+        {alternatives.map((a) => (
+          <div class="card">
+            <span class="eyebrow" style="margin-bottom: 8px;">{CATEGORY_LABEL[a.category].en}</span>
+            <h3><a href={`/senvarico-vs-${a.slug}`}>{a.name}</a></h3>
+            <p class="muted small">{a.en.summary}</p>
+            <p class="small"><strong>Fits:</strong> {a.en.fit}</p>
+            <p class="small"><strong>Server:</strong> {a.en.server}</p>
+          </div>
+        ))}
+        <div class="card" style="border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);">
+          <span class="eyebrow" style="margin-bottom: 8px;">{CATEGORY_LABEL.lightweight.en}</span>
+          <h3><a href="/">Senvarico</a></h3>
+          <p class="muted small">{BRAND.definition} Currently in beta.</p>
+          <p class="small"><strong>Pricing:</strong> {PRICING.free.name} {PRICING.free.priceLabel} ({PRICING.free.skuLabel}); {PRICING.paid.name} {PRICING.paid.priceLabel} ({PRICING.paid.skuLabel}); {PRICING.platformFee} platform transaction fee.</p>
+          <p class="small"><strong>Fits:</strong> small cross-border sellers with 10–100 SKUs targeting Europe and North America, often testing products through TikTok or Facebook ads.</p>
+          <p class="small"><strong>Server:</strong> Not required; SaaS hosted.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="prose">
+          <h2>How to narrow the list</h2>
+          <ol class="steps">
+            <li><strong>Will you maintain a server?</strong> If not, drop WooCommerce.</li>
+            <li><strong>Is the store the whole business?</strong> If it is part of a wider site, look at Wix or Squarespace; if you already have a site, Ecwid.</li>
+            <li><strong>Physical or digital products?</strong> Digital only: Gumroad. Physical across borders: Shopify, Shoplazza, SHOPLINE or Senvarico.</li>
+            <li><strong>How many SKUs in a year?</strong> Hundreds: Shopify, Shoplazza, SHOPLINE. A few dozen: Big Cartel, Ecwid, Senvarico.</li>
+            <li><strong>Which admin language and payments?</strong> Chinese admin with PayPal/Stripe and 0% platform fee: Senvarico. Chinese admin with a large app ecosystem: Shoplazza or SHOPLINE.</li>
+          </ol>
+          <FaqList items={faqs} />
+        </div>
+        <div>
+          <SenvaricoFacts />
+        </div>
+      </div>
+      <RelatedLinks
+        links={[
+          { href: `/senvarico-vs-${c.slug}`, label: `Senvarico vs ${c.name}` },
+          { href: '/shopify-alternatives-for-small-sellers', label: 'Shopify alternatives for small sellers' },
+          { href: '/compare', label: 'All comparisons' },
+          { href: '/guides/how-much-does-a-small-cross-border-store-cost', label: 'How much does a small cross-border store cost?' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

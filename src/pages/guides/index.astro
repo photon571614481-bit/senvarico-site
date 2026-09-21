@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import { GUIDES } from '../../data/guides';
+---
+
+<BaseLayout  title="Guides for Small Cross-Border Sellers | Senvarico" description="Practical guides for small cross-border sellers: platform fee vs gateway fee, PayPal vs Stripe, multi-currency, shipping zones, what a small store costs, 20- and 100-SKU checklists, when to move from free to paid." path="/guides" breadcrumbs={[{ name: 'Guides', href: '/guides' }]}>
+  <PageHead eyebrow="Guides" title="Guides for Small Cross-Border Sellers" lead="Platform-neutral explainers. Senvarico appears only where relevant, as one option." />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {GUIDES.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/guides/${x.slug}`}>{x.en.h1}</a></h2><p class="muted small" style="margin:0;">{x.en.description}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts  /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

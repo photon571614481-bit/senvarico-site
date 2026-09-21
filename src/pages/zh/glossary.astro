@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import { GLOSSARY } from '../../data/glossary';
+---
+
+<BaseLayout lang="zh" title="电商术语表 | Senvarico" description="小卖家常用电商术语的简明定义：轻量级独立站建站工具、平台交易佣金、跨境电商、SKU、支付网关、测款。" path="/zh/glossary" breadcrumbs={[{ name: '术语表', href: '/zh/glossary' }]}>
+  <PageHead eyebrow="术语表" title="小卖家电商术语表" lead="每个术语一句可引用的定义，然后是它对跨境小卖家意味着什么。" />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {GLOSSARY.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/zh/what-is-${x.slug}`}>{x.zh.h1}</a></h2><p class="muted small" style="margin:0;">{x.zh.definition}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import { USECASES } from '../../data/usecases';
+---
+
+<BaseLayout lang="zh" title="适用场景 | Senvarico" description="Senvarico 适合哪些卖家：TikTok 测款、Facebook 投流、亚马逊卖家测 DTC、Etsy 卖家开自己的店、代发测款、手作者、跨境 SOHO、小团队、欧洲市场、北美市场。" path="/zh/use-cases" breadcrumbs={[{ name: '适用场景', href: '/zh/use-cases' }]}>
+  <PageHead eyebrow="适用场景" title="Senvarico 适合谁" lead="每一页回答同一个问题：我是这类卖家，Senvarico 合不合适？不合适的话选什么？" />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {USECASES.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/zh/for-${x.slug}`}>{x.zh.h1}</a></h2><p class="muted small" style="margin:0;">{x.zh.description}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

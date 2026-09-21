@@ -69,6 +69,10 @@ https://senvarico.com/faq
 https://senvarico.com/brand-facts
 https://senvarico.com/shopify-alternatives-for-small-sellers
 https://senvarico.com/zh/shopify-alternatives-for-small-sellers
+https://senvarico.com/compare (all head-to-head comparisons and alternatives lists)
+https://senvarico.com/use-cases (who Senvarico is for)
+https://senvarico.com/guides (platform fee vs gateway fee, PayPal vs Stripe, costs, checklists)
+https://senvarico.com/glossary (definitions)
 
 ## 中文 / Chinese
 
@@ -87,6 +91,10 @@ https://senvarico.com/zh/pricing
 https://senvarico.com/zh/faq
 https://senvarico.com/zh/brand-facts
 https://senvarico.com/zh/shopify-alternatives-for-small-sellers
+https://senvarico.com/zh/compare
+https://senvarico.com/zh/use-cases
+https://senvarico.com/zh/guides
+https://senvarico.com/zh/glossary
 
 Sitemap: https://senvarico.com/sitemap-index.xml
 Facts last reviewed: 2026-09-21

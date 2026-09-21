@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import { USECASES } from '../data/usecases';
+---
+
+<BaseLayout  title="Use Cases | Senvarico" description="Who Senvarico is for: TikTok product testing, Facebook ad stores, Amazon sellers testing DTC, Etsy sellers opening their own store, dropshipping tests, makers, solo cross-border sellers, small teams, selling to Europe and North America." path="/use-cases" breadcrumbs={[{ name: 'Use cases', href: '/use-cases' }]}>
+  <PageHead eyebrow="Use cases" title="Who Senvarico Is For" lead="Each page answers the same question: I am this kind of seller — does Senvarico fit, and if not, what does?" />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {USECASES.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/for-${x.slug}`}>{x.en.h1}</a></h2><p class="muted small" style="margin:0;">{x.en.description}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts  /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

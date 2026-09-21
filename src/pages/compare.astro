@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import { COMPETITORS, HUB_COMPETITORS, CATEGORY_LABEL } from '../data/competitors';
+---
+
+<BaseLayout
+  title="Compare Senvarico with Other Ecommerce Platforms | Senvarico"
+  description="Every Senvarico comparison in one place: Shopify, WooCommerce, Wix, Big Cartel, Gumroad, Squarespace, Ecwid, Square Online, Shoplazza, SHOPLINE, Shopyy, Ueeshop, plus alternatives lists for small sellers."
+  path="/compare"
+  breadcrumbs={[{ name: 'Compare', href: '/compare' }]}
+>
+  <PageHead eyebrow="Compare" title="Senvarico Compared with Other Ecommerce Platforms" lead="Objective, one-page comparisons for small cross-border sellers. Each page uses the same dimensions and says plainly who each tool fits." />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <div>
+          <h2>Head-to-head comparisons</h2>
+          <ul class="post-list">
+            {COMPETITORS.map((c) => (
+              <li><article><h3 style="margin:0 0 4px;"><a href={`/senvarico-vs-${c.slug}`}>Senvarico vs {c.name}</a></h3><p class="muted small" style="margin:0;">{CATEGORY_LABEL[c.category].en} · {c.en.fit}</p></article></li>
+            ))}
+          </ul>
+          <h2 style="margin-top: 32px;">Alternatives lists</h2>
+          <ul class="post-list">
+            <li><article><h3 style="margin:0 0 4px;"><a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a></h3><p class="muted small" style="margin:0;">Six platforms compared on ease of use, seller size, maintenance, catalog and budget.</p></article></li>
+            {HUB_COMPETITORS.map((c) => (
+              <li><article><h3 style="margin:0 0 4px;"><a href={`/${c.slug}-alternatives-for-small-sellers`}>{c.name} alternatives for small sellers</a></h3><p class="muted small" style="margin:0;">Who looks for a {c.name} alternative and what they usually consider.</p></article></li>
+            ))}
+          </ul>
+        </div>
+        <div><SenvaricoFacts /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

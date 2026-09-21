@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { GLOSSARY, type Term } from '../../data/glossary';
+import { faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+export function getStaticPaths() {
+  return GLOSSARY.map((term) => ({ params: { slug: term.slug }, props: { term } }));
+}
+const { term } = Astro.props as { term: Term };
+const t = term.zh;
+const path = `/zh/what-is-${term.slug}`;
+const faqs = faqZhByIds(t.faqIds);
+const others = GLOSSARY.filter((x) => x.slug !== term.slug);
+const defined = { '@type': 'DefinedTerm', '@id': `https://senvarico.com${path}#term`, name: t.h1.replace(/^What Is |^什么是|\?|？/g, '').trim(), description: t.definition, url: `https://senvarico.com${path}`, inLanguage: 'zh-CN' };
+---
+
+<BaseLayout lang="zh" title={t.title} description={t.description} path={path} breadcrumbs={[{ name: '术语表', href: '/zh/glossary' }, { name: t.h1, href: path }]} jsonLd={[defined, faqJsonLd(faqs, path, 'zh-CN')]}>
+  <PageHead eyebrow="定义" title={t.h1} />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <article class="prose">
+          <div class="definition"><p>{t.definition}</p></div>
+          {t.paragraphs.map((p) => <p>{p}</p>)}
+          <h2>例子</h2>
+          <p>{t.example}</p>
+          <FaqList items={faqs} lang="zh" />
+        </article>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+      <RelatedLinks lang="zh" heading="更多定义" links={[...others.map((o) => ({ href: `/zh/what-is-${o.slug}`, label: o.zh.h1 })), { href: '/zh/glossary', label: '全部术语' }, { href: '/zh/guides', label: '指南' }]} />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import SenvaricoFacts from '../components/SenvaricoFacts.astro';
+import { GLOSSARY } from '../data/glossary';
+---
+
+<BaseLayout  title="Ecommerce Glossary for Small Sellers | Senvarico" description="Plain definitions of ecommerce terms small sellers meet: lightweight ecommerce website builder, platform transaction fee, cross-border ecommerce, SKU, payment gateway, product testing." path="/glossary" breadcrumbs={[{ name: 'Glossary', href: '/glossary' }]}>
+  <PageHead eyebrow="Glossary" title="Ecommerce Glossary for Small Sellers" lead="One quotable definition per term, then what it means for a small cross-border seller." />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {GLOSSARY.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/what-is-${x.slug}`}>{x.en.h1}</a></h2><p class="muted small" style="margin:0;">{x.en.definition}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts  /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

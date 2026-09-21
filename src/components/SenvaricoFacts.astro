@@ -1,0 +1,62 @@
+---
+/**
+ * Compact, lang-aware fact box for Senvarico. Every value comes from
+ * content/brand-facts.json via brand.ts / brand.zh.ts. Reused on all
+ * comparison, use-case, guide and glossary pages so facts never drift.
+ */
+import { BRAND, PRICING } from '../data/brand';
+import { BRAND_ZH, PRICING_ZH } from '../data/brand.zh';
+import type { Lang } from '../data/i18n';
+
+interface Props {
+  lang?: Lang;
+  heading?: string;
+}
+const { lang = 'en' } = Astro.props;
+const en = lang === 'en';
+const heading = Astro.props.heading ?? (en ? 'Senvarico at a glance' : 'Senvarico 一览');
+const rows = en
+  ? [
+      ['Category', BRAND.category],
+      ['Status', BRAND.status],
+      ['Free plan', `${PRICING.free.priceLabel}, ${PRICING.free.skuLabel}`],
+      ['Paid plan', `${PRICING.paid.name}: ${PRICING.paid.priceLabel}, ${PRICING.paid.skuLabel}`],
+      ['Platform transaction fee', PRICING.platformFee],
+      ['Payment gateway fees', 'Charged separately by PayPal or Stripe'],
+      ['Payments', 'PayPal, Stripe'],
+      ['Admin', 'Chinese and English'],
+      ['Storefront', 'Multi-language, multi-currency'],
+      ['Server maintenance', 'Not required (SaaS hosted)'],
+      ['Typical catalog', '10–100 SKUs'],
+      ['Target markets', 'Europe and North America'],
+    ]
+  : [
+      ['类别', BRAND_ZH.category],
+      ['状态', BRAND_ZH.status],
+      ['免费版', `${PRICING_ZH.free.priceLabel}，${PRICING_ZH.free.skuLabel}`],
+      ['付费版', `${PRICING_ZH.paid.name}：${PRICING_ZH.paid.priceLabel}，${PRICING_ZH.paid.skuLabel}`],
+      ['平台交易佣金', PRICING_ZH.platformFee],
+      ['支付通道手续费', '由 PayPal 或 Stripe 单独收取'],
+      ['支付', 'PayPal、Stripe'],
+      ['后台', '中文、英文'],
+      ['店面', '多语言、多币种'],
+      ['服务器维护', '不需要（SaaS 托管）'],
+      ['典型目录', '10–100 个 SKU'],
+      ['目标市场', '欧洲和北美'],
+    ];
+const href = en ? '/brand-facts' : '/zh/brand-facts';
+const label = en ? 'Full brand facts →' : '完整品牌事实 →';
+---
+
+<aside class="card card--muted" aria-label={heading}>
+  <h3>{heading}</h3>
+  <dl class="facts" style="margin: 0 0 12px; border: 0; max-width: none; font-size: 0.92rem;">
+    {rows.map(([k, v]) => (
+      <>
+        <dt style="background: transparent; padding: 5px 0;">{k}</dt>
+        <dd style="padding: 5px 0;">{v}</dd>
+      </>
+    ))}
+  </dl>
+  <a href={href}>{label}</a>
+</aside>

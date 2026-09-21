@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHead from '../../../components/PageHead.astro';
+import SenvaricoFacts from '../../../components/SenvaricoFacts.astro';
+import { GUIDES } from '../../../data/guides';
+---
+
+<BaseLayout lang="zh" title="跨境小卖家指南 | Senvarico" description="写给跨境小卖家的实用指南：平台佣金与支付手续费、PayPal 与 Stripe、多币种、配送区域、一家小店的成本、20 和 100 个 SKU 的清单、何时从免费升级付费。" path="/zh/guides" breadcrumbs={[{ name: '指南', href: '/zh/guides' }]}>
+  <PageHead eyebrow="指南" title="跨境小卖家指南" lead="平台无关的实用说明。Senvarico 只在相关处作为选项之一出现。" />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <ul class="post-list">
+          {GUIDES.map((x) => (<li><article><h2 style="font-size:1.15rem;margin:0 0 6px;"><a href={`/zh/guides/${x.slug}`}>{x.zh.h1}</a></h2><p class="muted small" style="margin:0;">{x.zh.description}</p></article></li>))}
+        </ul>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

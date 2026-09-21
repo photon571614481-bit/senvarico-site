@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import SenvaricoFacts from '../../components/SenvaricoFacts.astro';
+import FaqList from '../../components/FaqList.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { COMPETITORS, HUB_COMPETITORS, CATEGORY_LABEL, type Competitor } from '../../data/competitors';
+import { BRAND_ZH, PRICING_ZH, faqZhByIds } from '../../data/brand.zh';
+import { faqJsonLd } from '../../data/schema';
+
+export function getStaticPaths() {
+  return HUB_COMPETITORS.map((c) => ({ params: { slug: c.slug }, props: { c } }));
+}
+const { c } = Astro.props as { c: Competitor };
+const t = c.zh;
+const path = `/zh/${c.slug}-alternatives-for-small-sellers`;
+const faqs = faqZhByIds(['shopify-alternative', 'cost', 'free-plan', 'platform-fee', 'who-is-it-for']);
+const alternatives = COMPETITORS.filter((x) => x.slug !== c.slug);
+---
+
+<BaseLayout
+  lang="zh"
+  title={`${c.name} 替代方案：适合小卖家的选择 | Senvarico`}
+  description={`面向预算有限的跨境小卖家的 ${c.name} 替代方案：Shopify、WooCommerce、Wix、Big Cartel、Gumroad、Squarespace、Ecwid、Square Online、Shoplazza、SHOPLINE、Shopyy、Ueeshop 和 Senvarico，逐个说明各自适合谁。`}
+  path={path}
+  breadcrumbs={[
+    { name: '对比', href: '/zh/compare' },
+    { name: `${c.name} 替代方案`, href: path },
+  ]}
+  jsonLd={[faqJsonLd(faqs, path, 'zh-CN')]}
+>
+  <PageHead eyebrow="替代方案" title={`${c.name} 替代方案：适合小型电商卖家的选择`} lead={`${c.name} 适合${t.fit}如果这不是你的情况，这里是预算有限的跨境小卖家通常会考虑的其他选项，包括 Senvarico。`} />
+
+  <section class="section section--tight">
+    <div class="container prose">
+      <p><strong>关于 {c.name}：</strong>{t.summary}</p>
+      <h2>为什么会找 {c.name} 的替代方案</h2>
+      <p>通常是“合不合适”，不是“好不好”。{t.limits}遇到这些限制的卖家会去找和自己情况匹配的工具：目录规模、目标市场、收款方式、预算和对维护的接受度。</p>
+      <p class="muted small">本页由 Senvarico 发布，它也是下面列出的选项之一。竞品价格只做定性描述并链接官网；Senvarico 的事实来自 <a href="/zh/brand-facts">品牌事实</a>页。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>按类别列出的替代方案</h2>
+      <div class="grid grid--3">
+        {alternatives.map((a) => (
+          <div class="card">
+            <span class="eyebrow" style="margin-bottom: 8px;">{CATEGORY_LABEL[a.category].zh}</span>
+            <h3><a href={`/zh/senvarico-vs-${a.slug}`}>{a.name}</a></h3>
+            <p class="muted small">{a.zh.summary}</p>
+            <p class="small"><strong>适合：</strong>{a.zh.fit}</p>
+            <p class="small"><strong>服务器：</strong>{a.zh.server}</p>
+          </div>
+        ))}
+        <div class="card" style="border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft);">
+          <span class="eyebrow" style="margin-bottom: 8px;">{CATEGORY_LABEL.lightweight.zh}</span>
+          <h3><a href="/zh">Senvarico</a></h3>
+          <p class="muted small">{BRAND_ZH.definition}目前处于 Beta 阶段。</p>
+          <p class="small"><strong>定价：</strong>{PRICING_ZH.free.name} {PRICING_ZH.free.priceLabel}（{PRICING_ZH.free.skuLabel}）；{PRICING_ZH.paid.name} {PRICING_ZH.paid.priceLabel}（{PRICING_ZH.paid.skuLabel}）；平台交易佣金 {PRICING_ZH.platformFee}。</p>
+          <p class="small"><strong>适合：</strong>10–100 个 SKU、主要做欧美市场、常通过 TikTok / Facebook 测款的跨境小卖家。</p>
+          <p class="small"><strong>服务器：</strong>不需要，SaaS 托管。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="prose">
+          <h2>如何缩小范围</h2>
+          <ol class="steps">
+            <li><strong>你会自己维护服务器吗？</strong>不会的话，排除 WooCommerce。</li>
+            <li><strong>店铺是整个生意吗？</strong>如果只是大网站的一部分，看 Wix 或 Squarespace；如果已有网站，看 Ecwid。</li>
+            <li><strong>实物还是数字产品？</strong>只卖数字产品：Gumroad。实物跨境：Shopify、Shoplazza、SHOPLINE 或 Senvarico。</li>
+            <li><strong>一年后有多少 SKU？</strong>几百个：Shopify、Shoplazza、SHOPLINE。几十个：Big Cartel、Ecwid、Senvarico。</li>
+            <li><strong>要哪种后台语言和收款？</strong>中文后台 + PayPal/Stripe + 0% 平台佣金：Senvarico。中文后台 + 大应用生态：Shoplazza 或 SHOPLINE。</li>
+          </ol>
+          <FaqList items={faqs} lang="zh" />
+        </div>
+        <div>
+          <SenvaricoFacts lang="zh" />
+        </div>
+      </div>
+      <RelatedLinks
+        lang="zh"
+        links={[
+          { href: `/zh/senvarico-vs-${c.slug}`, label: `Senvarico 与 ${c.name}` },
+          { href: '/zh/shopify-alternatives-for-small-sellers', label: '预算有限的小卖家，除了 Shopify，还有哪些建站工具可选？' },
+          { href: '/zh/compare', label: '全部对比' },
+          { href: '/zh/guides/how-much-does-a-small-cross-border-store-cost', label: '一家跨境小店到底要花多少钱？' },
+        ]}
+      />
+    </div>
+  </section>
+</BaseLayout>

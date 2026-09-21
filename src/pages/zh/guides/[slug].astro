@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import PageHead from '../../../components/PageHead.astro';
+import SenvaricoFacts from '../../../components/SenvaricoFacts.astro';
+import FaqList from '../../../components/FaqList.astro';
+import RelatedLinks from '../../../components/RelatedLinks.astro';
+import { GUIDES, type Guide } from '../../../data/guides';
+import { faqZhByIds } from '../../../data/brand.zh';
+import { faqJsonLd, articleJsonLd } from '../../../data/schema';
+
+export function getStaticPaths() {
+  return GUIDES.map((g) => ({ params: { slug: g.slug }, props: { g } }));
+}
+const { g } = Astro.props as { g: Guide };
+const t = g.zh;
+const path = `/zh/guides/${g.slug}`;
+const faqs = faqZhByIds(t.faqIds);
+const others = GUIDES.filter((x) => x.slug !== g.slug).slice(0, 5);
+---
+
+<BaseLayout lang="zh" title={t.title} description={t.description} path={path} ogType="article" breadcrumbs={[{ name: '指南', href: '/zh/guides' }, { name: t.h1, href: path }]} jsonLd={[articleJsonLd({ path, headline: t.h1, description: t.description, datePublished: '2026-09-21', inLanguage: 'zh-CN' }), faqJsonLd(faqs, path, 'zh-CN')]}>
+  <PageHead eyebrow="指南" title={t.h1} lead={t.intro} />
+  <section class="section section--tight">
+    <div class="container">
+      <div class="grid grid--2">
+        <article class="prose">
+          {t.sections.map((sec) => (
+            <>
+              <h2>{sec.h2}</h2>
+              {sec.paragraphs?.map((p) => <p>{p}</p>)}
+              {sec.bullets && <ul>{sec.bullets.map((b) => <li>{b}</li>)}</ul>}
+              {sec.table && (
+                <div class="table-wrap"><table><thead><tr>{sec.table.head.map((h) => <th scope="col">{h}</th>)}</tr></thead><tbody>{sec.table.rows.map((r) => <tr>{r.map((c, i) => (i === 0 ? <th scope="row">{c}</th> : <td>{c}</td>))}</tr>)}</tbody></table></div>
+              )}
+            </>
+          ))}
+          <h2>Senvarico 在这里的位置</h2>
+          <p>{t.senvaricoNote}</p>
+          <FaqList items={faqs} lang="zh" />
+        </article>
+        <div><SenvaricoFacts lang="zh" /></div>
+      </div>
+      <RelatedLinks lang="zh" heading="更多指南" links={[...others.map((o) => ({ href: `/zh/guides/${o.slug}`, label: o.zh.h1 })), { href: '/zh/guides', label: '全部指南' }, { href: '/zh/glossary', label: '术语表' }]} />
+    </div>
+  </section>
+</BaseLayout>
