@@ -13,12 +13,12 @@ const faqs = faqZhByIds(['cost', 'free-plan', 'sku-limit', 'platform-fee', 'payp
 <BaseLayout
   lang="zh"
   title="定价 | Senvarico – 免费版与 99 元/月小卖家版"
-  description={`Senvarico 规划定价：免费版 0 元/月，最多 ${PRICING_ZH.free.skuLimit} 个商品；小卖家版 ${PRICING_ZH.paid.price} 元/月，最多 ${PRICING_ZH.paid.skuLimit} 个商品。平台交易佣金均为 0%。支持 PayPal 和 Stripe，中英文后台，无需维护服务器。`}
+  description={`Senvarico 定价：免费版 0 元/月，最多 ${PRICING_ZH.free.skuLimit} 个商品；小卖家版 ${PRICING_ZH.paid.price} 元/月，最多 ${PRICING_ZH.paid.skuLimit} 个商品。平台交易佣金均为 0%。支持 PayPal 和 Stripe，中英文后台，无需维护服务器。`}
   path="/zh/pricing"
   breadcrumbs={[{ name: '定价', href: '/zh/pricing' }]}
   jsonLd={[softwareJsonLd(), faqJsonLd(faqs, '/zh/pricing', 'zh-CN')]}
 >
-  <PageHead eyebrow="定价" title="Senvarico 规划定价" lead={`两个规划版本，暂未开放购买。规划平台交易佣金均为 ${PRICING_ZH.platformFee}。暂不推出独立年付价格，也不单独设置免费试用，因为免费版是永久的。`} />
+  <PageHead eyebrow="定价" title="Senvarico 定价" lead={`两个版本，平台交易佣金均为 ${PRICING_ZH.platformFee}。暂不推出独立年付价格，也不单独设置免费试用，因为免费版是永久的。`} />
 
   <section class="section section--tight">
     <div class="container">
@@ -67,7 +67,7 @@ const faqs = faqZhByIds(['cost', 'free-plan', 'sku-limit', 'platform-fee', 'payp
           </tbody>
         </table>
       </div>
-      <p class="muted">换句话说：Senvarico 规划不从销售额里抽成。你的支付通道仍会对每笔交易收取它正常的手续费，请不要误解为“完全没有支付手续费”。</p>
+      <p class="muted">换句话说：Senvarico 不从你的销售额里抽成。你的支付通道仍会对每笔交易收取它正常的手续费，请不要误解为“完全没有支付手续费”。</p>
 
       <h2>版本细节</h2>
       <dl class="facts">

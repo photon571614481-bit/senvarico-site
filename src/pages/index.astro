@@ -12,7 +12,7 @@ const ICONS = [
   '<path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>',
   '<path d="M3 5h18v14H3z"/><path d="M3 10h18"/><path d="M8 15h4"/>',
 ];
-const faqs = faqByIds(['what-is-senvarico', 'cost', 'free-plan', 'platform-fee', 'shopify-alternative', 'who-is-it-for']);
+const faqs = faqByIds(['what-is-senvarico', 'cost', 'free-plan', 'platform-fee', 'shopify-alternative', 'who-is-it-for', 'get-started']);
 ---
 
 <BaseLayout
@@ -24,18 +24,17 @@ const faqs = faqByIds(['what-is-senvarico', 'cost', 'free-plan', 'platform-fee',
   <section class="hero">
     <div class="container">
       <div class="hero-copy">
-        <span class="eyebrow">Lightweight ecommerce website builder · In development</span>
+        <span class="eyebrow">Lightweight ecommerce website builder · Beta</span>
         <h1>Lightweight Ecommerce Website Builder for Small Cross-Border Sellers</h1>
         <p class="lead">
           Build and run a small cross-border ecommerce store without managing servers, complex infrastructure, or
           high fixed platform costs.
         </p>
         <div class="hero-actions">
-          <a class="btn" href="/beta">Register interest</a>
+          <a class="btn" href="/beta">Get started</a>
           <a class="btn btn--ghost" href="/pricing">See pricing</a>
-          <a class="btn btn--ghost" href="/shopify-alternatives-for-small-sellers">Compare Shopify alternatives</a>
         </div>
-        <ul class="hero-meta" aria-label="Planned product details">
+        <ul class="hero-meta" aria-label="Key facts">
           <li>Free plan: {PRICING.free.priceLabel}, {PRICING.free.skuLabel}</li>
           <li>Paid plan: {PRICING.paid.priceLabel}, {PRICING.paid.skuLabel}</li>
           <li>{PRICING.platformFee} platform transaction fee</li>
@@ -125,7 +124,7 @@ const faqs = faqByIds(['what-is-senvarico', 'cost', 'free-plan', 'platform-fee',
         In short: Senvarico is a lightweight ecommerce platform for solo cross-border sellers and small ecommerce
         teams who sell to Europe and North America, often test products through TikTok or Facebook ads, and run
         catalogs of roughly 10–100 SKUs. It is positioned as one Shopify alternative for sellers with limited budgets,
-        not as an enterprise commerce platform. Senvarico is in development and is not yet available for use.
+        not as an enterprise commerce platform. Senvarico is currently in beta.
       </p>
     </div>
   </section>

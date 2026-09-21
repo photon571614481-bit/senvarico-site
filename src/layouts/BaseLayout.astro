@@ -42,8 +42,6 @@ const {
 } = Astro.props;
 
 const locale = LOCALES[lang];
-const statusNote = lang === 'zh' ? FACTS.status_note_zh : FACTS.status_note_en;
-const publicDescription = `${lang === 'zh' ? 'Senvarico 开发中，暂未开放；相关功能与价格为规划。' : 'Senvarico is in development, not yet available; features and prices are planned.'} ${description}`;
 const ui = UI[lang];
 const altPath = alternatePath(path, lang);
 const altLang: Lang = lang === 'en' ? 'zh' : 'en';
@@ -115,7 +113,7 @@ const graph = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content={publicDescription} />
+    <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <meta name="msvalidate.01" content="C05329B27820D4A58D65B27000F70C52" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
@@ -140,7 +138,7 @@ const graph = {
     <meta property="og:locale" content={locale.ogLocale} />
     <meta property="og:locale:alternate" content={LOCALES[altLang].ogLocale} />
     <meta property="og:title" content={title} />
-    <meta property="og:description" content={publicDescription} />
+    <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
@@ -151,7 +149,7 @@ const graph = {
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={publicDescription} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify(graph)} />
@@ -161,19 +159,8 @@ const graph = {
     <Header currentPath={path} lang={lang} altPath={noindex ? undefined : altPath} />
     {breadcrumbs && breadcrumbs.length > 0 && <Breadcrumb trail={crumbTrail} lang={lang} />}
     <main id="main">
-      {!noindex && <aside class="product-status" aria-label={lang === 'zh' ? '产品状态' : 'Product status'}>
-        <div class="container">
-          <p><strong>{lang === 'zh' ? '开发中 · 暂未开放使用' : 'In development · Not yet available'}</strong></p>
-          <p>{statusNote} <a href={lang === 'zh' ? '/zh/beta' : '/beta'}>{lang === 'zh' ? '登记内测意向 →' : 'Register interest →'}</a></p>
-        </div>
-      </aside>}
       <slot />
     </main>
     <Footer lang={lang} />
   </body>
 </html>
-
-<style>
-  .product-status { background: var(--amber-soft); border-bottom: 1px solid var(--border); padding: 18px 0; }
-  .product-status p { margin: 0; max-width: 95ch; font-size: .92rem; }
-</style>

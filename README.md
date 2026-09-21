@@ -27,10 +27,8 @@ Current deployment: GitHub Pages in branch mode. `pnpm run deploy` builds and fo
 
 `deploy/github-pages-workflow.yml` is an equivalent GitHub Actions workflow. To use it, move it to `.github/workflows/deploy.yml`, grant the `workflow` scope to the GitHub token (`gh auth refresh -s workflow`), and switch Pages source to "GitHub Actions".
 
-## Contact and prerelease interest
+## Contact and beta access
 
-`/contact`, `/beta` and their `/zh` translations use the public contact email in `content/brand-facts.json`. Mail links open a visitor's email app with a prefilled subject and, for future testing enquiries, a store questionnaire. They do not create an account or send email automatically.
+`/contact`, `/beta` and their `/zh` translations use the public contact email in `content/brand-facts.json`. Mail links open a visitor's email app with a prefilled subject and, for beta enquiries, a store questionnaire. They do not create an account or send email automatically.
 
 After switching Pages to Actions, rollback requires changing the Pages publishing source back to `gh-pages` as well as running the fallback deployment script.
-
-Product status was confirmed by the owner on 2026-09-21: still in development, not open for use. Product capabilities and prices are plans. Do not publish Offer markup or submit to directories requiring a released product until availability is confirmed.

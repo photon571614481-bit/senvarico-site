@@ -1,48 +1,98 @@
 ---
+/**
+ * Shared page body for /beta (get started) and /contact, in both languages.
+ * The product is open for use in beta; onboarding is by email until a
+ * self-serve sign-up URL exists. All facts come from brand-facts.json.
+ */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHead from './PageHead.astro';
-import { FACTS } from '../data/brand';
+import SenvaricoFacts from './SenvaricoFacts.astro';
+import { FACTS, PRICING } from '../data/brand';
+import { PRICING_ZH } from '../data/brand.zh';
 import { localePath, type Lang } from '../data/i18n';
 
-interface Props { lang?: Lang; beta?: boolean }
+interface Props {
+  lang?: Lang;
+  beta?: boolean;
+}
 const { lang = 'en', beta = false } = Astro.props;
 const zh = lang === 'zh';
 const path = localePath(beta ? '/beta' : '/contact', lang);
-const title = beta ? (zh ? '登记 Senvarico 内测意向' : 'Register interest in Senvarico') : (zh ? '联系 Senvarico' : 'Contact Senvarico');
+const email = FACTS.contact_email;
+
+const title = beta
+  ? zh ? '开通 Senvarico 店铺（Beta）' : 'Get Started with Senvarico (Beta)'
+  : zh ? '联系 Senvarico' : 'Contact Senvarico';
 const description = beta
-  ? (zh ? '产品仍在开发。通过邮件介绍你的店铺需求，登记未来内测意向。' : 'Senvarico is still in development. Tell us about your store and register interest in future testing.')
-  : (zh ? '联系 Senvarico，咨询产品、内测意向或反馈网站内容。' : 'Contact Senvarico about the product, beta access, or website feedback.');
-const subject = beta ? (zh ? 'Senvarico 内测意向' : 'Senvarico testing interest') : (zh ? 'Senvarico 咨询' : 'Senvarico enquiry');
-const body = beta ? (zh ? '你好，我想了解 Senvarico Beta。\n\n商品类型：\n预计 SKU 数量：\n目标销售市场：\n当前使用的平台（如有）：\n最需要的功能：\n' : 'Hello, I would like to learn about the Senvarico beta.\n\nProduct category:\nEstimated SKU count:\nTarget markets:\nCurrent platform (if any):\nFeatures I need:\n') : '';
-const mailto = `mailto:${FACTS.contact_email}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ''}`;
+  ? zh
+    ? `Senvarico 已开放使用（Beta）。发邮件即可开通店铺：免费版 ${PRICING_ZH.free.priceLabel}、${PRICING_ZH.free.skuLabel}；小卖家版 ${PRICING_ZH.paid.priceLabel}、${PRICING_ZH.paid.skuLabel}；平台交易佣金 0%。`
+    : `Senvarico is open for use in beta. Open a store by email: Free plan ${PRICING.free.priceLabel} (${PRICING.free.skuLabel}), Small Seller plan ${PRICING.paid.priceLabel} (${PRICING.paid.skuLabel}), 0% platform transaction fee.`
+  : zh
+    ? '联系 Senvarico：咨询产品是否适合你的店铺、开通店铺、或反馈网站内容。'
+    : 'Contact Senvarico about whether it fits your store, opening a store, or website feedback.';
+
+const subject = beta ? (zh ? '开通 Senvarico 店铺' : 'Open a Senvarico store') : zh ? 'Senvarico 咨询' : 'Senvarico enquiry';
+const body = beta
+  ? zh
+    ? '你好，我想开通一个 Senvarico 店铺。\n\n店铺名称：\n商品类型：\n预计 SKU 数量：\n目标销售市场：\n希望使用的版本（免费版 / 小卖家版）：\n收款方式（PayPal / Stripe）：\n后台语言（中文 / 英文）：\n'
+    : 'Hello, I would like to open a Senvarico store.\n\nStore name:\nProduct category:\nEstimated SKU count:\nTarget markets:\nPlan (Free / Small Seller):\nPayments (PayPal / Stripe):\nAdmin language (Chinese / English):\n'
+  : '';
+const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}${body ? `&body=${encodeURIComponent(body)}` : ''}`;
+const crumb = zh ? (beta ? '开通店铺' : '联系') : beta ? 'Get started' : 'Contact';
 ---
 
-<BaseLayout lang={lang} title={`${title} | Senvarico`} description={description} path={path} breadcrumbs={[{ name: zh ? (beta ? '内测意向' : '联系') : (beta ? 'Testing interest' : 'Contact'), href: path }]}>
-  <PageHead eyebrow={beta ? 'Beta' : (zh ? '联系' : 'Contact')} title={title} lead={description} />
+<BaseLayout lang={lang} title={`${title} | Senvarico`} description={description} path={path} breadcrumbs={[{ name: crumb, href: path }]}>
+  <PageHead eyebrow={beta ? 'Beta' : zh ? '联系' : 'Contact'} title={title} lead={description} />
   <section class="section section--tight">
-    <div class="container prose">
-      <h2>{zh ? '发邮件给我们' : 'Email us'}</h2>
-      <p>{zh ? '点击下方按钮，在你的邮箱应用中编辑并发送邮件。也可以复制邮箱地址，使用你习惯的邮件服务。' : 'Use the button below to compose and send a message in your email app. You can also copy the address into your preferred email service.'}</p>
-      <p><a class="contact-email" href={`mailto:${FACTS.contact_email}`}>{FACTS.contact_email}</a></p>
-      <p><a class="btn" href={mailto}>{zh ? (beta ? '邮件登记意向' : '撰写咨询邮件') : (beta ? 'Register interest by email' : 'Compose an email')}</a></p>
-      {beta ? <>
-        <h2>{zh ? '告诉我们你的店铺需求' : 'Tell us about your store'}</h2>
-        <ul>
-          <li>{zh ? '销售什么商品，预计有多少个 SKU。' : 'What you sell and your estimated number of SKUs.'}</li>
-          <li>{zh ? '面向哪些国家或市场，目前使用什么平台。' : 'Your target markets and current platform, if any.'}</li>
-          <li>{zh ? '最需要哪些功能，以及希望解决的问题。' : 'The features you need and the problems you want to solve.'}</li>
-        </ul>
-        <h2>{zh ? '发送后会怎样' : 'What happens next'}</h2>
-        <p>{zh ? '目前产品暂未开放使用。邮件用于登记需求和内测意向，不会创建店铺或开通账号；尚无确认的开放日期。' : 'The product is not open for use. Email registers your needs and interest in future testing; it does not create a store or account. No access date has been confirmed.'}</p>
-        <p>{zh ? '目前没有开放试用。规划套餐请查看' : 'No public trial is available. For planned prices, see'} <a href={localePath('/pricing', lang)}>{zh ? '定价页' : 'pricing'}</a>{zh ? '。' : '.'}</p>
-      </> : <>
-        <h2>{zh ? '我们可以聊什么' : 'What to include'}</h2>
-        <p>{zh ? '可以咨询产品是否适合你的店铺、反馈网站内容，或说明合作需求。反馈具体页面时，请附上页面链接。' : 'Ask whether Senvarico fits your store, share website feedback, or describe a collaboration enquiry. Include the page URL when reporting a content issue.'}</p>
-        <p><a href={localePath('/beta', lang)}>{zh ? '想参与未来测试？查看内测意向说明 →' : 'Interested in future testing? See how to register interest →'}</a></p>
-      </>}
-      <p class="small muted">{zh ? '只需提供沟通所需的信息。请勿发送密码、支付卡资料或客户个人数据。本页不会自动发送邮件。' : 'Share only the information needed for your enquiry. Please do not include passwords, payment card details, or customer personal data. This page does not send email automatically.'}</p>
+    <div class="container">
+      <div class="grid grid--2">
+        <div class="prose">
+          {beta ? (
+            <>
+              <h2>{zh ? '怎么开通' : 'How to open a store'}</h2>
+              <ol class="steps">
+                <li>{zh ? '点击下方按钮，邮件模板里填好店铺名称、商品类型、SKU 数量、目标市场、版本和收款方式。' : 'Use the button below. The email template asks for your store name, product category, SKU count, target markets, plan and payment methods.'}</li>
+                <li>{zh ? '我们会回复开通信息和后台登录方式。' : 'We reply with your access details and admin login.'}</li>
+                <li>{zh ? '登录后台，上架商品，接入 PayPal 或 Stripe，设置币种和配送区域，即可开始销售。' : 'Log in, add products, connect PayPal or Stripe, set currencies and shipping regions, and start selling.'}</li>
+              </ol>
+              <p><a class="btn" href={mailto}>{zh ? '发邮件开通店铺' : 'Open a store by email'}</a></p>
+              <p><a class="contact-email" href={`mailto:${email}`}>{email}</a></p>
+
+              <h2>{zh ? '选哪个版本' : 'Which plan'}</h2>
+              <ul>
+                <li><strong>{zh ? PRICING_ZH.free.name : PRICING.free.name}</strong>{zh ? `：${PRICING_ZH.free.priceLabel}，${PRICING_ZH.free.skuLabel}，平台交易佣金 ${PRICING_ZH.free.fee}。适合${PRICING_ZH.free.audience}。` : `: ${PRICING.free.priceLabel}, ${PRICING.free.skuLabel}, ${PRICING.free.fee} platform transaction fee. ${PRICING.free.audience}.`}</li>
+                <li><strong>{zh ? PRICING_ZH.paid.name : PRICING.paid.name}</strong>{zh ? `：${PRICING_ZH.paid.priceLabel}，${PRICING_ZH.paid.skuLabel}，平台交易佣金 ${PRICING_ZH.paid.fee}，多语言多币种。面向${PRICING_ZH.paid.audience}。` : `: ${PRICING.paid.priceLabel}, ${PRICING.paid.skuLabel}, ${PRICING.paid.fee} platform transaction fee, multi-language and multi-currency. ${PRICING.paid.audience}.`}</li>
+              </ul>
+              <p class="muted">{zh ? PRICING_ZH.gatewayNote : PRICING.gatewayNote} {zh ? PRICING_ZH.freeTrialNote : PRICING.freeTrialNote}</p>
+              <p><a href={localePath('/pricing', lang)}>{zh ? '查看完整定价 →' : 'Full pricing →'}</a></p>
+
+              <h2>{zh ? 'Beta 意味着什么' : 'What beta means'}</h2>
+              <p>{zh ? 'Senvarico 已可用于真实销售，但产品仍在完善中：功能范围以功能页为准，我们会随着反馈持续改进。如果你的店铺需要数千个 SKU 或企业级流程，Senvarico 不是合适的选择。' : 'Senvarico can be used for real sales, but the product is still being refined: the feature scope is what the features page lists, and it improves with feedback. If your store needs thousands of SKUs or enterprise workflows, Senvarico is not the right fit.'}</p>
+            </>
+          ) : (
+            <>
+              <h2>{zh ? '发邮件给我们' : 'Email us'}</h2>
+              <p>{zh ? '点击下方按钮在你的邮箱应用中编辑邮件，或直接复制邮箱地址。' : 'Use the button below to compose a message in your email app, or copy the address.'}</p>
+              <p><a class="btn" href={mailto}>{zh ? '撰写邮件' : 'Compose an email'}</a></p>
+              <p><a class="contact-email" href={`mailto:${email}`}>{email}</a></p>
+              <h2>{zh ? '可以聊什么' : 'What to include'}</h2>
+              <ul>
+                <li>{zh ? '想开通店铺：直接去开通页，模板里有需要的信息。' : 'Opening a store: use the get-started page; its template lists what we need.'} <a href={localePath('/beta', lang)}>{zh ? '开通店铺 →' : 'Get started →'}</a></li>
+                <li>{zh ? '不确定是否适合：说明你的商品、SKU 数量和目标市场。' : 'Not sure it fits: describe your products, SKU count and target markets.'}</li>
+                <li>{zh ? '网站内容反馈：附上页面链接。' : 'Website feedback: include the page URL.'}</li>
+              </ul>
+            </>
+          )}
+          <p class="small muted">{zh ? '只需提供沟通所需的信息，请勿在邮件中发送密码、支付卡资料或客户个人数据。' : 'Share only what the enquiry needs. Do not send passwords, payment card details or customer personal data by email.'}</p>
+        </div>
+        <div><SenvaricoFacts lang={lang} /></div>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
-<style>.contact-email { overflow-wrap: anywhere; }</style>
+<style>
+  .contact-email {
+    overflow-wrap: anywhere;
+  }
+</style>

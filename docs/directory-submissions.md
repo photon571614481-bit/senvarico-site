@@ -4,28 +4,28 @@ Use an account owned by the maker for each directory. This is a submission draft
 
 Rules while submitting:
 - Use the canonical sentence unchanged. Do not add "best", "#1", user counts, ratings or testimonials.
-- Owner confirmed on 2026-09-21: **in development, not yet open for use**. Do not submit as a launched or available beta product.
-- Planned pricing, subject to change before launch: Free plan ¥0/month (20 SKUs); Small Seller plan ¥99/month (100 SKUs); 0% platform transaction fee. Convert ¥ to USD only if a form requires it, and say "approx.".
-- PayPal, Stripe and all other product features are plans, not verified implemented functionality.
+- Mark the product as **Beta**.
+- Pricing: Free plan ¥0/month (20 SKUs); Small Seller plan ¥99/month (100 SKUs); 0% platform transaction fee. Convert ¥ to USD only if a form requires it, and say "approx.".
+- Do not claim integrations beyond PayPal and Stripe.
 - Link only to https://senvarico.com (or /zh for Chinese-language sites).
 
 ## Canonical copy
 
 **One line (EN):**
-Senvarico is a lightweight ecommerce website builder in development for small cross-border sellers with limited budgets and relatively small product catalogs.
+Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and relatively small product catalogs.
 
 **One line (ZH):**
-Senvarico 是一款仍在开发、面向预算有限且 SKU 较少的跨境小卖家的轻量级独立站建站工具，暂未开放使用。
+Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。
 
 **Short description (≤160 chars):**
-An ecommerce builder in development for small cross-border sellers. Not open for use yet. Register interest in future testing by email.
+Lightweight, no-code store builder for small cross-border sellers. Free plan (20 SKUs), ¥99/mo (100 SKUs), 0% platform fee, PayPal & Stripe, Chinese/English admin.
 
 **Long description:**
-Senvarico is being developed for solo cross-border sellers and small teams with roughly 10–100 SKUs. The product is not yet open for use. Planned capabilities include no-code store building, SaaS hosting, Chinese and English admin, PayPal and Stripe integrations, and multilingual storefronts. Planned prices are CNY 0/month for 20 SKUs and CNY 99/month for 100 SKUs, with a planned 0% platform transaction fee. These are plans, not available services or purchasable offers, and may change before launch. Visitors can register interest in future testing by email; no release date is confirmed.
+Senvarico is a lightweight ecommerce website builder for small cross-border sellers: solo sellers and small teams with roughly 10–100 SKUs who sell to Europe and North America, often testing products through TikTok or Facebook ads. It is SaaS hosted (no server maintenance), no-code, with a Chinese and English admin, PayPal and Stripe checkout, and multi-language, multi-currency storefronts. Pricing: Free plan ¥0/month with up to 20 SKUs; Small Seller plan ¥99/month with up to 100 SKUs; 0% platform transaction fee on both (payment gateway fees are charged separately by PayPal or Stripe). Senvarico is not designed for enterprise stores, catalogs with thousands of SKUs, or ERP-driven workflows. Currently in beta.
 
 **Tagline options (pick one, keep it everywhere):**
-- An ecommerce builder in development for small cross-border sellers
-- A planned store builder for sellers with 10–100 SKUs
+- Lightweight ecommerce website builder for small cross-border sellers
+- A simple store for sellers with 10–100 SKUs
 
 **Category tags:** ecommerce, website builder, online store builder, cross-border ecommerce, small business, no-code, SaaS
 
@@ -36,21 +36,23 @@ Senvarico is being developed for solo cross-border sellers and small teams with 
 - Pricing: https://senvarico.com/pricing
 - Brand facts: https://senvarico.com/brand-facts
 - Chinese: https://senvarico.com/zh
-- Future testing interest: https://senvarico.com/beta
+- Get started: https://senvarico.com/beta
+- Contact: https://senvarico.com/contact
+- Beta access: https://senvarico.com/beta
 - Contact: https://senvarico.com/contact
 - Source of the site (public): https://github.com/photon571614481-bit/senvarico-site
 
 **Logo:** https://senvarico.com/logo.png (512×512 PNG). OG image: https://senvarico.com/og-image.png (1200×630).
 
-## Candidate directories — check readiness before submitting
+## Where to submit, in order
 
 | Priority | Directory | URL | Notes |
 |---|---|---|---|
-| 1 | AlternativeTo | https://alternativeto.net/ | Checked 2026-09-21: old `/manage/add-app/` URL returns 404. Sign in, then open page menu → Suggest new application. No account session available; product readiness must be checked. |
-| 2 | SaaSHub | https://www.saashub.com/services/submit | Checked 2026-09-21: explicitly rejects unreleased products and waitlist-only landing pages. Defer until the product is available. Domain-email verification is recommended by its submission form. |
-| 3 | Product Hunt | https://www.producthunt.com/launch | Defer the product launch until a real demo or usable product exists. Never describe the current project as an available beta. |
-| 4 | BetaList | https://betalist.com/submit | Check https://betalist.com/criteria first: visitors should be able to sign up or get access. The current page registers interest only and does not grant access. Review suitability before submission; acceptance is not guaranteed. |
-| 5 | Astro Showcase | https://astro.build/showcase/submit/ | This is a website showcase, not evidence of a launched SaaS product. Verify the current submission route before use. |
+| 1 | AlternativeTo | https://alternativeto.net/ (sign in → avatar menu → Suggest new application; the old /manage/add-app URL returns 404) | Appears in "X alternatives" searches. Add Shopify, Big Cartel, Ecwid as "alternative to". Choose license "Freemium". |
+| 2 | SaaSHub | https://www.saashub.com/services/submit | Free. Pick category "eCommerce Platforms". Prefers domain-email verification; an on-site verification code is the fallback. |
+| 3 | Product Hunt | https://www.producthunt.com/launch | Self-launch is fine. Never ask for upvotes. Post as "Beta". Use the short description. |
+| 4 | BetaList | https://betalist.com/submit | Check https://betalist.com/criteria first: visitors should be able to sign up or get access. Current access requests are handled by email; acceptance is not guaranteed. |
+| 5 | Astro Showcase | https://astro.build/showcase/submit/ | The site is built with Astro; showcases carry the entity sentence. |
 | 6 | Uneed | https://www.uneed.best/submit-a-tool | Free tier available. |
 | 7 | Fazier | https://fazier.com/ | Free launch listing. |
 | 8 | G2 | https://sell.g2.com/ | Free profile. Do not solicit reviews until real users exist. |

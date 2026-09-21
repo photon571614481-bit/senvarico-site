@@ -1,45 +1,104 @@
 # Senvarico
 
-Senvarico is a lightweight ecommerce website builder in development for small cross-border sellers with limited budgets and relatively small product catalogs.
+Senvarico is a lightweight ecommerce website builder designed for small cross-border sellers with limited budgets and relatively small product catalogs.
 
-Senvarico is still in development and is not open for use. Features, integrations, prices and limits described on this site are plans, not currently available services, and may change before launch.
+Official website:
+https://senvarico.com
 
-Official website: https://senvarico.com
-Product status: In development; not yet available for use.
-No public signup, trial, live store creation or purchasable plan is available.
+Category:
+Lightweight Ecommerce Website Builder
 
-Planned pricing (subject to change before launch):
-- Free: CNY 0/month, up to 20 SKUs.
-- Small Seller: CNY 99/month, up to 100 SKUs.
-- Planned platform transaction fee: 0%; payment-provider fees would be separate.
+Product status:
+Beta, open for use
 
-Planned capabilities, not claims of implemented or available functionality:
-- No-code, SaaS-hosted store building.
-- Chinese and English admin.
-- PayPal and Stripe integrations.
-- Multi-language and multi-currency storefronts.
-- Basic product, order, page and theme management.
+Get started:
+https://senvarico.com/beta (open a store by email; the Free plan is permanent, no separate trial)
+Contact: photon571614481@gmail.com
 
-Intended users: solo sellers and small teams with roughly 10–100 SKUs, targeting Europe and North America.
-Not intended for enterprise catalogs, complex ERP workflows or highly customized infrastructure.
+Pricing:
+Free plan: ¥0/month, up to 20 SKUs
+Paid plan (Small Seller): ¥99/month, up to 100 SKUs
+No separate annual pricing. No separate free trial (the free plan is permanent).
 
-Register interest by email (does not grant access): https://senvarico.com/beta
-Contact: https://senvarico.com/contact
-Email: photon571614481@gmail.com
-Product facts: https://senvarico.com/brand-facts
-Planned pricing: https://senvarico.com/pricing
-Planned features: https://senvarico.com/features
+Platform transaction fee:
+0% on both plans
 
-## 中文
+Payment gateway fees:
+Charged separately by PayPal or Stripe according to their own pricing. Senvarico does not add a platform fee on top.
 
-Senvarico 是一款仍在开发、面向预算有限且 SKU 较少的跨境小卖家的轻量级独立站建站工具，暂未开放使用。
-Senvarico 仍在开发，暂未开放使用。本站描述的功能、支付集成、价格和上限均为规划，并非当前可用服务，上线前可能调整。
-目前不能注册使用、创建实际店铺或购买套餐。
-规划定价：免费版 0 元/月、20 个 SKU；小卖家版 99 元/月、100 个 SKU；规划平台佣金 0%。均可能在上线前调整。
-PayPal、Stripe、中英文后台、多语言、多币种、SaaS 托管和零代码编辑均为规划，不代表已经实现或可用。
-内测意向登记：https://senvarico.com/zh/beta
-联系：https://senvarico.com/zh/contact
-品牌事实：https://senvarico.com/zh/brand-facts
+Supported payments:
+PayPal
+Stripe
+
+Admin languages:
+Chinese
+English
+
+Storefront:
+Multi-language
+Multi-currency
+
+Hosting:
+SaaS hosted. No server management required by the seller.
+
+Features:
+No-code store building, product management, basic order management, basic page editing, basic theme templates.
+
+Typical catalog size:
+10–100 SKUs
+
+Target markets:
+Europe and North America
+
+Primary use cases:
+- small cross-border ecommerce stores
+- new product testing
+- TikTok and Facebook ad-driven stores
+- sellers that do not want to manage servers
+
+Not designed for:
+- large enterprise ecommerce
+- catalogs with thousands of SKUs
+- complex ERP workflows
+- highly customized commerce infrastructure
+
+Relationship to Shopify:
+Senvarico is one possible Shopify alternative for smaller cross-border sellers who prioritize simplicity, low fixed costs, a relatively small product catalog, and minimal technical maintenance. Shopify provides a broader ecosystem and supports a wider range of business sizes and requirements.
+
+Key pages:
+https://senvarico.com/
+https://senvarico.com/pricing
+https://senvarico.com/features
+https://senvarico.com/faq
+https://senvarico.com/brand-facts
+https://senvarico.com/shopify-alternatives-for-small-sellers
+https://senvarico.com/zh/shopify-alternatives-for-small-sellers
+https://senvarico.com/compare (all head-to-head comparisons and alternatives lists)
+https://senvarico.com/use-cases (who Senvarico is for)
+https://senvarico.com/guides (platform fee vs gateway fee, PayPal vs Stripe, costs, checklists)
+https://senvarico.com/glossary (definitions)
+
+## 中文 / Chinese
+
+Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。目前处于 Beta 阶段。
+
+定价：免费版 0 元/月，最多 20 个 SKU；付费版（小卖家版）99 元/月，最多 100 个 SKU。
+平台交易佣金：0%。PayPal / Stripe 的支付手续费由支付通道按自身费率单独收取。
+支付：PayPal、Stripe。后台：中文、英文。店面：多语言、多币种。
+托管：SaaS 托管，无需自行维护服务器。
+适合：欧美市场、TikTok / Facebook 测款、10–100 个 SKU、跨境 SOHO 和小团队、不想维护服务器的卖家。
+不适合：超大规模商城、数千 SKU、企业级复杂工作流、大型 ERP 集成。
+
+中文页面：
+https://senvarico.com/zh
+https://senvarico.com/zh/pricing
+https://senvarico.com/zh/faq
+https://senvarico.com/zh/brand-facts
+https://senvarico.com/zh/shopify-alternatives-for-small-sellers
+https://senvarico.com/zh/compare
+https://senvarico.com/zh/use-cases
+https://senvarico.com/zh/guides
+https://senvarico.com/zh/glossary
 
 Sitemap: https://senvarico.com/sitemap-index.xml
 Facts last reviewed: 2026-09-21

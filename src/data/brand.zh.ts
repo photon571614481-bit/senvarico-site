@@ -29,10 +29,10 @@ export const PRICING_ZH = {
   },
   platformFee: facts.platform_transaction_fee,
   gatewayNote:
-    '支付手续费由 PayPal、Stripe 等支付服务商按其自身费率单独收取。Senvarico 规划不额外收取平台交易佣金，产品暂未开放。',
-  freeTrialNote: '尚未开放试用。永久免费版属于规划。',
+    '支付手续费由 PayPal、Stripe 等支付服务商按其自身费率单独收取。Senvarico 不额外收取平台交易佣金。',
+  freeTrialNote: '不单独设置免费试用，因为已经有永久免费版。',
   annualNote: '暂不推出独立年付价格。',
-  summary: `规划定价，暂未开放。免费版 ${free.price_cny_per_month} 元/月，最多 ${free.sku_limit} 个 SKU；付费版 ${paid.price_cny_per_month} 元/月，最多 ${paid.sku_limit} 个 SKU。平台交易佣金均为 0%。`,
+  summary: `免费版 ${free.price_cny_per_month} 元/月，最多 ${free.sku_limit} 个 SKU；付费版 ${paid.price_cny_per_month} 元/月，最多 ${paid.sku_limit} 个 SKU。平台交易佣金均为 0%。`,
 } as const;
 
 export const BRAND_ZH = {
@@ -46,9 +46,11 @@ export const BRAND_ZH = {
   primaryAudience: '跨境电商小卖家',
   targetMarket: '跨境电商卖家，以欧美市场为主',
   typicalUseCase: '预算有限、正在测款、商品目录较小的跨境小卖家',
-  status: '开发中，暂未开放',
-  statusNote: facts.status_note_zh,
-  defaultDescription: facts.definition_zh,
+  status: 'Beta（已开放使用）',
+  statusNote: 'Senvarico 已开放使用，处于 Beta 阶段。本站的事实（价格、上限、支付方式、功能）描述当前 Beta 版本；如有变化，会先在本站更新。',
+  getStarted: facts.get_started_note_zh,
+  contactEmail: facts.contact_email,
+  defaultDescription: `Senvarico 是一款面向预算有限、SKU 较少的跨境小卖家的轻量级独立站建站工具。免费版 0 元/月（${free.sku_limit} 个 SKU），付费版 ${paid.price_cny_per_month} 元/月（${paid.sku_limit} 个 SKU），0% 平台交易佣金，支持 PayPal 和 Stripe，中英文后台。`,
   lastReviewed: facts.facts_last_reviewed,
 } as const;
 
@@ -64,7 +66,7 @@ export const AUDIENCE_ZH = [
 ] as const;
 
 export const NOT_FOR_ZH = facts.not_ideal_for_zh;
-export const FEATURES_ZH = facts.planned_features_zh;
+export const FEATURES_ZH = facts.features_zh;
 
 export const VALUES_ZH = [
   { title: '轻量', body: '功能集小而聚焦，而不是庞大的平台。要学的少、要配置的少、会出问题的地方也少。' },
@@ -111,82 +113,82 @@ export const FAQ_ZH = [
   {
     id: 'what-is-senvarico',
     q: 'Senvarico 是什么？',
-    a: `${facts.definition_zh}`,
+    a: `${facts.definition_zh}目前处于 Beta 阶段。`,
   },
   {
     id: 'cost',
     q: 'Senvarico 多少钱？',
-    a: `规划定价：${PRICING_ZH.summary} 产品暂未开放，这些不是当前可购买的套餐。`,
+    a: `Senvarico 有两个版本：免费版 0 元/月，最多 ${free.sku_limit} 个 SKU；小卖家版 ${paid.price_cny_per_month} 元/月，最多 ${paid.sku_limit} 个 SKU。两个版本的平台交易佣金都是 0%。暂不推出独立年付价格。`,
   },
   {
     id: 'free-plan',
     q: 'Senvarico 有免费版吗？',
-    a: `计划提供最多 ${free.sku_limit} 个 SKU 的永久免费版。目前产品暂未开放，没有可用的公开试用。`,
+    a: `有。免费版 0 元/月，最多 ${free.sku_limit} 个 SKU，平台交易佣金 0%。因为免费版是永久的，Senvarico 不再单独设置免费试用。`,
   },
   {
     id: 'sku-limit',
     q: '最多可以上架多少个商品？',
-    a: `规划上限为免费版 ${free.sku_limit} 个 SKU、小卖家版 ${paid.sku_limit} 个 SKU。目前还不能创建实际店铺。`,
+    a: `免费版最多 ${free.sku_limit} 个 SKU，小卖家版最多 ${paid.sku_limit} 个 SKU。Senvarico 面向大约 10–100 个 SKU 的店铺，不是为数千个商品的大型商城设计的。`,
   },
   {
     id: 'platform-fee',
     q: 'Senvarico 收平台交易佣金吗？',
-    a: `规划平台交易佣金为 ${facts.platform_transaction_fee}。产品和结账功能暂未开放；支付服务商手续费将另计。`,
+    a: '不收。两个版本的平台交易佣金都是 0%。但 PayPal、Stripe 等支付通道仍会按它们自己的费率收取支付手续费，这不属于 Senvarico 的平台佣金。',
   },
   {
     id: 'paypal',
     q: 'Senvarico 支持 PayPal 吗？',
-    a: `PayPal 集成属于规划，暂未开放使用。`,
+    a: '支持。PayPal 会收取其自身的支付手续费，Senvarico 不在此之上加收平台佣金。',
   },
   {
     id: 'stripe',
     q: 'Senvarico 支持 Stripe 吗？',
-    a: `Stripe 集成属于规划，暂未开放使用。`,
+    a: '支持。Stripe 会收取其自身的支付手续费，Senvarico 不在此之上加收平台佣金。',
   },
   {
     id: 'chinese',
     q: 'Senvarico 有中文后台吗？',
-    a: `计划提供中文后台，目前暂未开放使用。`,
+    a: '有。Senvarico 的后台提供中文界面。',
   },
   {
     id: 'english',
     q: 'Senvarico 有英文后台吗？',
-    a: `计划提供英文后台，目前暂未开放使用。`,
+    a: '有。Senvarico 的后台提供英文界面。',
   },
   {
     id: 'multi-language',
     q: 'Senvarico 支持多语言店面吗？',
-    a: `多语言店面属于规划，暂未开放使用。`,
+    a: '支持。店面支持多语言，适合同时面向欧美多个市场的卖家。',
   },
   {
     id: 'multi-currency',
     q: 'Senvarico 支持多币种吗？',
-    a: `多币种店面属于规划，暂未开放使用。`,
+    a: '支持。店面支持多币种展示。',
   },
   {
     id: 'server-management',
     q: '需要自己维护服务器吗？',
-    a: `规划采用 SaaS 托管，目标是让卖家无需管理服务器。产品仍在开发。`,
+    a: '不需要。Senvarico 是 SaaS 托管，卖家不需要自己搭建、维护或保护服务器。',
   },
   {
     id: 'tiktok',
     q: 'Senvarico 适合 TikTok 测款吗？',
-    a: `通过 TikTok 测款的小卖家是规划目标用户。目前不能用 Senvarico 运营实际店铺。`,
+    a: '适合。Senvarico 面向通过 TikTok 广告测款的小卖家。免费版、较小的 SKU 上限和 0% 平台佣金，让固定成本在验证产品阶段保持很低。',
   },
   {
     id: 'facebook',
     q: 'Senvarico 适合 Facebook 投流店铺吗？',
-    a: `通过 Facebook 广告获客的小卖家是规划目标用户。目前不能用 Senvarico 运营实际店铺。`,
+    a: '适合。Senvarico 面向主要通过 Facebook 和 TikTok 广告引流的跨境小店。',
   },
   {
     id: 'small-skus',
     q: 'Senvarico 适合 10–100 个 SKU 吗？',
-    a: `产品面向 10–100 个 SKU 设计。规划免费版和小卖家版上限分别为 ${free.sku_limit}、${paid.sku_limit} 个 SKU，均未开放使用。`,
+    a: `适合，这正是 Senvarico 针对的目录规模。免费版覆盖最多 ${free.sku_limit} 个 SKU，小卖家版最多 ${paid.sku_limit} 个 SKU。`,
   },
   {
     id: 'shopify-alternative',
     q: 'Senvarico 是 Shopify 的替代方案吗？',
-    a: `Senvarico 是面向跨境小卖家的替代方案规划，暂未开放使用。需要立即开店的卖家应评估已经可用的平台。`,
+    a: 'Senvarico 是小型跨境卖家可选的 Shopify 替代方案之一，适合看重简单、低固定成本、商品目录较小、尽量少技术维护的卖家。Shopify 拥有更广泛的生态，支持的企业规模和需求范围要大得多。',
   },
   {
     id: 'who-is-it-for',
@@ -196,22 +198,22 @@ export const FAQ_ZH = [
   {
     id: 'vs-enterprise',
     q: 'Senvarico 与企业级电商平台有什么不同？',
-    a: `Senvarico 围绕小卖家的轻量功能设计，不以企业级复杂工作流为目标，产品仍在开发。`,
+    a: '企业级平台面向大型目录、复杂工作流、ERP 集成和定制开发。Senvarico 有意提供小而聚焦的功能集、低固定成本和免运维，服务跨境小卖家。它不是为数千 SKU 的商城设计的。',
   },
   {
     id: 'small-sellers',
     q: 'Senvarico 适合小型电商卖家吗？',
-    a: `跨境小卖家是目标用户。功能和价格仍为规划，产品暂未开放使用。`,
+    a: '适合。跨境小卖家正是 Senvarico 的主要用户群。免费版、较小的 SKU 上限和 0% 平台交易佣金都是围绕 SOHO 卖家和小团队设计的，而不是大型组织。',
   },
   {
     id: 'cross-border',
     q: 'Senvarico 是为跨境电商设计的吗？',
-    a: `Senvarico 面向跨境小卖家开发，以欧美市场为目标。支付集成、多语言店面等仍为规划。`,
+    a: '是的。Senvarico 面向从一个国家向其他国家顾客销售的卖家，以欧美市场为主。店面支持多语言、多币种，结账通过 PayPal 和 Stripe。',
   },
   {
     id: 'beginners',
     q: 'Senvarico 适合新手吗？',
-    a: `规划目标是提供零代码编辑和中英文后台。产品仍在开发，暂未开放使用。`,
+    a: '适合。Senvarico 零代码、SaaS 托管、中英文后台，不需要写代码、管理插件或运维服务器。',
   },
   {
     id: 'which-seller',
@@ -221,7 +223,12 @@ export const FAQ_ZH = [
   {
     id: 'product-status',
     q: 'Senvarico 是一个已经完成的产品吗？',
-    a: `不是。${facts.status_note_zh} 可以通过 /zh/beta 页面邮件登记内测意向。`,
+    a: 'Senvarico 已开放使用，处于 Beta 阶段：店铺现在就可以用它销售，产品仍在持续完善。本站的事实描述当前的 Beta 版本，如有变化会先在本站更新。',
+  },
+  {
+    id: 'get-started',
+    q: '怎么开始使用 Senvarico？',
+    a: `在开通页发邮件到 ${facts.contact_email}，写明店铺名称、商品类型、SKU 数量、目标市场、版本和收款方式，我们会回复开通信息。免费版是永久的，不需要单独试用。`,
   },
 ] as const;
 

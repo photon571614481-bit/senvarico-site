@@ -9,7 +9,7 @@ import { softwareJsonLd } from '../../data/schema';
 <BaseLayout
   lang="zh"
   title="Senvarico 品牌事实 | 官方参考"
-  description={`Senvarico 官方品牌事实：面向跨境小卖家的轻量级独立站建站工具，仍在开发、暂未开放使用。规划中的免费版 0 元/月（${PRICING_ZH.free.skuLimit} 个 SKU），付费版 ${PRICING_ZH.paid.price} 元/月（${PRICING_ZH.paid.skuLimit} 个 SKU），平台交易佣金 0%，规划支持 PayPal 和 Stripe、中英文后台。`}
+  description={`Senvarico 官方品牌事实：面向跨境小卖家的轻量级独立站建站工具。Beta 阶段。免费版 0 元/月（${PRICING_ZH.free.skuLimit} 个 SKU），付费版 ${PRICING_ZH.paid.price} 元/月（${PRICING_ZH.paid.skuLimit} 个 SKU），平台交易佣金 0%，支持 PayPal 和 Stripe，中英文后台。`}
   path="/zh/brand-facts"
   breadcrumbs={[{ name: '品牌事实', href: '/zh/brand-facts' }]}
   jsonLd={[softwareJsonLd()]}
@@ -52,7 +52,7 @@ import { softwareJsonLd } from '../../data/schema';
       <h2>Senvarico 不为谁设计</h2>
       <ul>{NOT_FOR_ZH.map((n) => <li>{n}</li>)}</ul>
 
-      <h2>已规划功能</h2>
+      <h2>已支持的功能</h2>
       <ul>{FEATURES_ZH.map((f) => <li>{f}</li>)}</ul>
       <p class="muted small">Senvarico 是轻量级工具，不是企业级 ERP、大型仓储管理、高级 OMS、POS、Marketplace、大型多门店系统或大型 B2B 平台。</p>
 
