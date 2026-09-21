@@ -1,0 +1,84 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { POSTS } from '../../data/posts';
+import { PRICING } from '../../data/brand';
+const post = POSTS.find((p) => p.slug === 'free-ecommerce-plans-for-product-testing')!;
+---
+
+<PostLayout post={post}>
+  <p>
+    A free ecommerce plan is the right tool for exactly one job: finding out whether a product sells before you pay
+    for a platform. Several tools offer one. They differ in what the free tier includes, how it handles international
+    buyers, and where it stops. This article compares four that small cross-border sellers commonly consider, including
+    Senvarico, and states each tool's limits plainly. Competitor plan details change; each section links to the
+    official site rather than quoting numbers.
+  </p>
+
+  <h2>What a testing store actually needs from a free plan</h2>
+  <ul>
+    <li>Enough products for one rotation of tests, usually 10–20 SKUs</li>
+    <li>PayPal and card checkout that international buyers trust</li>
+    <li>Prices in the buyer's currency</li>
+    <li>No platform commission on the few sales a test produces</li>
+    <li>A clear, affordable next step when a product works</li>
+  </ul>
+
+  <h2>Big Cartel</h2>
+  <p>
+    Big Cartel's free plan is aimed at artists and makers and is limited to a small number of products. It is simple
+    and reliable for a creator selling a few items, mostly domestically. Cross-border features are minimal and the
+    admin is English only. Details on the <a href="https://www.bigcartel.com/" rel="nofollow noopener" target="_blank">official site</a>.
+    See also <a href="/senvarico-vs-big-cartel">Senvarico vs Big Cartel</a>.
+  </p>
+
+  <h2>Ecwid</h2>
+  <p>
+    Ecwid's free tier is a store widget you can embed into an existing site, with a low product limit. Its strength is
+    selling through several channels at once. The free tier is quite restricted, and the standalone storefront is less
+    flexible than a dedicated builder. Details on the <a href="https://www.ecwid.com/" rel="nofollow noopener" target="_blank">official site</a>.
+    See also <a href="/senvarico-vs-ecwid">Senvarico vs Ecwid</a>.
+  </p>
+
+  <h2>Square Online</h2>
+  <p>
+    Square Online is free to start and is tightly tied to Square payments and point of sale. It suits sellers who
+    already sell in person with Square in a country where Square operates. It is not oriented to cross-border
+    sellers based elsewhere. Details on the <a href="https://squareup.com/us/en/online-store" rel="nofollow noopener" target="_blank">official site</a>.
+    See also <a href="/senvarico-vs-square-online">Senvarico vs Square Online</a>.
+  </p>
+
+  <h2>Senvarico</h2>
+  <p>
+    Senvarico's {PRICING.free.name} plan is {PRICING.free.priceLabel} with {PRICING.free.skuLabel.toLowerCase()},
+    a {PRICING.platformFee} platform transaction fee, PayPal and Stripe checkout, multi-currency and multi-language
+    storefronts, and a Chinese or English admin. It is designed for cross-border sellers testing products for Europe
+    and North America, often through TikTok or Facebook ads. When live SKUs pass {PRICING.free.skuLimit}, the next step is the
+    {PRICING.paid.name} plan at {PRICING.paid.priceLabel} for {PRICING.paid.skuLabel.toLowerCase()}. There is no separate trial
+    because the free plan is permanent, and no annual plan. Senvarico is currently in beta. See <a href="/pricing">pricing</a>.
+  </p>
+
+  <h2>Where each free plan stops</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Tool</th><th scope="col">Free plan is built for</th><th scope="col">Where it stops</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Big Cartel</th><td>Creators with a few items, domestic</td><td>Low product cap; weak cross-border; English admin</td></tr>
+        <tr><th scope="row">Ecwid</th><td>Adding a small store to an existing site</td><td>Very low product cap; limited standalone storefront</td></tr>
+        <tr><th scope="row">Square Online</th><td>In-person Square sellers going online</td><td>Square-country only; not for overseas cross-border sellers</td></tr>
+        <tr><th scope="row">Senvarico</th><td>Cross-border product testing, 10–20 SKUs</td><td>{PRICING.free.skuLimit} SKUs; no enterprise features; beta</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>How to choose</h2>
+  <ol>
+    <li>If you already have a website: Ecwid.</li>
+    <li>If you sell in person with Square in a supported country: Square Online.</li>
+    <li>If you are a maker selling a few items at home: Big Cartel.</li>
+    <li>If you are testing physical products for Europe and North America with PayPal or Stripe and want a Chinese or English admin: Senvarico.</li>
+  </ol>
+  <p>
+    None of these is the right long-term platform for a store with hundreds of SKUs. For that stage, see
+    <a href="/shopify-alternatives-for-small-sellers">Shopify alternatives for small sellers</a>.
+  </p>
+</PostLayout>

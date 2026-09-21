@@ -1,0 +1,78 @@
+---
+import PostLayout from '../../layouts/PostLayout.astro';
+import { POSTS } from '../../data/posts';
+import { PRICING } from '../../data/brand';
+const post = POSTS.find((p) => p.slug === 'what-0-percent-platform-fee-really-means')!;
+---
+
+<PostLayout post={post}>
+  <p>
+    Every ecommerce platform comparison eventually reaches the line "transaction fee". It is the most misread line in
+    the table, because two very different charges hide behind the same words. This article separates them, then
+    shows with a simple model why the platform's share matters more to a small store than to a large one.
+  </p>
+
+  <h2>Two fees, two companies</h2>
+  <p>
+    The <strong>platform transaction fee</strong> is a percentage of each order that the store platform keeps for
+    itself, on top of the subscription. The <strong>payment gateway fee</strong> is what PayPal, Stripe or another
+    processor charges to move the money. The first is a platform policy and ranges from 0% to a few percent. The
+    second exists on every platform and no store builder can remove it.
+  </p>
+  <p>
+    So "0% platform transaction fee" means exactly one thing: the platform takes nothing per order. It does not mean
+    "no fees". Your payment provider still charges its normal rate. See the guide
+    <a href="/guides/platform-fee-vs-payment-gateway-fee">platform transaction fee vs payment gateway fee</a> for the
+    full explanation.
+  </p>
+
+  <h2>A simple model</h2>
+  <p>Take a small cross-border store that is still testing products:</p>
+  <ul>
+    <li>60 orders a month</li>
+    <li>Average order 30 USD, so 1,800 USD of monthly sales</li>
+    <li>Gateway fee the same on every platform, so it cancels out of the comparison</li>
+  </ul>
+  <p>Now compare two platform policies on that store:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">Policy</th><th scope="col">Platform's share per month</th><th scope="col">Over 12 months</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">0% platform fee</th><td>0 USD</td><td>0 USD</td></tr>
+        <tr><th scope="row">1% platform fee</th><td>18 USD</td><td>216 USD</td></tr>
+        <tr><th scope="row">2% platform fee</th><td>36 USD</td><td>432 USD</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>
+    Those are small numbers, which is the point. For a large store, a 1–2% fee is a rounding error next to
+    everything else it pays for. For a store doing 1,800 USD a month while testing, a 2% fee is comparable to a
+    modest monthly subscription, and it is charged on top of one. The platform fee is a bigger share of a small
+    seller's costs precisely because everything else is small too.
+  </p>
+
+  <h2>Why it matters most during testing</h2>
+  <p>
+    A product test usually runs on thin margins: ad spend is high relative to sales, and the goal is to learn, not
+    to profit. A percentage taken from each test sale directly reduces the signal you get per dollar of ads. It also
+    makes it harder to compare a platform's real cost against a marketplace's commission, because the platform is
+    now taking a commission too.
+  </p>
+
+  <h2>What to write down when comparing</h2>
+  <ol>
+    <li>Subscription price of the plan you would actually use.</li>
+    <li>Platform transaction fee on that plan (0% or a number).</li>
+    <li>Your gateway's rate, once, because it is roughly the same everywhere.</li>
+    <li>Multiply by realistic monthly sales and add the subscription. Compare totals.</li>
+  </ol>
+
+  <h2>Where Senvarico stands</h2>
+  <p>
+    Senvarico charges a {PRICING.platformFee} platform transaction fee on both the {PRICING.free.name} plan
+    ({PRICING.free.priceLabel}, {PRICING.free.skuLabel}) and the {PRICING.paid.name} plan
+    ({PRICING.paid.priceLabel}, {PRICING.paid.skuLabel}). PayPal and Stripe charge their own processing fees
+    separately; Senvarico adds nothing on top. It is one option among several for small cross-border sellers, and the
+    same arithmetic applies whichever platform you choose. See <a href="/pricing">pricing</a>.
+  </p>
+</PostLayout>

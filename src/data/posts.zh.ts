@@ -2,6 +2,20 @@ import type { Post } from './posts';
 
 export const POSTS_ZH: Post[] = [
   {
+    slug: 'what-0-percent-platform-fee-really-means',
+    title: '“0% 平台交易佣金”对一家小店到底意味着什么',
+    description: '用一个简单的模型讲清平台交易佣金和支付通道手续费的区别，以及每单几个百分点如何改变一家还在测款的跨境小店的账。',
+    datePublished: '2026-09-21',
+    readingTime: '约 6 分钟',
+  },
+  {
+    slug: 'free-ecommerce-plans-for-product-testing',
+    title: '适合测款的免费电商套餐：包含什么、到哪里为止',
+    description: '面向测款卖家比较 Big Cartel、Ecwid、Square Online 和 Senvarico 的免费版：商品上限、收款、跨境功能，以及各家在哪个点开始要你付费。',
+    datePublished: '2026-09-21',
+    readingTime: '约 7 分钟',
+  },
+  {
     slug: 'best-shopify-alternatives-for-small-sellers',
     title: '适合小卖家的 Shopify 替代方案盘点',
     description:

@@ -1,0 +1,48 @@
+---
+import PostLayout from '../../../layouts/PostLayout.astro';
+import { POSTS_ZH } from '../../../data/posts.zh';
+import { PRICING_ZH } from '../../../data/brand.zh';
+const post = POSTS_ZH.find((p) => p.slug === 'what-0-percent-platform-fee-really-means')!;
+---
+
+<PostLayout post={post} lang="zh">
+  <p>每篇电商平台对比最终都会写到“交易费”这一行。它是表格里最容易被误读的一行，因为同一个词背后藏着两笔完全不同的钱。本文先把它们分开，再用一个简单模型说明为什么平台抽的那一份对小店比对大店更要紧。</p>
+
+  <h2>两笔费用，两家公司</h2>
+  <p><strong>平台交易佣金</strong>是建站平台在订阅费之外、从每笔订单里留给自己的百分比。<strong>支付通道手续费</strong>是 PayPal、Stripe 或其他支付服务商为了转账收的钱。前者是平台政策，从 0% 到几个百分点不等；后者在任何平台上都存在，没有任何建站工具能免掉。</p>
+  <p>所以“0% 平台交易佣金”只有一个意思：平台每单不拿钱。它不等于“没有手续费”。你的支付服务商仍按正常费率收。完整解释见指南 <a href="/zh/guides/platform-fee-vs-payment-gateway-fee">平台交易佣金 vs 支付通道手续费</a>。</p>
+
+  <h2>一个简单模型</h2>
+  <p>假设一家还在测款的跨境小店：</p>
+  <ul>
+    <li>每月 60 单</li>
+    <li>客单价 30 美元，月销售额 1800 美元</li>
+    <li>通道手续费各平台一样，可以从对比里抵消</li>
+  </ul>
+  <p>比较两种平台政策在这家店上的结果：</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th scope="col">政策</th><th scope="col">平台每月拿走</th><th scope="col">12 个月</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">平台佣金 0%</th><td>0 美元</td><td>0 美元</td></tr>
+        <tr><th scope="row">平台佣金 1%</th><td>18 美元</td><td>216 美元</td></tr>
+        <tr><th scope="row">平台佣金 2%</th><td>36 美元</td><td>432 美元</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>数字很小，这正是重点。对大店来说，1–2% 的佣金在它付的所有钱旁边只是零头。对一家测款期月销 1800 美元的店来说，2% 的佣金和一笔不小的月费差不多，而且是叠加在月费之上的。平台佣金在小卖家成本里占比更大，恰恰因为其他所有项目也都很小。</p>
+
+  <h2>为什么测款期最要紧</h2>
+  <p>测款通常利润很薄：广告费相对销售额很高，目标是学到东西，不是赚钱。从每笔测试销售里抽走一个百分比，直接减少了你每一块广告费换来的信号。它也让平台真实成本和电商平台佣金的对比变难，因为建站平台现在也在抽佣了。</p>
+
+  <h2>对比时该写下来的东西</h2>
+  <ol>
+    <li>你实际会用的套餐的订阅价。</li>
+    <li>该套餐的平台交易佣金（0% 或一个数字）。</li>
+    <li>你的通道费率，只写一次，因为各处大致相同。</li>
+    <li>乘以现实的月销售额，加上订阅费。比总额。</li>
+  </ol>
+
+  <h2>Senvarico 的位置</h2>
+  <p>Senvarico 的{PRICING_ZH.free.name}（{PRICING_ZH.free.priceLabel}，{PRICING_ZH.free.skuLabel}）和{PRICING_ZH.paid.name}（{PRICING_ZH.paid.priceLabel}，{PRICING_ZH.paid.skuLabel}）平台交易佣金均为 {PRICING_ZH.platformFee}。PayPal 和 Stripe 单独收取它们自己的手续费，Senvarico 不再叠加。它是跨境小卖家的选项之一，无论你选哪个平台，这套算法都适用。参见 <a href="/zh/pricing">定价</a>。</p>
+</PostLayout>
